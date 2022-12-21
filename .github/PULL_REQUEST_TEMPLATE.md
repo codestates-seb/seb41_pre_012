@@ -1,11 +1,3 @@
----
-name: PR 템플릿
-about: PR 
-title: [angular's commit name]: 
-labels: ""
-assignees: ""
----
-
 ## 해결하려는 문제가 무엇인가요?
 
 ## 어떻게 해결했나요?
