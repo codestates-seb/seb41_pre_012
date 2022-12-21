@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "test",
-      "content": "어쩌꾸구구구구구구구구1",
+      "content": "I have a tab bar that use as tab bar items a collection view. From iOS 15 and up, whenever I tap on a push notification or I login with Face ID, when I reach the home screen, the app crash with this error \"TabBarController removeChildViewController:]: message sent to deallocated instance 0x10b8c7800\". Does anyone know how can I investigate the issue and how to get rid of it?",
       "createdAt": "2022-12-21",
       "modifiedAt": "2022-12-21",
       "view": 2,
