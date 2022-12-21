@@ -1,14 +1,20 @@
-import Footer from "./components/Footer";
 import "./App.css";
 import styled from "styled-components";
+import Domain from "./pages/Domain";
+import Header from "./components/Header";
 
-const AppStyled = styled.div``;
+const StyledApp = styled.div`
+  margin-top: 50px;
+`;
 
 function App() {
   return (
-    <AppStyled>
-      <Footer />
-    </AppStyled>
+    <>
+      <Header />
+      <StyledApp>
+        <Domain />
+      </StyledApp>
+    </>
   );
 }
 
