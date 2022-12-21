@@ -3,39 +3,60 @@
     {
       "id": "1",
       "title": "test",
-      "content": "어쩌꾸구ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ구",
+      "content": "어쩌꾸구구구구구구구구1",
       "createdAt": "2022-12-21",
-      "modifiedAt": "2022-12-21"
+      "modifiedAt": "2022-12-21",
+      "view": 2,
+      "question_recommend": 0,
+      "username": "윤뿔소",
+      "answer_list": [
+        {
+          "content": "규구ㅜ구구구구국구ㅜ쩌구구구구구어쩌",
+          "username": "장예진",
+          "answer_recommend": 0,
+          "isSelected": true,
+          "createdAt": "2022-12-21",
+          "modifiedAt": "2022-12-21"
+        },
+        {
+          "content": "별론데",
+          "username": "이건희",
+          "answer_recommend": -1,
+          "isSelected": false,
+          "createdAt": "2022-12-21",
+          "modifiedAt": "2022-12-21"
+        }
+      ]
     },
     {
       "id": "2",
       "title": "test2",
-      "content": "어쩌꾸구ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ구구2",
-      "createdAt": "2022-12-12",
-      "modifiedAt": "2022-12-15"
-    },
-    {
-      "id": "3",
-      "title": "test4",
-      "content": "어쩌꾸ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ구구구4",
-      "createdAt": "2022-12-10",
-      "modifiedAt": "2022-12-21"
-    },
-    {
-      "id": "3",
-      "title": "test4",
-      "content": "어쩌꾸구ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ구구4",
-      "createdAt": "2022-12-10",
-      "modifiedAt": "2022-12-21"
-    }
-  ],
-  "Answer": [
-    {
-      "id": "1",
-      "content": "어쩌꾸구구구2",
+      "content": "어쩌꾸구구구구구구구구2",
       "createdAt": "2022-12-12",
       "modifiedAt": "2022-12-15",
-      "isSelected": "true"
+      "view": 1,
+      "question_recommend": 1,
+      "username": "장예진"
+    },
+    {
+      "id": "3",
+      "title": "test4",
+      "content": "어쩌꾸구구구구구구구구3",
+      "createdAt": "2022-12-15",
+      "modifiedAt": "2022-12-16",
+      "view": 1,
+      "question_recommend": 0,
+      "username": "이건희"
+    },
+    {
+      "id": "4",
+      "title": "test4",
+      "content": "어쩌꾸구구구구구구구구4",
+      "createdAt": "2022-12-10",
+      "modifiedAt": "2022-12-21",
+      "view": 2,
+      "question_recommend": 0,
+      "username": "윤뿔소"
     }
   ]
 }
