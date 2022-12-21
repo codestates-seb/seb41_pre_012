@@ -1,6 +1,6 @@
 ---
-name: 기능 추가 템플릿
-about: 이런 식으로 기능 추가 Task 설정
+name: PR 템플릿
+about: PR 
 title: ""
 labels: ""
 assignees: ""
