@@ -29,7 +29,7 @@ const FooterListTitle = styled.h5`
 `;
 const FooterUl = styled.ul``;
 const FooterList = styled.li`
-  padding 5px 0 5px 0;
+  padding: 5px 0 5px 0;
   font-size: 15px;
   color: #848b92;
 `;
@@ -111,8 +111,8 @@ const Footer = () => {
             <SideFooterLink>Instagram</SideFooterLink>
           </SideFooterContents>
           <SideCopyright>
-            Site design / logo © 2022 Stack Exchange Inc; user contributions
-            licensed under CC BY-SA. <br />
+            Site design / logo © 2022 Stack Exchange Inc; user contributions licensed under CC
+            BY-SA. <br />
             rev 2022.12.19.43125
           </SideCopyright>
         </SideFooter>

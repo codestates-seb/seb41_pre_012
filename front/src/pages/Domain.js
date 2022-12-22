@@ -95,21 +95,14 @@ const Domain = () => {
               <AskQuestion>Ask Question</AskQuestion>
             </TopContainer>
             <ButtonContainer>
-              <div>
-                {!loading && questionData ? questionData.length : "Loading..."}{" "}
-                questions
-              </div>
+              <div>{!loading && questionData ? questionData.length : "Loading..."} questions</div>
               <div>
                 <SortButtonLeft>Newest</SortButtonLeft>
                 <SortButton>Unanswered</SortButton>
               </div>
             </ButtonContainer>
             <Questions>
-              {!loading && questionData ? (
-                <ItemLists questionData={questionData} />
-              ) : (
-                "Loading..."
-              )}
+              {!loading && questionData ? <ItemLists questionData={questionData} /> : "Loading..."}
             </Questions>
           </MainSection>
           <RightSidebar />
