@@ -43,7 +43,9 @@ const Domain = () => {
         <StyledSection>
           <MainSection>
             All Questions
-            <Questions>{!loading && questionData ? <ItemLists questionData={questionData} /> : "Loading..."}</Questions>
+            <Questions>
+              {!loading && questionData ? <ItemLists questionData={questionData} /> : "Loading..."}
+            </Questions>
           </MainSection>
           <RightSidebar />
         </StyledSection>
