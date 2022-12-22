@@ -7,7 +7,6 @@ const StyledRightSidebar = styled.div`
   float: right;
   background-color: pink;
 `;
-
 const RightSidebar = () => {
   return <StyledRightSidebar>RightSidebar</StyledRightSidebar>;
 };

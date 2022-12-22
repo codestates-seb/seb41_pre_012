@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
 import RightSidebar from "../components/RightSidebar";
+import ItemLists from "../components/QuestionList/ItemLists";
+import useFetch from "../util/useFetch";
 
 const Container = styled.div`
   width: 100%;
@@ -10,34 +12,33 @@ const Container = styled.div`
   justify-content: space-between;
   margin: 0 auto;
 `;
+
 const StyledSection = styled.section`
   max-width: 1100px;
   width: calc(100% - 164px);
+  padding: 24px;
   height: 1080px;
-  padding: 24px 24px 24px 0;
   border-left: 1px solid #d7d9dc;
-  background: white;
   display: flex;
+  justify-content: space-between;
 `;
-const QuestionBox = styled.div`
-  width: 70%;
-  height: 115px;
-  background: white;
+
+const MainSection = styled.div`
+  width: calc(100% - 324px);
 `;
+
+const Questions = styled.div`
+  width: auto;
+  margin-bottom: 20px;
+  margin-left: -24px;
+`;
+
 const TopContainer = styled.div`
   display: flex;
-  padding-top: 10px;
+  justify-content: space-between;
 `;
 const AllQuestions = styled.div`
-  float: right;
   font-size: 30px;
-  margin: 0 420px 0 24px;
-`;
-const ButtonContainer = styled.div`
-  display: flex;
-  margin-top: 30px;
-  padding-bottom: 10px;
-  word-break: break-all;
 `;
 const AskQuestion = styled.a`
   font-size: 14px;
@@ -46,72 +47,71 @@ const AskQuestion = styled.a`
   border-radius: 4px;
   line-height: 40px;
   text-align: center;
+  position: relative;
+  right: 0;
   box-shadow: inset 0 1.5px 0 0 #80c0ff;
   background-color: #0995ff;
   color: white;
-  &:hover{  
-    background-color : #0A5DC1;
-    color : white;
+  &:hover {
+    background-color: #0a5dc1;
+    color: white;
     cursor: pointer;
+  }
 `;
-const QuestionCount = styled.div`
-  margin: 0 320px 0 24px;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding-bottom: 10px;
+  word-break: break-all;
 `;
-const SortButtonContainer = styled.div``;
 const SortButton = styled.button`
   height: 34px;
   background-color: white;
   outline: 0;
+  color: #6a737d;
+  border: 1px groove #6a737d52;
+  border-radius: 3px 0 0 3px;
   &:hover {
     background-color: #d9d9d9;
     cursor: pointer;
   }
 `;
 const SortButtonLeft = styled(SortButton)`
-  border: 1px groove black;
   border-right: 0px;
-  border-radius: 3px 0 0 3px;
 `;
-const SortButtonRight = styled(SortButton)`
-  border: 1px groove black;
-  border-radius: 0 3px 3px 0;
-`;
-const QuestionContainer = styled.div`
-  background: blue;
-`;
-const QuestionBoxTest = styled.div`
-  height: 140px;
-  padding: 20px;
-  background: white;
-  border-top: 1px solid #d7d9dc;
-`;
+
 const Domain = () => {
+  const url = "http://localhost:3001/Question";
+  const { questionData, loading } = useFetch(url);
   return (
     <>
       <Container>
         <LeftSidebar />
         <StyledSection>
-          <QuestionBox>
+          <MainSection>
             <TopContainer>
               <AllQuestions>All Questions</AllQuestions>
               <AskQuestion>Ask Question</AskQuestion>
             </TopContainer>
             <ButtonContainer>
-              <QuestionCount>23,337,052 questions</QuestionCount>
-              <SortButtonContainer>
+              <div>
+                {!loading && questionData ? questionData.length : "Loading..."}{" "}
+                questions
+              </div>
+              <div>
                 <SortButtonLeft>Newest</SortButtonLeft>
-                <SortButtonRight>Unanswered</SortButtonRight>
-              </SortButtonContainer>
+                <SortButton>Unanswered</SortButton>
+              </div>
             </ButtonContainer>
-            <QuestionContainer>
-              <QuestionBoxTest />
-              <QuestionBoxTest />
-              <QuestionBoxTest />
-              <QuestionBoxTest />
-              <QuestionBoxTest />
-              <QuestionBoxTest />
-            </QuestionContainer>
-          </QuestionBox>
+            <Questions>
+              {!loading && questionData ? (
+                <ItemLists questionData={questionData} />
+              ) : (
+                "Loading..."
+              )}
+            </Questions>
+          </MainSection>
           <RightSidebar />
         </StyledSection>
       </Container>
