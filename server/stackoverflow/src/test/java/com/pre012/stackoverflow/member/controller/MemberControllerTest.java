@@ -85,10 +85,4 @@ public class MemberControllerTest {
                 ));
     }
 
-    @Test
-    public void postDtoValidationTest() {
-        MemberPostDto post = new MemberPostDto("hgd@gmail.com", "hgd", "1234");
-        String content = gson.toJson(post);
-
-    }
 }
