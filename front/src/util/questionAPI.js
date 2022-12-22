@@ -1,13 +1,16 @@
 import axios from "axios";
+import dayjs from "dayjs";
 
-export const questionCreate = async (url, id, title, content, createdAt, modifiedAt) => {
+const nowDate = dayjs(new Date()).format("YYYY-MM-DD");
+
+export const questionCreate = async (url, id, title, content) => {
   try {
     await axios.post(url, {
       id: id,
       title: title,
       content: content,
-      createdAt: createdAt,
-      modifiedAt: modifiedAt,
+      createdAt: nowDate,
+      modifiedAt: nowDate,
       view: 0,
       question_recommend: 0,
       username: "윤뿔소",
@@ -25,6 +28,7 @@ export const questionUpdate = async (url, id, title, content) => {
     await axios.patch(`${url}/${id}`, {
       title: title,
       content: content,
+      modifiedAt: nowDate,
     });
   } catch (error) {
     console.error("Error", error);
