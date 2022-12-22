@@ -10,6 +10,7 @@ const StyledHeader = styled.header`
     0 2px 8px hsla(0, 0%, 0%, 0.05);
   position: fixed;
   top: 0;
+  z-index: 5050;
 `;
 const TopContainer = styled.div`
   display: flex;
