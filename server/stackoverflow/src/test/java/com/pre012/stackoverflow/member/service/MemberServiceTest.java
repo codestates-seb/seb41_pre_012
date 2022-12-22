@@ -70,4 +70,5 @@ public class MemberServiceTest {
         //then
         assertThat(result.getMessage()).isEqualTo("등록된 멤버가 존재합니다");
     }
+
 }
