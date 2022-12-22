@@ -6,15 +6,19 @@ const StyledHeader = styled.header`
   height: 50px;
   border-top: 3px solid #f48225;
   background-color: #f8f9f9;
-  box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.11);
+  box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05),
+    0 2px 8px hsla(0, 0%, 0%, 0.05);
   position: fixed;
   top: 0;
 `;
 const TopContainer = styled.div`
   display: flex;
-  align-items: center;
   height: 47px;
-  justify-content: center;
+  width: 79.2307692rem;
+  max-width: 100%;
+  /* width: 1264px; */
+  margin: 0 auto;
+  align-items: center;
 `;
 
 const HeaderLogo = styled.div`
@@ -33,11 +37,18 @@ const HeaderLogo = styled.div`
   }
 `;
 
+const SearchForm = styled.form`
+  padding-left: 8px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 10000;
+  flex-grow: 1;
+`;
 const InputContainer = styled.div`
-  width: 850px;
   height: 33px;
   padding: 0 8px;
-
+  position: relative;
+  flex-grow: 1;
   input {
     width: 100%;
     height: 33px;
@@ -60,9 +71,10 @@ const BtnContainer = styled.ul`
   align-items: center;
 
   .loginBtn {
-    width: 58px;
-    height: 35px;
-    padding: 8px 10px;
+    width: 57px;
+    align-self: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
     border: 1px solid #7aa7c7;
     background-color: #e1ecf4;
     border-radius: 3px;
@@ -74,8 +86,9 @@ const BtnContainer = styled.ul`
   }
   .signupBtn {
     width: 66px;
-    height: 35px;
-    padding: 1px 6px;
+    align-self: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
     margin-left: 4px;
     color: #ffffff;
     border: 1px solid #0a95ff;
@@ -95,9 +108,11 @@ const Header = () => {
         <HeaderLogo>
           <img src={logo} alt="logo" />
         </HeaderLogo>
-        <InputContainer>
-          <input type="text" className="inputBox" placeholder="Search..." />
-        </InputContainer>
+        <SearchForm>
+          <InputContainer>
+            <input type="text" className="inputBox" placeholder="Search..." />
+          </InputContainer>
+        </SearchForm>
         <BtnContainer>
           {/* 링크 연결 후 변경하기 */}
           {/* <li button className="loginBtn" onClick={''}>
@@ -107,7 +122,7 @@ const Header = () => {
             Sign up
           </li> */}
           {/* 로그인 전 */}
-          <button className="loginBtn"> Login</button>
+          <button className="loginBtn"> Log in</button>
           <button className="signupBtn"> Sign up</button>
         </BtnContainer>
         {/* <img src="http://via.placeholder.com/25x25" alt="" /> */}
