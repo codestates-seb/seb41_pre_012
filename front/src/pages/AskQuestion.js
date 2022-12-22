@@ -1,5 +1,9 @@
 const AskQuestion = () => {
-  return <div></div>;
+  return (
+    <div>
+      <button></button>
+    </div>
+  );
 };
 
 export default AskQuestion;

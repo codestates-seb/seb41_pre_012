@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const ItemContainer = styled.div`
   display: flex;
@@ -98,7 +99,9 @@ const Item = ({ questionData }) => {
         <Views>{view} views</Views>
       </VotesAnswersViews>
       <TitleContentUser>
-        <Title>{title}</Title>
+        <Title>
+          <Link to="/question">{title}</Link>
+        </Title>
         <Content>{content}</Content>
         <User>
           {username}, {createdAt}

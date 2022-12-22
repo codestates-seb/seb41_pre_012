@@ -4,6 +4,7 @@ import LeftSidebar from "../components/LetfSidebar";
 import RightSidebar from "../components/RightSidebar";
 import ItemLists from "../components/QuestionList/ItemLists";
 import useFetch from "../util/useFetch";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -99,7 +100,9 @@ const Domain = () => {
             <HeadlineContainer>
               <TopContainer>
                 <AllQuestions>All Questions</AllQuestions>
-                <AskQuestion>Ask Question</AskQuestion>
+                <AskQuestion>
+                  <Link to="/ask">Ask Question</Link>
+                </AskQuestion>
               </TopContainer>
               <ButtonContainer>
                 <div>{!loading && questionData ? questionData.length : "Loading..."} questions</div>
