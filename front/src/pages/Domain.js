@@ -88,6 +88,11 @@ const HeadlineContainer = styled.div`
   margin-left: -24px;
 `;
 
+const LinkStyled = styled(Link)`
+  text-decoration: none;
+  color: #fff;
+`;
+
 const Domain = () => {
   const url = "http://localhost:3001/Question";
   const { questionData, loading } = useFetch(url);
@@ -101,7 +106,7 @@ const Domain = () => {
               <TopContainer>
                 <AllQuestions>All Questions</AllQuestions>
                 <AskQuestion>
-                  <Link to="/ask">Ask Question</Link>
+                  <LinkStyled to="/ask">Ask Question</LinkStyled>
                 </AskQuestion>
               </TopContainer>
               <ButtonContainer>
