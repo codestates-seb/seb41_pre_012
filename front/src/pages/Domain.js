@@ -36,6 +36,7 @@ const Questions = styled.div`
 const TopContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-left: 24px;
 `;
 const AllQuestions = styled.div`
   font-size: 30px;
@@ -64,6 +65,7 @@ const ButtonContainer = styled.div`
   margin-top: 30px;
   padding-bottom: 10px;
   word-break: break-all;
+  margin-left: 24px;
 `;
 const SortButton = styled.button`
   height: 34px;
@@ -80,6 +82,10 @@ const SortButton = styled.button`
 const SortButtonLeft = styled(SortButton)`
   border-right: 0px;
 `;
+const HeadlineContainer = styled.div`
+  border-bottom: 1px solid #d7d9dc;
+  margin-left: -24px;
+`;
 
 const Domain = () => {
   const url = "http://localhost:3001/Question";
@@ -90,17 +96,19 @@ const Domain = () => {
         <LeftSidebar />
         <StyledSection>
           <MainSection>
-            <TopContainer>
-              <AllQuestions>All Questions</AllQuestions>
-              <AskQuestion>Ask Question</AskQuestion>
-            </TopContainer>
-            <ButtonContainer>
-              <div>{!loading && questionData ? questionData.length : "Loading..."} questions</div>
-              <div>
-                <SortButtonLeft>Newest</SortButtonLeft>
-                <SortButton>Unanswered</SortButton>
-              </div>
-            </ButtonContainer>
+            <HeadlineContainer>
+              <TopContainer>
+                <AllQuestions>All Questions</AllQuestions>
+                <AskQuestion>Ask Question</AskQuestion>
+              </TopContainer>
+              <ButtonContainer>
+                <div>{!loading && questionData ? questionData.length : "Loading..."} questions</div>
+                <div>
+                  <SortButtonLeft>Newest</SortButtonLeft>
+                  <SortButton>Unanswered</SortButton>
+                </div>
+              </ButtonContainer>
+            </HeadlineContainer>
             <Questions>
               {!loading && questionData ? <ItemLists questionData={questionData} /> : "Loading..."}
             </Questions>
