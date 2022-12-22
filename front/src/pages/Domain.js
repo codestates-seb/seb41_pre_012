@@ -25,12 +25,60 @@ const StyledSection = styled.section`
 
 const MainSection = styled.div`
   width: calc(100% - 324px);
-  /* max-width: 728px; */
 `;
 
 const Questions = styled.div`
   width: auto;
   margin-bottom: 20px;
+  margin-left: -24px;
+`;
+
+const TopContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const AllQuestions = styled.div`
+  font-size: 30px;
+`;
+const AskQuestion = styled.a`
+  font-size: 14px;
+  width: 103px;
+  height: 38px;
+  border-radius: 4px;
+  line-height: 40px;
+  text-align: center;
+  position: relative;
+  right: 0;
+  box-shadow: inset 0 1.5px 0 0 #80c0ff;
+  background-color: #0995ff;
+  color: white;
+  &:hover {
+    background-color: #0a5dc1;
+    color: white;
+    cursor: pointer;
+  }
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding-bottom: 10px;
+  word-break: break-all;
+`;
+const SortButton = styled.button`
+  height: 34px;
+  background-color: white;
+  outline: 0;
+  color: #6a737d;
+  border: 1px groove #6a737d52;
+  border-radius: 3px 0 0 3px;
+  &:hover {
+    background-color: #d9d9d9;
+    cursor: pointer;
+  }
+`;
+const SortButtonLeft = styled(SortButton)`
+  border-right: 0px;
 `;
 
 const Domain = () => {
@@ -42,7 +90,17 @@ const Domain = () => {
         <LeftSidebar />
         <StyledSection>
           <MainSection>
-            All Questions
+            <TopContainer>
+              <AllQuestions>All Questions</AllQuestions>
+              <AskQuestion>Ask Question</AskQuestion>
+            </TopContainer>
+            <ButtonContainer>
+              <div>{!loading && questionData ? questionData.length : "Loading..."} questions</div>
+              <div>
+                <SortButtonLeft>Newest</SortButtonLeft>
+                <SortButton>Unanswered</SortButton>
+              </div>
+            </ButtonContainer>
             <Questions>
               {!loading && questionData ? <ItemLists questionData={questionData} /> : "Loading..."}
             </Questions>
