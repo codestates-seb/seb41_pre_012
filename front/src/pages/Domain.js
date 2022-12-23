@@ -3,7 +3,6 @@ import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
 import RightSidebar from "../components/RightSidebar";
 import ItemLists from "../components/QuestionList/ItemLists";
-import useFetch from "../util/useFetch";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -93,9 +92,7 @@ const LinkStyled = styled(Link)`
   color: #fff;
 `;
 
-const Domain = () => {
-  const url = "http://localhost:3001/Question";
-  const { questionData, loading } = useFetch(url);
+const Domain = ({ questionData, loading }) => {
   return (
     <>
       <Container>
