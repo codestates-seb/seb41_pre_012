@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
@@ -31,7 +31,7 @@ const QuestionTitle = styled.h1`
   flex: 1 auto !important;
   line-height: 1.3;
 `;
-const AskQuestion = styled.a`
+const AskQuestion = styled.div`
   font-size: 14px;
   width: 103px;
   height: 38px;
@@ -129,11 +129,17 @@ const EditLinkStyled = styled(Link)`
   margin: 4px;
 `;
 
-const QuestionDetail = ({ questionData, loading }) => {
-  const { title, content, createdAt, view, question_recommend, username } = questionData;
-  return (
-    <>
-      {!loading && questionData ? (
+const QuestionDetail = () => {
+  const url = "http://localhost:3001/Question";
+  const { id } = useParams();
+  const { questionData, loading } = useFetch(`${url}/${id}`);
+
+  if (questionData && !loading) {
+    const { title, content, createdAt, modifiedAt, view, question_recommend, username } =
+      questionData;
+
+    return (
+      <>
         <InnerContent>
           <LeftSidebar />
           <StyledSection>
@@ -143,7 +149,9 @@ const QuestionDetail = ({ questionData, loading }) => {
                 <AskLinkStyled to="/ask">Ask Question</AskLinkStyled>
               </AskQuestion>
             </QuestionHeader>
-            <QuestionInfo>Asked today Modified today Viewed 16 times</QuestionInfo>
+            <QuestionInfo>
+              Asked {createdAt} | Modified | {modifiedAt} | Viewed {view} times
+            </QuestionInfo>
             <PostLayout>
               <div className="post-layout">
                 <QuestionVote>
@@ -154,18 +162,14 @@ const QuestionDetail = ({ questionData, loading }) => {
                   </VoteContainer>
                 </QuestionVote>
                 <QuestionBody>
-                  <QuestionContent>
-                    I am trying to get the last message id in a chat using the aiogram library in
-                    Python. I have tried using the .get_last_message() method, but it returns None.
-                    Is there another way to get the last message id in a chat using aiogram?
-                  </QuestionContent>
+                  <QuestionContent>{content}</QuestionContent>
                   <EditUserContainer>
                     <div className="container">
                       <div className="order-button">
                         <EditLinkStyled to="/edit">Edit</EditLinkStyled>
                         <div>Delete</div>
                       </div>
-                      <UserInfo>John Doe</UserInfo>
+                      <UserInfo>{username}</UserInfo>
                     </div>
                   </EditUserContainer>
                 </QuestionBody>
@@ -174,12 +178,12 @@ const QuestionDetail = ({ questionData, loading }) => {
             <RightSidebar />
           </StyledSection>
         </InnerContent>
-      ) : (
-        "Loading..."
-      )}
-      <Footer />
-    </>
-  );
+        <Footer />
+      </>
+    );
+  } else {
+    ("Loading...");
+  }
 };
 
 export default QuestionDetail;
