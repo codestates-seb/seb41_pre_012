@@ -3,8 +3,7 @@ package com.pre012.stackoverflow.member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 
 @Getter
 @AllArgsConstructor
@@ -14,8 +13,10 @@ public class MemberPostDto {
     private String email;
 
     @NotBlank
+    @Max(10)
     private String username;
 
     @NotBlank
+    @Pattern(regexp = "[A-Za-z\d@$!%*?&]{8,}")
     private String password;
 }
