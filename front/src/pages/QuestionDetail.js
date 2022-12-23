@@ -128,6 +128,12 @@ const EditLinkStyled = styled(Link)`
   color: #6a737c;
   margin: 4px;
 `;
+const Delete = styled.div`
+  text-decoration: none;
+  color: #6a737c;
+  margin: 4px;
+  cursor: pointer;
+`;
 
 const QuestionDetail = () => {
   const url = "http://localhost:3001/Question";
@@ -150,7 +156,7 @@ const QuestionDetail = () => {
               </AskQuestion>
             </QuestionHeader>
             <QuestionInfo>
-              Asked {createdAt} | Modified | {modifiedAt} | Viewed {view} times
+              Asked {createdAt} | Modified {modifiedAt} | Viewed {view} times
             </QuestionInfo>
             <PostLayout>
               <div className="post-layout">
@@ -167,7 +173,7 @@ const QuestionDetail = () => {
                     <div className="container">
                       <div className="order-button">
                         <EditLinkStyled to="/edit">Edit</EditLinkStyled>
-                        <div>Delete</div>
+                        <Delete>Delete</Delete>
                       </div>
                       <UserInfo>{username}</UserInfo>
                     </div>
