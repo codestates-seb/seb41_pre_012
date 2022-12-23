@@ -2,7 +2,7 @@
   "Question": [
     {
       "id": "1",
-      "title": "test",
+      "title": "Python aiogram: How to get last chat message id",
       "content": "I have a tab bar that use as tab bar items a collection view. From iOS 15 and up, whenever I tap on a push notification or I login with Face ID, when I reach the home screen, the app crash with this error \"TabBarController removeChildViewController:]: message sent to deallocated instance 0x10b8c7800\". Does anyone know how can I investigate the issue and how to get rid of it?",
       "createdAt": "2022-12-21",
       "modifiedAt": "2022-12-21",
@@ -36,7 +36,8 @@
       "modifiedAt": "2022-12-15",
       "view": 1,
       "question_recommend": 1,
-      "username": "장예진"
+      "username": "장예진",
+      "answer_list": []
     },
     {
       "id": "3",
@@ -46,7 +47,8 @@
       "modifiedAt": "2022-12-16",
       "view": 1,
       "question_recommend": 0,
-      "username": "이건희"
+      "username": "이건희",
+      "answer_list": []
     },
     {
       "id": "4",
@@ -56,7 +58,8 @@
       "modifiedAt": "2022-12-21",
       "view": 2,
       "question_recommend": 0,
-      "username": "윤뿔소"
+      "username": "윤뿔소",
+      "answer_list": []
     }
   ]
 }
