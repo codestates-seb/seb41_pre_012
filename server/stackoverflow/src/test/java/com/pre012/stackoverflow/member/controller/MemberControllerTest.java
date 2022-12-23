@@ -45,19 +45,14 @@ public class MemberControllerTest {
         // given
         // postDto로 요청받아서 mapper로 Member entity로 매핑
         // service에 member 넣어서 결과 리턴
-        MemberPostDto post = new MemberPostDto("hgd@gmail.com", "hgd", "1234");
+        MemberPostDto post = new MemberPostDto("hgd@gmail.com", "hgd", "a1234567");
         String content = gson.toJson(post);
-        MemberResponseDto response = MemberResponseDto.builder()
-                .uid(1L)
-                .email("hgd@gmail.com")
-                .username("hgd")
-                .password("1234")
-                .build();
+
 
         given(memberMapper.memberPostDtoToMember(Mockito.any(MemberPostDto.class))).willReturn(new Member());
 
         Member resultMember = new Member();
-        resultMember.setUid(1L);
+        resultMember.setMid(1L);
         given(memberService.createMember(Mockito.any(Member.class))).willReturn(resultMember);
 
         // when
