@@ -63,6 +63,7 @@ const Title = styled.h3`
   line-height: calc((13+4) / 13);
   overflow-wrap: break-word;
   margin: 0 0 1em;
+  cursor: pointer;
 `;
 const LinkStyled = styled(Link)`
   text-decoration: none;

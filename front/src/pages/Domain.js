@@ -41,7 +41,7 @@ const TopContainer = styled.div`
 const AllQuestions = styled.div`
   font-size: 30px;
 `;
-const AskQuestion = styled.a`
+const AskQuestion = styled.div`
   font-size: 14px;
   width: 103px;
   height: 38px;
