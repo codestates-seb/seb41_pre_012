@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import logo from "../img/Logo.svg";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -10,6 +11,7 @@ const StyledHeader = styled.header`
     0 2px 8px hsla(0, 0%, 0%, 0.05);
   position: fixed;
   top: 0;
+  z-index: 5050;
 `;
 const TopContainer = styled.div`
   display: flex;
@@ -21,7 +23,7 @@ const TopContainer = styled.div`
   align-items: center;
 `;
 
-const HeaderLogo = styled.div`
+const HeaderLogo = styled(Link)`
   width: 166px;
   height: 100%;
   padding: 0 8px;
@@ -105,7 +107,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <TopContainer>
-        <HeaderLogo>
+        <HeaderLogo to="/">
           <img src={logo} alt="logo" />
         </HeaderLogo>
         <SearchForm>

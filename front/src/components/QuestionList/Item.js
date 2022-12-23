@@ -63,9 +63,13 @@ const Title = styled.h3`
   line-height: calc((13+4) / 13);
   overflow-wrap: break-word;
   margin: 0 0 1em;
+  cursor: pointer;
+`;
+const LinkStyled = styled(Link)`
   text-decoration: none;
   color: #2961b9;
 `;
+
 const Content = styled.div`
   font-size: 14px;
   color: #6a737d;
@@ -89,7 +93,7 @@ const User = styled.div`
 `;
 
 const Item = ({ questionData }) => {
-  const { title, content, createdAt, view, question_recommend, username } = questionData;
+  const { id, title, content, createdAt, view, question_recommend, username } = questionData;
 
   return (
     <ItemContainer>
@@ -100,7 +104,7 @@ const Item = ({ questionData }) => {
       </VotesAnswersViews>
       <TitleContentUser>
         <Title>
-          <Link to="/question">{title}</Link>
+          <LinkStyled to={`/question/${id}`}>{title}</LinkStyled>
         </Title>
         <Content>{content}</Content>
         <User>

@@ -3,7 +3,6 @@ import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
 import RightSidebar from "../components/RightSidebar";
 import ItemLists from "../components/QuestionList/ItemLists";
-import useFetch from "../util/useFetch";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -42,7 +41,7 @@ const TopContainer = styled.div`
 const AllQuestions = styled.div`
   font-size: 30px;
 `;
-const AskQuestion = styled.a`
+const AskQuestion = styled.div`
   font-size: 14px;
   width: 103px;
   height: 38px;
@@ -88,9 +87,12 @@ const HeadlineContainer = styled.div`
   margin-left: -24px;
 `;
 
-const Domain = () => {
-  const url = "http://localhost:3001/Question";
-  const { questionData, loading } = useFetch(url);
+const LinkStyled = styled(Link)`
+  text-decoration: none;
+  color: #fff;
+`;
+
+const Domain = ({ questionData, loading }) => {
   return (
     <>
       <Container>
@@ -101,7 +103,7 @@ const Domain = () => {
               <TopContainer>
                 <AllQuestions>All Questions</AllQuestions>
                 <AskQuestion>
-                  <Link to="/ask">Ask Question</Link>
+                  <LinkStyled to="/ask">Ask Question</LinkStyled>
                 </AskQuestion>
               </TopContainer>
               <ButtonContainer>
