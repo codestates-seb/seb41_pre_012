@@ -93,7 +93,7 @@ const User = styled.div`
 `;
 
 const Item = ({ questionData }) => {
-  const { title, content, createdAt, view, question_recommend, username } = questionData;
+  const { id, title, content, createdAt, view, question_recommend, username } = questionData;
 
   return (
     <ItemContainer>
@@ -104,7 +104,7 @@ const Item = ({ questionData }) => {
       </VotesAnswersViews>
       <TitleContentUser>
         <Title>
-          <LinkStyled to="/question">{title}</LinkStyled>
+          <LinkStyled to={`/question/${id}`}>{title}</LinkStyled>
         </Title>
         <Content>{content}</Content>
         <User>
