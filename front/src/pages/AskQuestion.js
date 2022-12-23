@@ -1,5 +1,9 @@
+/* eslint-disable no-unused-vars */
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import backimg from "../img/bckImage.svg";
+import { questionCreate } from "../util/questionAPI";
+import { Link } from "react-router-dom";
 
 const StyledAskQuestion = styled.div`
   padding: 0 24px 24px 24px;
@@ -99,6 +103,45 @@ const CancleBtn = styled.button`
 `;
 
 const AskQuestion = () => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const url = "http://localhost:3001/Question";
+
+  // useEffect(() => {
+  //   console.log(title, content);
+  // }, [title, content]);
+
+  const fetchAskItem = async () => {
+    //title 비었을 때
+    if (title === "") {
+      alert("제목을 입력하세요");
+    }
+    //content 비었을 때
+    if (content === "") {
+      alert("내용을 입력하세요");
+    }
+
+    // const payload = {
+    //   title,
+    //   content,
+    // };
+
+    // const res = await fetch(``, JSON.stringify(payload)).then((res) =>
+    //   res.json()
+    // );
+
+    // if (res.result) {
+    //   //fetch 성공
+    // } else {
+    //   //fetch 실패
+    // }
+  };
+  const onCreate = (e) => {
+    questionCreate(url, title, content);
+    setTitle("");
+    setContent("");
+  };
+
   return (
     <StyledAskQuestion>
       <QuestionForm>
@@ -111,7 +154,13 @@ const AskQuestion = () => {
           <Desc>
             Be specific and imagine you’re asking a question to another person.
           </Desc>
-          <TitleInput></TitleInput>
+          <TitleInput
+            type="text"
+            value={title}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          ></TitleInput>
         </TitleBox>
         <ProblemBox>
           <Title>What are the details of your problem?</Title>
@@ -119,9 +168,23 @@ const AskQuestion = () => {
             Introduce the problem and expand on what you put in the title.
             Minimum 20 characters.
           </Desc>
-          <textarea></textarea>
+          <textarea
+            type="text"
+            value={content}
+            onChange={(e) => {
+              setContent(e.target.value);
+            }}
+          ></textarea>
         </ProblemBox>
-        <RegisterBtn>Post your question</RegisterBtn>
+        <Link to="/">
+          <RegisterBtn
+            onClick={() => {
+              onCreate();
+            }}
+          >
+            Post your question
+          </RegisterBtn>
+        </Link>
         <CancleBtn>Discard draft</CancleBtn>
       </QuestionForm>
     </StyledAskQuestion>

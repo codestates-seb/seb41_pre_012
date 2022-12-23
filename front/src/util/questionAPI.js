@@ -2,11 +2,12 @@ import axios from "axios";
 import dayjs from "dayjs";
 
 const nowDate = dayjs(new Date()).format("YYYY-MM-DD");
+const nowDateId = dayjs(new Date()).format("YYYYMMDDssmsms");
 
-export const questionCreate = async (url, id, title, content) => {
+export const questionCreate = async (url, title, content) => {
   try {
     await axios.post(url, {
-      id: id,
+      id: nowDateId,
       title: title,
       content: content,
       createdAt: nowDate,
