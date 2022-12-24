@@ -66,7 +66,7 @@ const ButtonCarrier = styled.div`
   width: 80%;
   display: flex;
 `;
-const ButtonSample = styled.a`
+const ButtonSample = styled.button`
   font-size: 14px;
   width: 103px;
   height: 38px;
@@ -114,10 +114,10 @@ const QuestionEdit = () => {
   if (questionData && !loading) {
     const { title, content } = questionData;
 
-    const onEdit = (e) => {
+    const onEdit = () => {
       questionUpdate(url, id, editTitle, editContent);
-      setEditTitle(e);
-      setEditContent(e);
+      setEditTitle();
+      setEditContent();
     };
     return (
       <>
@@ -131,15 +131,19 @@ const QuestionEdit = () => {
                 <TextArea
                   type="text"
                   value={editTitle}
+                  placeholder={title}
                   onChange={(e) => {
                     setEditTitle(e.target.value);
                     console.log(e.target.value);
                   }}
-                ></TextArea>
+                >
+                  {title}
+                </TextArea>
                 <TextAreaName>Body</TextAreaName>
                 <MainArea
                   type="text"
                   value={editContent}
+                  placeholder={content}
                   onChange={(e) => {
                     setEditContent(e.target.value);
                     console.log(e.target.value);
