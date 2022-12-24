@@ -58,7 +58,9 @@ const ResultArea = styled.div`
 const ResultTitle = styled.div`
   font-size: 2.07692308rem;
 `;
-const ResultContent = styled.div``;
+const ResultContent = styled.div`
+  margin-top: 50px;
+`;
 const ButtonCarrier = styled.div`
   margin-top: 10px;
   width: 80%;
@@ -98,7 +100,8 @@ const CancelLink = styled(Link)`
 
 const QuestionEdit = () => {
   const url = "http://localhost:3001/Question"; /* 추후 수정*/
-  const { id } = useParams(); /*임의로 넣어주었다 */
+  const { id } =
+    useParams(); /*id는 페이지 라우팅에 활용해야 되기때문에 params로 따로 받아 온다*/
   const location = useLocation();
   const testTitle = location.state.title;
   const testContent = location.state.content;
@@ -113,7 +116,6 @@ const QuestionEdit = () => {
   /*answer list 는 어떻게 받아와야 하나 고민 */
   /*화면에 노출되지 않는 정보는 어떻게 처리할지 고민*/
   // console.log(id);
-
   const onEdit = () => {
     questionUpdate(url, id, editTitle, editContent);
     setEditTitle();
@@ -147,16 +149,12 @@ const QuestionEdit = () => {
               ></MainArea>
               <ResultArea>
                 <ResultTitle>{editTitle}</ResultTitle>
-                <div></div>
                 <ResultContent>{editContent}</ResultContent>
               </ResultArea>
               <ButtonCarrier>
                 <Link to={`/question/${id}`}>
                   <SaveButton
-                    onClick={() => {
-                      onEdit();
-                      console.log(onEdit());
-                    }}
+                    onClick={() => {!(editTitle === "") ? onEdit() : alert("빈 문항이 없어야 합니다.")}}
                   >
                     SaveEdits
                   </SaveButton>
