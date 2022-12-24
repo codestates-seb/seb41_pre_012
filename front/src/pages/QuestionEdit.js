@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link, useParams, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
-import useFetch from "../util/useFetch";
 import { questionUpdate } from "../util/questionAPI";
 
 const Container = styled.div`
@@ -100,7 +99,6 @@ const CancelLink = styled(Link)`
 const QuestionEdit = () => {
   const url = "http://localhost:3001/Question"; /* 추후 수정*/
   const { id } = useParams(); /*임의로 넣어주었다 */
-  const { questionData, loading } = useFetch(`${url}/${id}`);
   const location = useLocation();
   const testTitle = location.state.title;
   const testContent = location.state.content;
@@ -116,72 +114,64 @@ const QuestionEdit = () => {
   /*화면에 노출되지 않는 정보는 어떻게 처리할지 고민*/
   // console.log(id);
 
-  if (questionData && !loading) {
-    const { title, content } = questionData;
-
-    const onEdit = () => {
-      questionUpdate(url, id, editTitle, editContent);
-      setEditTitle();
-      setEditContent();
-    };
-    return (
-      <>
-        <Container>
-          <LeftSidebar />
-          <StyledSection>
-            <MainSection>
-              <EditBox>
-                <TipBox>sample</TipBox>
-                <TextAreaName>Title</TextAreaName>
-                <TextArea
-                  type="text"
-                  value={editTitle}
-                  onChange={(e) => {
-                    setEditTitle(e.target.value);
-                    console.log(e.target.value);
-                  }}
-                >
-                  {title}
-                </TextArea>
-                <TextAreaName>Body</TextAreaName>
-                <MainArea
-                  type="text"
-                  value={editContent}
-                  onChange={(e) => {
-                    setEditContent(e.target.value);
-                    console.log(e.target.value);
-                  }}
-                ></MainArea>
-                <ResultArea>
-                  <ResultTitle>{title}</ResultTitle>
-                  <div></div>
-                  <ResultContent>{content}</ResultContent>
-                </ResultArea>
-                <ButtonCarrier>
-                  <Link to={`/question/${id}`}>
-                    <SaveButton
-                      onClick={() => {
-                        onEdit();
-                        console.log(onEdit());
-                      }}
-                    >
-                      SaveEdits
-                    </SaveButton>
-                  </Link>
-                  <CancelButton>
-                    <CancelLink to={`/question/${id}`}>Cancel</CancelLink>
-                  </CancelButton>
-                </ButtonCarrier>
-              </EditBox>
-            </MainSection>
-          </StyledSection>
-        </Container>
-        <Footer />
-      </>
-    );
-  } else {
-    ("Loading...");
-  }
+  const onEdit = () => {
+    questionUpdate(url, id, editTitle, editContent);
+    setEditTitle();
+    setEditContent();
+  };
+  return (
+    <>
+      <Container>
+        <LeftSidebar />
+        <StyledSection>
+          <MainSection>
+            <EditBox>
+              <TipBox>sample</TipBox>
+              <TextAreaName>Title</TextAreaName>
+              <TextArea
+                type="text"
+                value={editTitle}
+                onChange={(e) => {
+                  setEditTitle(e.target.value);
+                  console.log(e.target.value);
+                }}
+              ></TextArea>
+              <TextAreaName>Body</TextAreaName>
+              <MainArea
+                type="text"
+                value={editContent}
+                onChange={(e) => {
+                  setEditContent(e.target.value);
+                  console.log(e.target.value);
+                }}
+              ></MainArea>
+              <ResultArea>
+                <ResultTitle>{editTitle}</ResultTitle>
+                <div></div>
+                <ResultContent>{editContent}</ResultContent>
+              </ResultArea>
+              <ButtonCarrier>
+                <Link to={`/question/${id}`}>
+                  <SaveButton
+                    onClick={() => {
+                      onEdit();
+                      console.log(onEdit());
+                    }}
+                  >
+                    SaveEdits
+                  </SaveButton>
+                </Link>
+                <CancelButton>
+                  <CancelLink to={`/question/${id}`}>Cancel</CancelLink>
+                </CancelButton>
+              </ButtonCarrier>
+            </EditBox>
+          </MainSection>
+        </StyledSection>
+      </Container>
+      <Footer />
+    </>
+  );
 };
 
 export default QuestionEdit;
