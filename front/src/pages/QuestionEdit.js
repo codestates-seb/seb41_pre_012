@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
-import RightSidebar from "../components/RightSidebar";
 import useFetch from "../util/useFetch";
 import { questionUpdate } from "../util/questionAPI";
 
@@ -102,10 +101,16 @@ const QuestionEdit = () => {
   const url = "http://localhost:3001/Question"; /* 추후 수정*/
   const { id } = useParams(); /*임의로 넣어주었다 */
   const { questionData, loading } = useFetch(`${url}/${id}`);
+  const location = useLocation();
+  const testTitle = location.state.title;
+  const testContent = location.state.title;
+  console.log(testTitle);
+  console.log(testContent);
 
-  const [editTitle, setEditTitle] = useState("");
-  const [editContent, setEditContent] = useState("");
+  const [editTitle, setEditTitle] = useState(`${testTitle}`);
+  const [editContent, setEditContent] = useState(`${testContent}`);
   /*fake 서버 양식에 맞추어 작성*/
+  /*기존 데이터를 받아와서 화면 출력 후 편집 하고 싶다면 정보를 받아와야 한다. 어떻게?*/
 
   /*answer list 는 어떻게 받아와야 하나 고민 */
   /*화면에 노출되지 않는 정보는 어떻게 처리할지 고민*/
@@ -131,7 +136,6 @@ const QuestionEdit = () => {
                 <TextArea
                   type="text"
                   value={editTitle}
-                  placeholder={title}
                   onChange={(e) => {
                     setEditTitle(e.target.value);
                     console.log(e.target.value);
@@ -143,7 +147,6 @@ const QuestionEdit = () => {
                 <MainArea
                   type="text"
                   value={editContent}
-                  placeholder={content}
                   onChange={(e) => {
                     setEditContent(e.target.value);
                     console.log(e.target.value);
@@ -170,7 +173,6 @@ const QuestionEdit = () => {
                   </CancelButton>
                 </ButtonCarrier>
               </EditBox>
-              <RightSidebar />
             </MainSection>
           </StyledSection>
         </Container>
