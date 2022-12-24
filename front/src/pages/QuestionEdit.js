@@ -1,10 +1,11 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
 import RightSidebar from "../components/RightSidebar";
 import useFetch from "../util/useFetch";
-//import questionUpdate from '../util/questionApi';
+import { questionUpdate } from "../util/questionAPI";
 
 const Container = styled.div`
   width: 100%;
@@ -56,6 +57,10 @@ const ResultArea = styled.div`
   margin-top: 20px;
   height: 300px;
 `;
+const ResultTitle = styled.div`
+  font-size: 2.07692308rem;
+`;
+const ResultContent = styled.div``;
 const ButtonCarrier = styled.div`
   margin-top: 10px;
   width: 80%;
@@ -97,11 +102,14 @@ const QuestionEdit = () => {
   const url = "http://localhost:3001/Question"; /* 추후 수정*/
   const { id } = useParams(); /*임의로 넣어주었다 */
   const { questionData, loading } = useFetch(`${url}/${id}`);
+
+  const [editTitle, setEditTitle] = useState("");
+  const [editContent, setEditContent] = useState("");
   /*fake 서버 양식에 맞추어 작성*/
 
   /*answer list 는 어떻게 받아와야 하나 고민 */
   /*화면에 노출되지 않는 정보는 어떻게 처리할지 고민*/
-  console.log(id);
+  // console.log(id);
 
   if (questionData && !loading) {
     const {
@@ -113,6 +121,12 @@ const QuestionEdit = () => {
       question_recommend,
       username,
     } = questionData;
+
+    const onEdit = () => {
+      questionUpdate(url, id, title, content);
+      setEditTitle("");
+      setEditContent("");
+    };
     return (
       <>
         <Container>
@@ -122,14 +136,40 @@ const QuestionEdit = () => {
               <EditBox>
                 <TipBox>sample</TipBox>
                 <TextAreaName>Title</TextAreaName>
-                <TextArea>{title}</TextArea>
+                <TextArea
+                  type="text"
+                  value={editTitle}
+                  onChange={(e) => {
+                    setEditTitle(e.target.value);
+                    console.log(e.target.value);
+                  }}
+                ></TextArea>
                 <TextAreaName>Body</TextAreaName>
-                <MainArea>{content}</MainArea>
-                <ResultArea>{content}</ResultArea>
+                <MainArea
+                  type="text"
+                  value={editContent}
+                  onChange={(e) => {
+                    setEditContent(e.target.value);
+                    console.log(e.target.value);
+                  }}
+                ></MainArea>
+                <ResultArea>
+                  <ResultTitle>{title}</ResultTitle>
+                  <br />
+                  <ResultContent>{content}</ResultContent>
+                </ResultArea>
                 <ButtonCarrier>
-                  <SaveButton>Save Edits</SaveButton>
+                  <Link to={`/question/${id}`}>
+                    <SaveButton
+                      onClick={() => {
+                        onEdit();
+                      }}
+                    >
+                      SaveEdits
+                    </SaveButton>
+                  </Link>
                   <CancelButton>
-                    <CancelLink to="/question">Cancel</CancelLink>
+                    <CancelLink to={`/question/${id}`}>Cancel</CancelLink>
                   </CancelButton>
                   <div>{createdAt}</div>
                   <div>{modifiedAt}</div>
