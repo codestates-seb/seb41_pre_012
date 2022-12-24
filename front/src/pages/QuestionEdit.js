@@ -103,7 +103,7 @@ const QuestionEdit = () => {
   const { questionData, loading } = useFetch(`${url}/${id}`);
   const location = useLocation();
   const testTitle = location.state.title;
-  const testContent = location.state.title;
+  const testContent = location.state.content;
   console.log(testTitle);
   console.log(testContent);
 
