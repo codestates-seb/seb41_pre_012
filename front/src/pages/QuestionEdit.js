@@ -96,22 +96,23 @@ const CancelLink = styled(Link)`
 const QuestionEdit = () => {
   const url = "http://localhost:3001/Question"; /* 추후 수정*/
   const { id } = useParams(); /*임의로 넣어주었다 */
-  const { questionData, loading } = useFetch(`${url}/key=${id}`);
+  const { questionData, loading } = useFetch(`${url}/${id}`);
   /*fake 서버 양식에 맞추어 작성*/
 
-  const {
-    title,
-    content,
-    createdAt,
-    modifiedAt,
-    view,
-    question_recommend,
-    username,
-  } = questionData;
   /*answer list 는 어떻게 받아와야 하나 고민 */
   /*화면에 노출되지 않는 정보는 어떻게 처리할지 고민*/
+  console.log(id);
 
   if (questionData && !loading) {
+    const {
+      title,
+      content,
+      createdAt,
+      modifiedAt,
+      view,
+      question_recommend,
+      username,
+    } = questionData;
     return (
       <>
         <Container>
