@@ -112,20 +112,12 @@ const QuestionEdit = () => {
   // console.log(id);
 
   if (questionData && !loading) {
-    const {
-      title,
-      content,
-      createdAt,
-      modifiedAt,
-      view,
-      question_recommend,
-      username,
-    } = questionData;
+    const { title, content } = questionData;
 
-    const onEdit = () => {
-      questionUpdate(url, id, title, content);
-      setEditTitle("");
-      setEditContent("");
+    const onEdit = (e) => {
+      questionUpdate(url, id, editTitle, editContent);
+      setEditTitle(e);
+      setEditContent(e);
     };
     return (
       <>
@@ -155,7 +147,7 @@ const QuestionEdit = () => {
                 ></MainArea>
                 <ResultArea>
                   <ResultTitle>{title}</ResultTitle>
-                  <br />
+                  <div></div>
                   <ResultContent>{content}</ResultContent>
                 </ResultArea>
                 <ButtonCarrier>
@@ -163,6 +155,7 @@ const QuestionEdit = () => {
                     <SaveButton
                       onClick={() => {
                         onEdit();
+                        console.log(onEdit());
                       }}
                     >
                       SaveEdits
@@ -171,11 +164,6 @@ const QuestionEdit = () => {
                   <CancelButton>
                     <CancelLink to={`/question/${id}`}>Cancel</CancelLink>
                   </CancelButton>
-                  <div>{createdAt}</div>
-                  <div>{modifiedAt}</div>
-                  <div>{view}</div>
-                  <div>{question_recommend}</div>
-                  <div>{username}</div>
                 </ButtonCarrier>
               </EditBox>
               <RightSidebar />
