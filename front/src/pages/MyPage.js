@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import LeftSidebar from "../components/LetfSidebar";
 import Footer from "../components/Footer";
+import useravatar from "../img/Rhino.jpeg";
 const Page = styled.div`
   width: 100%;
   height: 100%;
@@ -26,11 +27,32 @@ const UserImgBox = styled.div`
   width: 20%;
   height: 100%;
   background: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const UserImg = styled.img`
+  width: 128px;
+  height: 128px;
 `;
 const UserNameBox = styled.div`
   width: 80%;
   height: 100%;
   background: purple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const UserValue = styled.div`
+  width: 100%;
+`;
+const UserName = styled.p`
+  font-size: 32px;
+  margin-bottom: 5px;
+`;
+const UserFunction = styled.p`
+  font-size: 20px;
+  margin-top: 5px;
 `;
 
 const StatsDetailBox = styled.div`
@@ -71,8 +93,15 @@ const MyPage = () => {
         <LeftSidebar />
         <Container>
           <UserBox>
-            <UserImgBox></UserImgBox>
-            <UserNameBox></UserNameBox>
+            <UserImgBox>
+              <UserImg src={useravatar} alt="useravatar" />
+            </UserImgBox>
+            <UserNameBox>
+              <UserValue>
+                <UserName>User1234</UserName>
+                <UserFunction>logout | edit</UserFunction>
+              </UserValue>
+            </UserNameBox>
           </UserBox>
           <StatsDetailBox>
             <StatsBox>
