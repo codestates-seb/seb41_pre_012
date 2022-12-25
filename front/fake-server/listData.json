@@ -60,6 +60,17 @@
       "question_recommend": 0,
       "username": "윤뿔소",
       "answer_list": []
+    },
+    {
+      "id": "202212255945594559",
+      "title": "안녕",
+      "content": "나는 윤뿔소야",
+      "createdAt": "2022-12-25",
+      "modifiedAt": "2022-12-25",
+      "view": 0,
+      "question_recommend": 0,
+      "username": "윤뿔소",
+      "answer_list": []
     }
   ]
 }

@@ -17,6 +17,7 @@ export const questionCreate = async (url, title, content) => {
       username: "윤뿔소",
       answer_list: [],
     });
+    window.location.reload();
   } catch (error) {
     console.error("Error", error);
   }
@@ -31,6 +32,7 @@ export const questionUpdate = async (url, id, title, content) => {
       content: content,
       modifiedAt: nowDate,
     });
+    window.location.reload();
   } catch (error) {
     console.error("Error", error);
   }
@@ -39,6 +41,7 @@ export const questionUpdate = async (url, id, title, content) => {
 export const questionDelete = async (url, id) => {
   try {
     await axios.delete(`${url}/${id}`);
+    window.location.reload();
   } catch (error) {
     console.error("Error", error);
   }
