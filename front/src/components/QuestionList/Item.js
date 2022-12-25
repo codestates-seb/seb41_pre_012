@@ -93,13 +93,14 @@ const User = styled.div`
 `;
 
 const Item = ({ questionData }) => {
-  const { id, title, content, createdAt, view, question_recommend, username } = questionData;
+  const { id, title, content, createdAt, view, question_recommend, username, answer_list } =
+    questionData;
 
   return (
     <ItemContainer>
       <VotesAnswersViews>
         <Votes>{question_recommend} votes</Votes>
-        <Answers> answers</Answers>
+        <Answers>{answer_list.length} answers</Answers>
         <Views>{view} views</Views>
       </VotesAnswersViews>
       <TitleContentUser>
