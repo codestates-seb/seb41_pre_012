@@ -84,7 +84,7 @@ const Content = styled.div`
 const User = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
