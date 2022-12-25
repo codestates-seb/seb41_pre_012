@@ -4,6 +4,9 @@ import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
 import RightSidebar from "../components/RightSidebar";
 import useFetch from "../util/useFetch";
+// 나중에 나머지 svg도 불러오기
+// import { UpVote, UpVoteDone, DownVote, DownVoteDone, CheckIcon, CheckedIcon } from "../img/index";
+import { UpVote, DownVote } from "../img/index";
 
 const InnerContent = styled.div`
   width: 100%;
@@ -55,6 +58,19 @@ const QuestionInfo = styled.div`
   margin-bottom: 16px;
   flex-wrap: wrap;
   border-bottom: 1px solid #e3e6e8;
+  .infoContainer {
+    white-space: nowrap;
+    margin-bottom: 8px;
+    margin-right: 16px;
+    span:nth-child(1) {
+      color: #6a737c;
+      margin-right: 2px;
+      font-size: 13px;
+    }
+    span:nth-child(2) {
+      font-size: 13px;
+    }
+  }
 `;
 const PostLayout = styled.div`
   width: calc(100% - 324px);
@@ -76,6 +92,25 @@ const VoteContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   color: #babfc4;
+  button {
+    background: linear-gradient(to bottom, #ffffff 5%, #ffffff 100%);
+    border: 1px solid #ffffff;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    font: unset;
+    user-select: auto;
+    outline: initial;
+    margin: 2px;
+  }
+  .recommend {
+    margin: 2px;
+    display: flex;
+    font-size: 1.61538462rem;
+    align-items: center;
+    flex-direction: column;
+    color: #6a737c;
+  }
 `;
 const QuestionBody = styled.div`
   vertical-align: top;
@@ -156,15 +191,28 @@ const QuestionDetail = () => {
               </AskQuestion>
             </QuestionHeader>
             <QuestionInfo>
-              Asked {createdAt} | Modified {modifiedAt} | Viewed {view} times
+              <div className="infoContainer">
+                <span>Asked</span> <span>{createdAt}</span>
+              </div>
+              <div className="infoContainer">
+                <span>Modified</span> <span>{modifiedAt}</span>
+              </div>
+              <div className="infoContainer">
+                <span>Viewed</span>
+                <span> {view} times</span>
+              </div>
             </QuestionInfo>
             <PostLayout>
               <div className="post-layout">
                 <QuestionVote>
                   <VoteContainer>
-                    <button>⬆️</button>
-                    <div>{question_recommend}</div>
-                    <button>⬇️</button>
+                    <button>
+                      <img src={UpVote} alt="Up vote button" />
+                    </button>
+                    <div className="recommend">{question_recommend}</div>
+                    <button>
+                      <img src={DownVote} alt="Down vote button" />
+                    </button>
                   </VoteContainer>
                 </QuestionVote>
                 <QuestionBody>
