@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
 import { questionUpdate } from "../util/questionAPI";
@@ -100,9 +100,9 @@ const CancelLink = styled(Link)`
 
 const QuestionEdit = () => {
   const url = "http://localhost:3001/Question"; /* 추후 수정*/
-  const { id } =
-    useParams(); /*id는 페이지 라우팅에 활용해야 되기때문에 params로 따로 받아 온다*/
+  /*id는 페이지 라우팅에 활용해야 되기때문에 params로 따로 받아 온다*/
   const location = useLocation();
+  const id = location.state.id;
   const testTitle = location.state.title;
   const testContent = location.state.content;
   console.log(testTitle);
@@ -154,7 +154,11 @@ const QuestionEdit = () => {
               <ButtonCarrier>
                 <Link to={`/question/${id}`}>
                   <SaveButton
-                    onClick={() => {!(editTitle === "") ? onEdit() : alert("빈 문항이 없어야 합니다.")}}
+                    onClick={() => {
+                      !(editTitle === "")
+                        ? onEdit()
+                        : alert("빈 문항이 없어야 합니다.");
+                    }}
                   >
                     SaveEdits
                   </SaveButton>
