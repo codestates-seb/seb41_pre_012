@@ -2,12 +2,11 @@ import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { useRef } from "react";
 
-const InputEditor = () => {
+const InputEditor = ({ setContent }) => {
   const editorRef = useRef();
 
-  const onChange = () => {
-    const data = editorRef.current.getInstance().getMarkdown();
-    console.log(data);
+  const handleChangeInput = () => {
+    setContent(editorRef.current.getInstance().getMarkdown());
   };
 
   return (
@@ -18,7 +17,8 @@ const InputEditor = () => {
         initialEditType="markdown"
         useCommandShortcut={false}
         ref={editorRef}
-        onChange={onChange}
+        onChange={handleChangeInput}
+        hideModeSwitch={true}
       />
     </div>
   );

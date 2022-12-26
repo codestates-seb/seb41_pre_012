@@ -121,10 +121,6 @@ const AskQuestion = () => {
   const [content, setContent] = useState("");
   const url = "http://localhost:3001/Question";
 
-  // useEffect(() => {
-  //   console.log(title, content);
-  // }, [title, content]);
-
   const fetchAskItem = async () => {
     //title 비었을 때
     if (title === "") {
@@ -134,21 +130,6 @@ const AskQuestion = () => {
     if (content === "") {
       alert("내용을 입력하세요");
     }
-
-    // const payload = {
-    //   title,
-    //   content,
-    // };
-
-    // const res = await fetch(``, JSON.stringify(payload)).then((res) =>
-    //   res.json()
-    // );
-
-    // if (res.result) {
-    //   //fetch 성공
-    // } else {
-    //   //fetch 실패
-    // }
   };
   const onCreate = (e) => {
     questionCreate(url, title, content);
@@ -166,7 +147,10 @@ const AskQuestion = () => {
           </QuestionHeader>
           <TitleBox>
             <Title>Title</Title>
-            <Desc>Be specific and imagine you’re asking a question to another person.</Desc>
+            <Desc>
+              Be specific and imagine you’re asking a question to another
+              person.
+            </Desc>
             <TitleInput
               type="text"
               placeholder="e.g. Is there an R function for finding the index of element in a vector?"
@@ -179,16 +163,10 @@ const AskQuestion = () => {
           <ProblemBox>
             <Title>What are the details of your problem?</Title>
             <Desc>
-              Introduce the problem and expand on what you put in the title. Minimum 20 characters.
+              Introduce the problem and expand on what you put in the title.
+              Minimum 20 characters.
             </Desc>
-            <InputEditor
-              className="InputEditor"
-              type="text"
-              value={content}
-              onChange={(e) => {
-                setContent(e.target.value);
-              }}
-            ></InputEditor>
+            <InputEditor setContent={setContent}></InputEditor>
           </ProblemBox>
           <Link to="/">
             <RegisterBtn
