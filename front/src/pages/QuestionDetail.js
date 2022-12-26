@@ -215,7 +215,9 @@ const QuestionDetail = () => {
                   <EditUserContainer>
                     <div className="container">
                       <div className="order-button">
-                        <EditLinkStyled to="/edit">Edit</EditLinkStyled>
+                        <EditLinkStyled to={`/edit`} state={{ id, title, content }}>
+                          Edit
+                        </EditLinkStyled>
                         <Delete url={url} id={id} />
                       </div>
                       <UserInfo>{username}</UserInfo>
