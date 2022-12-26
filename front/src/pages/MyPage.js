@@ -2,6 +2,9 @@ import styled from "styled-components";
 import LeftSidebar from "../components/LetfSidebar";
 import Footer from "../components/Footer";
 import useravatar from "../img/Rhino.jpeg";
+import { useParams } from "react-router-dom";
+import useFetch from "../util/useFetch";
+
 const Page = styled.div`
   width: 100%;
   height: 100%;
@@ -71,10 +74,12 @@ const StatsDetailBox = styled.div`
 const StatsBox = styled.div`
   width: 35%;
   height: 100%;
+  margin-left: 20px;
 `;
 const DetailBox = styled.div`
   width: 65%;
   height: 100%;
+  margin-right: 20px;
 `;
 const QusetionAnswerBox = styled.div`
   width: 100%;
@@ -97,52 +102,70 @@ const UserDataBox = styled.div`
   height: 80%;
   border-radius: 5px;
   background: white;
+  text-align: center;
+  font-size: 15px;
 `;
 const UserStatBox = styled(UserDataBox)`
+  width: 80%;
   height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
 `;
 
 const MyPage = () => {
-  return (
-    <>
-      <Page>
-        <LeftSidebar />
-        <Container>
-          <UserBox>
-            <UserImgBox>
-              <UserImg src={useravatar} alt="useravatar" />
-            </UserImgBox>
-            <UserNameBox>
-              <UserValue>
-                <UserName>User1234</UserName>
-                <UserFunction>
-                  <UserButton>logout</UserButton> |{" "}
-                  <UserButton>edit</UserButton>
-                </UserFunction>
-              </UserValue>
-            </UserNameBox>
-          </UserBox>
-          <StatsDetailBox>
-            <StatsBox>
-              <TextStatBox>Stats</TextStatBox>
-              <UserStatBox></UserStatBox>
-            </StatsBox>
-            <DetailBox>
-              <QusetionAnswerBox>
-                <TextBox>Answers</TextBox>
-                <UserDataBox></UserDataBox>
-              </QusetionAnswerBox>
-              <QusetionAnswerBox>
-                <TextBox>Questions</TextBox>
-                <UserDataBox></UserDataBox>
-              </QusetionAnswerBox>
-            </DetailBox>
-          </StatsDetailBox>
-        </Container>
-      </Page>
-      <Footer />
-    </>
-  );
+  const url = "http://localhost:3001/Question";
+  const { id } = useParams();
+  const { questionData, loading } = useFetch(`${url}/${id}`);
+
+  if (questionData && !loading) {
+    const { username } = questionData;
+    return (
+      <>
+        <Page>
+          <LeftSidebar />
+          <Container>
+            <UserBox>
+              <UserImgBox>
+                <UserImg src={useravatar} alt="useravatar" />
+              </UserImgBox>
+              <UserNameBox>
+                <UserValue>
+                  <UserName>{username}</UserName>
+                  <UserFunction>
+                    <UserButton>logout</UserButton> |{" "}
+                    <UserButton>edit</UserButton>
+                  </UserFunction>
+                </UserValue>
+              </UserNameBox>
+            </UserBox>
+            <StatsDetailBox>
+              <StatsBox>
+                <TextStatBox>Stats</TextStatBox>
+                <UserStatBox>
+                  0 answers &nbsp;&nbsp;&nbsp;0 questions
+                </UserStatBox>
+              </StatsBox>
+              <DetailBox>
+                <QusetionAnswerBox>
+                  <TextBox>Answers</TextBox>
+                  <UserDataBox></UserDataBox>
+                </QusetionAnswerBox>
+                <QusetionAnswerBox>
+                  <TextBox>Questions</TextBox>
+                  <UserDataBox></UserDataBox>
+                </QusetionAnswerBox>
+              </DetailBox>
+            </StatsDetailBox>
+          </Container>
+        </Page>
+        <Footer />
+      </>
+    );
+  } else {
+    ("Loading...");
+  }
 };
 
 export default MyPage;
