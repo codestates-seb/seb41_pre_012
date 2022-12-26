@@ -448,6 +448,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_membercontroller">1. MemberController</a>
 <ul class="sectlevel2">
 <li><a href="#_회원_등록">1.1. 회원 등록</a></li>
+<li><a href="#_회원_탈퇴">1.2. 회원 탈퇴</a></li>
 </ul>
 </li>
 </ul>
@@ -535,13 +536,54 @@ Host: localhost:8080
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_회원_탈퇴">1.2. 회원 탈퇴</h3>
+<div class="listingblock">
+<div class="title">curl-request</div>
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="bash">$ curl 'http://localhost:8080/members/1' -i -X DELETE</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">http-request</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">DELETE /members/1 HTTP/1.1
+Host: localhost:8080</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. /members/{member-id}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>member-id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">회원 식별자 ID</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">http-response</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code data-lang="http">HTTP/1.1 204 No Content</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-12-23 16:20:43 +0900
+Last updated 2022-12-26 16:07:57 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
