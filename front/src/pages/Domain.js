@@ -17,7 +17,7 @@ const StyledSection = styled.section`
   max-width: 1100px;
   width: calc(100% - 164px);
   padding: 24px;
-  min-height: 1080px;
+  min-height: 1200px;
   height: 100%;
   border-left: 1px solid #d7d9dc;
   display: flex;
@@ -103,9 +103,9 @@ const Domain = ({ questionData, loading }) => {
             <HeadlineContainer>
               <TopContainer>
                 <AllQuestions>All Questions</AllQuestions>
-                <AskQuestion>
-                  <LinkStyled to="/ask">Ask Question</LinkStyled>
-                </AskQuestion>
+                <LinkStyled to="/ask">
+                  <AskQuestion>Ask Question</AskQuestion>
+                </LinkStyled>
               </TopContainer>
               <ButtonContainer>
                 <div>{!loading && questionData ? questionData.length : "Loading..."} questions</div>
