@@ -20,7 +20,8 @@ const StyledSection = styled.section`
   max-width: 1100px;
   width: calc(100% - 164px);
   padding: 24px;
-  height: 1080px;
+  min-height: 1200px;
+  height: 100%;
   border-left: 1px solid #d7d9dc;
 `;
 const QuestionHeader = styled.div`
@@ -181,9 +182,9 @@ const QuestionDetail = () => {
           <StyledSection>
             <QuestionHeader>
               <QuestionTitle>{title}</QuestionTitle>
-              <AskQuestion>
-                <AskLinkStyled to="/ask">Ask Question</AskLinkStyled>
-              </AskQuestion>
+              <AskLinkStyled to="/ask">
+                <AskQuestion>Ask Question</AskQuestion>
+              </AskLinkStyled>
             </QuestionHeader>
             <QuestionInfo>
               <div className="infoContainer">
