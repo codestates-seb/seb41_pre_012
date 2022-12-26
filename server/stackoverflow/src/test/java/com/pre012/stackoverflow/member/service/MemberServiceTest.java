@@ -31,14 +31,14 @@ public class MemberServiceTest {
         Member member = Member.builder()
                 .email("hgd@gmail.com")
                 .username("홍길동")
-                .password("a1234567")
+                .password("1234")
                 .build();
 
         Member returnMember = Member.builder()
-                .mid(1L)
+                .uid(1L)
                 .email("hgd@gmail.com")
                 .username("홍길동")
-                .password("a1234567")
+                .password("1234")
                 .build();
 
         doReturn(returnMember).when(memberRepository).save(any(Member.class));
@@ -48,7 +48,7 @@ public class MemberServiceTest {
 
         //then
         assertNotNull(createdMember);
-        assertTrue(createdMember.getMid().equals(returnMember.getMid()));
+        assertTrue(createdMember.getUid().equals(returnMember.getUid()));
         assertTrue(createdMember.getUsername().equals(returnMember.getUsername()));
         assertTrue(createdMember.getEmail().equals(returnMember.getEmail()));
         assertTrue(createdMember.getPassword().equals(returnMember.getPassword()));
@@ -60,7 +60,7 @@ public class MemberServiceTest {
         Member member = Member.builder()
                 .email("hgd@gmail.com")
                 .username("홍길동")
-                .password("a1234567")
+                .password("1234")
                 .build();
         doReturn(Optional.of(new Member())).when(memberRepository).findByEmail(any());
 

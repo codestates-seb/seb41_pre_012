@@ -18,7 +18,7 @@ public class MemberRepositoryTest {
         Member member = Member.builder()
                 .email("hgd@gmail.com")
                 .username("홍길동")
-                .password("a1234567")
+                .password("1234")
                 .build();
 
         Member savedMember = memberRepository.save(member);
@@ -30,6 +30,6 @@ public class MemberRepositoryTest {
 
         memberRepository.delete(savedMember);
 
-        assertFalse(memberRepository.findById(savedMember.getMid()).isPresent());
+        assertFalse(memberRepository.findById(savedMember.getUid()).isPresent());
     }
 }
