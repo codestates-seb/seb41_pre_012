@@ -9,7 +9,7 @@ const Page = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  fexl-direction: row;
+  flex-direction: row;
 `;
 const Container = styled.div`
   width: 100%;
@@ -134,8 +134,7 @@ const MyPage = () => {
                 <UserValue>
                   <UserName>{username}</UserName>
                   <UserFunction>
-                    <UserButton>logout</UserButton> |{" "}
-                    <UserButton>edit</UserButton>
+                    <UserButton>logout</UserButton> | <UserButton>edit</UserButton>
                   </UserFunction>
                 </UserValue>
               </UserNameBox>
@@ -143,9 +142,7 @@ const MyPage = () => {
             <StatsDetailBox>
               <StatsBox>
                 <TextStatBox>Stats</TextStatBox>
-                <UserStatBox>
-                  0 answers &nbsp;&nbsp;&nbsp;0 questions
-                </UserStatBox>
+                <UserStatBox>0 answers &nbsp;&nbsp;&nbsp;0 questions</UserStatBox>
               </StatsBox>
               <DetailBox>
                 <QusetionAnswerBox>
