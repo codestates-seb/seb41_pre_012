@@ -127,7 +127,6 @@ const Signup = () => {
           <InputBox type="password" />
           <SignupBtn>Sign up</SignupBtn>
         </InputForm>
-        a
       </SignupBox>
     </StyledSignup>
   );
