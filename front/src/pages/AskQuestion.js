@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import backimg from "../img/bckImage.svg";
 import { questionCreate } from "../util/questionAPI";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import InputEditor from "../components/InputEditor";
 
@@ -120,10 +120,11 @@ const AskQuestion = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const url = "http://localhost:3001/Question";
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   console.log(title, content);
-  // }, [title, content]);
+  useEffect(() => {
+    console.log(title, content);
+  }, [title, content]);
 
   const fetchAskItem = async () => {
     //title 비었을 때
@@ -150,8 +151,13 @@ const AskQuestion = () => {
     //   //fetch 실패
     // }
   };
-  const onCreate = (e) => {
-    questionCreate(url, title, content);
+  const onCreate = async () => {
+    console.log(content);
+    await questionCreate(url, title, content);
+    // .then((id) => {
+    //   console.log(id);
+    //   navigate(`/question/${id}`);
+    // });
     setTitle("");
     setContent("");
   };
@@ -191,13 +197,7 @@ const AskQuestion = () => {
             ></InputEditor>
           </ProblemBox>
           <Link to="/">
-            <RegisterBtn
-              onClick={() => {
-                onCreate();
-              }}
-            >
-              Post your question
-            </RegisterBtn>
+            <RegisterBtn onClick={onCreate}>Post your question</RegisterBtn>
           </Link>
           <CancleBtn>Discard draft</CancleBtn>
         </QuestionForm>

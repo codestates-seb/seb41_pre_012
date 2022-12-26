@@ -7,7 +7,10 @@ const InputEditor = () => {
 
   const onChange = () => {
     const data = editorRef.current.getInstance().getMarkdown();
-    console.log(data);
+    // const data = JSON.stringify(datatest);
+    // console.log(data);
+    console.log("");
+    return data;
   };
 
   return (
