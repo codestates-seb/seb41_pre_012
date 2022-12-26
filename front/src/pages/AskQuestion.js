@@ -5,6 +5,7 @@ import backimg from "../img/bckImage.svg";
 import { questionCreate } from "../util/questionAPI";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import InputEditor from "../components/InputEditor";
 
 const StyledAskQuestion = styled.div`
   @media screen and (max-width: 1150px) {
@@ -21,7 +22,7 @@ const StyledAskQuestion = styled.div`
 `;
 const QuestionForm = styled.div`
   width: 75%;
-  height: 1000px;
+  height: 100%;
   margin-bottom: 48px;
 `;
 const QuestionHeader = styled.div`
@@ -78,18 +79,14 @@ const Desc = styled.div`
 `;
 
 const ProblemBox = styled.div`
-  height: 330px;
+  height: 100%;
   padding: 24px;
   border: 1px solid #e3e6e8;
   background-color: #ffffff;
   border-radius: 3px;
   margin-bottom: 20px;
-
-  textarea {
-    width: 100%;
-    height: 200px;
-  }
 `;
+
 const RegisterBtn = styled.button`
   width: 130px;
   height: 45px;
@@ -169,10 +166,7 @@ const AskQuestion = () => {
           </QuestionHeader>
           <TitleBox>
             <Title>Title</Title>
-            <Desc>
-              Be specific and imagine you’re asking a question to another
-              person.
-            </Desc>
+            <Desc>Be specific and imagine you’re asking a question to another person.</Desc>
             <TitleInput
               type="text"
               placeholder="e.g. Is there an R function for finding the index of element in a vector?"
@@ -185,16 +179,16 @@ const AskQuestion = () => {
           <ProblemBox>
             <Title>What are the details of your problem?</Title>
             <Desc>
-              Introduce the problem and expand on what you put in the title.
-              Minimum 20 characters.
+              Introduce the problem and expand on what you put in the title. Minimum 20 characters.
             </Desc>
-            <textarea
+            <InputEditor
+              className="InputEditor"
               type="text"
               value={content}
               onChange={(e) => {
                 setContent(e.target.value);
               }}
-            ></textarea>
+            ></InputEditor>
           </ProblemBox>
           <Link to="/">
             <RegisterBtn
