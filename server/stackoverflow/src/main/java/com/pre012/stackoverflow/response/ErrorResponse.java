@@ -1,5 +1,6 @@
 package com.pre012.stackoverflow.response;
 
+import com.pre012.stackoverflow.exception.ExceptionCode;
 import lombok.Getter;
 import org.springframework.validation.BindingResult;
 
@@ -10,11 +11,18 @@ import java.util.stream.Collectors;
 
 @Getter
 public class ErrorResponse {
+    private int status;
+    private String message;
     private List<FieldError> fieldErrors; // 유효성 검사 실패시 에러 핸들링
     private List<ConstraintViolationError> violationErrors; // URI 변수 값 유효성 검사 실패시 에러 핸들링
     private ErrorResponse(List<FieldError> fieldErrors, List<ConstraintViolationError> violationErrors) {
         this.fieldErrors = fieldErrors;
         this.violationErrors = violationErrors;
+    }
+
+    private ErrorResponse(int status, String message) {
+        this.status = status;
+        this.message = message;
     }
 
     public static ErrorResponse of(BindingResult bindingResult) {
@@ -23,6 +31,14 @@ public class ErrorResponse {
 
     public static ErrorResponse of(Set<ConstraintViolation<?>> violations) {
         return new ErrorResponse(null, ConstraintViolationError.of(violations));
+    }
+
+    public static ErrorResponse of(ExceptionCode exceptionCode) {
+        return new ErrorResponse(exceptionCode.getStatus(), exceptionCode.getMessage());
+    }
+
+    public static ErrorResponse of(int status, String message) {
+        return new ErrorResponse(status, message);
     }
 
     @Getter
