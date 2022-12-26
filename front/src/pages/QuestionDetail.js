@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
 import RightSidebar from "../components/RightSidebar";
 import useFetch from "../util/useFetch";
+import Delete from "../components/Delete";
 // 나중에 나머지 svg도 불러오기
 // import { UpVote, UpVoteDone, DownVote, DownVoteDone, CheckIcon, CheckedIcon } from "../img/index";
 import { UpVote, DownVote } from "../img/index";
@@ -163,12 +164,6 @@ const EditLinkStyled = styled(Link)`
   color: #6a737c;
   margin: 4px;
 `;
-const Delete = styled.div`
-  text-decoration: none;
-  color: #6a737c;
-  margin: 4px;
-  cursor: pointer;
-`;
 
 const QuestionDetail = () => {
   const url = "http://localhost:3001/Question";
@@ -221,7 +216,7 @@ const QuestionDetail = () => {
                     <div className="container">
                       <div className="order-button">
                         <EditLinkStyled to="/edit">Edit</EditLinkStyled>
-                        <Delete>Delete</Delete>
+                        <Delete url={url} id={id} />
                       </div>
                       <UserInfo>{username}</UserInfo>
                     </div>
