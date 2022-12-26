@@ -17,7 +17,8 @@ const StyledSection = styled.section`
   max-width: 1100px;
   width: calc(100% - 164px);
   padding: 24px;
-  height: 1080px;
+  min-height: 1080px;
+  height: 100%;
   border-left: 1px solid #d7d9dc;
   display: flex;
   justify-content: space-between;
