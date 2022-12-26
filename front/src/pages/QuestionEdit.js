@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
 import { questionUpdate } from "../util/questionAPI";
+import InputEditor from "../components/InputEditor";
 
 const Container = styled.div`
   width: 100%;
@@ -53,15 +54,15 @@ const TextArea = styled.input`
   border: 1px solid #e3e6e8;
   padding: 10px;
 `;
-const MainArea = styled.textarea`
-  width: 100%;
-  height: 250px;
-  color: #18191a;
-  border-radius: 5px;
-  border: 1px solid #e3e6e8;
-  padding: 10px;
-  overflow: scroll;
-`;
+// const MainArea = styled.textarea`
+//   width: 100%;
+//   height: 250px;
+//   color: #18191a;
+//   border-radius: 5px;
+//   border: 1px solid #e3e6e8;
+//   padding: 10px;
+//   overflow: scroll;
+// `;
 const ResultArea = styled.div`
   margin-top: 20px;
   height: auto;
@@ -161,14 +162,7 @@ const QuestionEdit = () => {
                 }}
               ></TextArea>
               <TextAreaName>Body</TextAreaName>
-              <MainArea
-                type="text"
-                value={editContent}
-                onChange={(e) => {
-                  setEditContent(e.target.value);
-                  console.log(e.target.value);
-                }}
-              ></MainArea>
+              <InputEditor content={editContent} setContent={setEditContent} />
               <ResultArea>
                 <ResultTitle>{editTitle}</ResultTitle>
                 <ResultContent>{editContent}</ResultContent>

@@ -2,7 +2,7 @@ import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { useRef } from "react";
 
-const InputEditor = ({ setContent }) => {
+const InputEditor = ({ content, setContent }) => {
   const editorRef = useRef();
 
   const handleChangeInput = () => {
@@ -12,7 +12,7 @@ const InputEditor = ({ setContent }) => {
   return (
     <div className="edit_wrap">
       <Editor
-        initialValue=" "
+        initialValue={content}
         height="400px"
         initialEditType="markdown"
         useCommandShortcut={false}
