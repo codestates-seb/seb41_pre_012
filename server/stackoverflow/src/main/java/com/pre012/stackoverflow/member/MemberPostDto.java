@@ -13,10 +13,10 @@ public class MemberPostDto {
     private String email;
 
     @NotBlank
-    @Size(max = 10)
+    @Max(10)
     private String username;
 
     @NotBlank
-    @Pattern(regexp = "[A-Za-z\\d@$!%*?&]{8,}")
+    @Pattern(regexp = "[A-Za-z\d@$!%*?&]{8,}")
     private String password;
 }
