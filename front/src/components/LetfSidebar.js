@@ -1,7 +1,12 @@
 import styled from "styled-components";
-// import SearchIcon from '@mui/icons-material/Search';
+import PublicIcon from "@mui/icons-material/Public";
+import { Link } from "react-router-dom";
 
 const StyledLeftSidebar = styled.nav`
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
+
   width: 164px;
   height: 358px;
   padding-top: 24px;
@@ -30,7 +35,7 @@ const NavbarLink = styled.li`
   font-weight: bold;
   background-color: #f1f2f3;
   border-right: 3px solid #f48225;
-  a {
+  .NavItem {
     width: 164px;
     height: 33px;
     display: flex;
@@ -38,6 +43,10 @@ const NavbarLink = styled.li`
     text-decoration: none;
     padding: 8px 6px 8px 8px;
     color: #000000;
+  }
+  .Item {
+    margin-right: 5px;
+    font-size: 21px;
   }
 `;
 const NavbarItemLink = styled.li`
@@ -60,13 +69,14 @@ const LeftSidebar = () => {
         <ul>
           <NavbarTitle>PUBLIC</NavbarTitle>
           <NavbarLink>
-            <a href="/">
-              {/* <SearchIcon /> */}
+            <Link to="/" className="NavItem">
+              <PublicIcon className="Item" />
               Questions
-            </a>
+            </Link>
           </NavbarLink>
           <NavbarItemLink>
-            <a href="/">Users</a>
+            {/* 로그인 됐을때만 페이지 이동 */}
+            <Link to="/">Users</Link>
           </NavbarItemLink>
         </ul>
       </Navbar>
