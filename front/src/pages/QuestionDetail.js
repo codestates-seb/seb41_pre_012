@@ -9,6 +9,7 @@ import QuestionViewer from "../components/Viewer";
 // 나중에 나머지 svg도 불러오기
 // import { UpVote, UpVoteDone, DownVote, DownVoteDone, CheckIcon, CheckedIcon } from "../img/index";
 import { UpVote, DownVote } from "../img/index";
+import InputEditor from "../components/InputEditor";
 
 const InnerContent = styled.div`
   width: 100%;
@@ -166,14 +167,47 @@ const EditLinkStyled = styled(Link)`
   margin: 4px;
 `;
 
+const AnswerTitle = styled.div`
+  padding-top: 20px;
+  margin-bottom: 19px;
+  color: #232629;
+  font-size: 20px;
+  font-weight: 500;
+`;
+
+const PostAnswerBtn = styled.button`
+  width: 133px;
+  height: 40px;
+  font-size: 14px;
+  padding: 10px;
+  margin: 30px 2px 0 2px;
+  border: 1px solid #0995ff;
+  border-radius: 3px;
+  background-color: #0995ff;
+  color: #ffffff;
+  box-shadow: inset 0 1px 0 0 #80c0ff;
+
+  :hover {
+    background-color: #0a5dc1;
+    cursor: pointer;
+  }
+`;
+
 const QuestionDetail = () => {
   const url = "http://localhost:3001/Question";
   const { id } = useParams();
   const { questionData, loading } = useFetch(`${url}/${id}`);
 
   if (questionData && !loading) {
-    const { title, content, createdAt, modifiedAt, view, question_recommend, userInfo } =
-      questionData;
+    const {
+      title,
+      content,
+      createdAt,
+      modifiedAt,
+      view,
+      question_recommend,
+      userInfo,
+    } = questionData;
 
     return (
       <>
@@ -218,7 +252,10 @@ const QuestionDetail = () => {
                   <EditUserContainer>
                     <div className="container">
                       <div className="order-button">
-                        <EditLinkStyled to={`/edit`} state={{ id, title, content }}>
+                        <EditLinkStyled
+                          to={`/edit`}
+                          state={{ id, title, content }}
+                        >
                           Edit
                         </EditLinkStyled>
                         <Delete url={url} id={id} />
@@ -231,7 +268,11 @@ const QuestionDetail = () => {
               Answers
               <div className="answers">
                 {/* List 자리 */}
-                <form className="post-form"></form>
+                <form className="post-form">
+                  <AnswerTitle>Your Answer</AnswerTitle>
+                  <InputEditor />
+                  <PostAnswerBtn>Post Your Answer</PostAnswerBtn>
+                </form>
               </div>
             </PostLayout>
             <RightSidebar />
