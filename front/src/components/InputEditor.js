@@ -2,26 +2,24 @@ import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { useRef } from "react";
 
-const InputEditor = () => {
+const InputEditor = ({ content, setContent }) => {
   const editorRef = useRef();
 
-  const onChange = () => {
-    const data = editorRef.current.getInstance().getMarkdown();
-    // const data = JSON.stringify(datatest);
-    // console.log(data);
-    console.log("");
-    return data;
+
+  const handleChangeInput = () => {
+    setContent(editorRef.current.getInstance().getMarkdown());
   };
 
   return (
     <div className="edit_wrap">
       <Editor
-        initialValue=" "
+        initialValue={content}
         height="400px"
         initialEditType="markdown"
         useCommandShortcut={false}
         ref={editorRef}
-        onChange={onChange}
+        onChange={handleChangeInput}
+        hideModeSwitch={true}
       />
     </div>
   );
