@@ -5,6 +5,7 @@ import { useRef } from "react";
 const InputEditor = ({ content, setContent }) => {
   const editorRef = useRef();
 
+
   const handleChangeInput = () => {
     setContent(editorRef.current.getInstance().getMarkdown());
   };

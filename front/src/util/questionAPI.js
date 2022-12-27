@@ -17,6 +17,9 @@ export const questionCreate = async (url, title, content) => {
       username: "윤뿔소",
       answer_list: [],
     });
+    // .then((response) => {
+    //   return response.data.id;
+    // });
     window.location.reload();
   } catch (error) {
     console.error("Error", error);
