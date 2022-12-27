@@ -11,6 +11,7 @@
       "userInfo": "윤뿔소",
       "answer_list": [
         {
+          "aid": "1",
           "content": "최고에요",
           "userInfo": "장예진",
           "answer_recommend": 1,
@@ -19,12 +20,22 @@
           "modifiedAt": "2022-12-21"
         },
         {
+          "aid": "2",
           "content": "좋아요",
           "userInfo": "이건희",
           "answer_recommend": 1,
           "isSelected": false,
           "createdAt": "2022-12-21",
           "modifiedAt": "2022-12-21"
+        },
+        {
+          "aid": "3",
+          "content": "xptmxm",
+          "userInfo": "이건ss희",
+          "answer_recommend": 0,
+          "isSelected": false,
+          "createdAt": "2022-12-28",
+          "modifiedAt": "2022-12-28"
         }
       ]
     },
@@ -76,17 +87,6 @@
       "id": "202212273553355335",
       "title": "test",
       "content": "**test***test*t~~est~~\n\n\n\n\ntest\n",
-      "createdAt": "2022-12-27",
-      "modifiedAt": "2022-12-27",
-      "view": 0,
-      "question_recommend": 0,
-      "userInfo": "윤뿔소",
-      "answer_list": []
-    },
-    {
-      "id": "202212275719571957",
-      "title": "",
-      "content": "**Write\nPreview\n\n**",
       "createdAt": "2022-12-27",
       "modifiedAt": "2022-12-27",
       "view": 0,

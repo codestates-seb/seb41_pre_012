@@ -228,6 +228,11 @@ const QuestionDetail = () => {
                   </EditUserContainer>
                 </QuestionBody>
               </div>
+              Answers
+              <div className="answers">
+                {/* List 자리 */}
+                <form className="post-form"></form>
+              </div>
             </PostLayout>
             <RightSidebar />
           </StyledSection>
