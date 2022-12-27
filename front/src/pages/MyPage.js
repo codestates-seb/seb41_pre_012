@@ -7,7 +7,6 @@ import useFetch from "../util/useFetch";
 
 const Page = styled.div`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
 `;
@@ -25,6 +24,11 @@ const UserBox = styled.div`
   width: 100%;
   height: 20%;
   display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const UserImgBox = styled.div`
   width: 20%;
@@ -36,6 +40,14 @@ const UserImgBox = styled.div`
 const UserImg = styled.img`
   width: 128px;
   height: 128px;
+  @media screen and (max-width: 1150px) {
+    width: 96px;
+    height: 96px;
+  }
+  @media screen and (max-width: 800px) {
+    width: 64px;
+    height: 64px;
+  }
 `;
 const UserNameBox = styled.div`
   width: 80%;
@@ -43,6 +55,9 @@ const UserNameBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 const UserValue = styled.div`
   width: 100%;
@@ -70,16 +85,29 @@ const StatsDetailBox = styled.div`
   height: 80%;
   display: flex;
   flex-direction: row;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 const StatsBox = styled.div`
   width: 35%;
   height: 100%;
   margin-left: 20px;
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    height: 20%;
+    margin-left: 0px;
+  }
 `;
 const DetailBox = styled.div`
   width: 65%;
   height: 100%;
   margin-right: 20px;
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    height: 80%;
+    margin-right: 0px;
+  }
 `;
 const QusetionAnswerBox = styled.div`
   width: 100%;
@@ -93,9 +121,16 @@ const TextBox = styled.div`
   font-size: 25px;
   display: flex;
   align-items: center;
+  @media screen and (max-width: 800px) {
+    flex-direction: row;
+  }
 `;
 const TextStatBox = styled(TextBox)`
-  height: 5%;
+  height: 50px;
+  @media screen and (max-width: 800px) {
+    height: 40%;
+    margin: 0px;
+  }
 `;
 const UserDataBox = styled.div`
   width: 100%;
@@ -134,7 +169,8 @@ const MyPage = () => {
                 <UserValue>
                   <UserName>{username}</UserName>
                   <UserFunction>
-                    <UserButton>logout</UserButton> | <UserButton>edit</UserButton>
+                    <UserButton>logout</UserButton> |{" "}
+                    <UserButton>edit</UserButton>
                   </UserFunction>
                 </UserValue>
               </UserNameBox>
@@ -142,7 +178,9 @@ const MyPage = () => {
             <StatsDetailBox>
               <StatsBox>
                 <TextStatBox>Stats</TextStatBox>
-                <UserStatBox>0 answers &nbsp;&nbsp;&nbsp;0 questions</UserStatBox>
+                <UserStatBox>
+                  0 answers &nbsp;&nbsp;&nbsp;0 questions
+                </UserStatBox>
               </StatsBox>
               <DetailBox>
                 <QusetionAnswerBox>

@@ -6,6 +6,10 @@ const StyledFooter = styled.footer`
   background-color: #25262a;
   bottom: 0;
   display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 800px) {
+    height: 480px;
+  }
 `;
 const FooterLogoContainer = styled.div`
   margin: 10px 20px 10px 120px;
@@ -15,9 +19,13 @@ const FooterLogo = styled.img`
   height: 32px;
 `;
 const FooterContentsContainer = styled.div`
-  display: flex;
   width: 100%;
   margin-top: 2%;
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 const FooterListCarrier = styled.div`
   flex-direction: column;
@@ -26,12 +34,29 @@ const FooterListCarrier = styled.div`
 const FooterListTitle = styled.h5`
   color: #b8bdc2;
   margin-bottom: 5%;
+  white-space: nowrap;
+  @media screen and (max-width: 800px) {
+    margin: 0;
+  }
 `;
-const FooterUl = styled.ul``;
+const FooterUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 800px) {
+    flex-direction: row;
+    margin-bottom: 5%;
+  }
+`;
 const FooterList = styled.li`
   padding: 5px 0 5px 0;
   font-size: 15px;
   color: #848b92;
+  white-space: nowrap;
+  @media screen and (max-width: 800px) {
+    font-size: 8px;
+    padding: 0px;
+    margin: 2px;
+  }
 `;
 const SideFooter = styled.div`
   width: 30%;
@@ -50,6 +75,10 @@ const SideCopyright = styled.div`
   margin-left: 1%;
   color: #b8bdc2;
   font-size: 13px;
+  white-space: nowrap;
+  @media screen and (max-width: 800px) {
+    margin-top: 10px;
+  }
 `;
 const Footer = () => {
   return (
@@ -111,8 +140,8 @@ const Footer = () => {
             <SideFooterLink>Instagram</SideFooterLink>
           </SideFooterContents>
           <SideCopyright>
-            Site design / logo © 2022 Stack Exchange Inc; user contributions licensed under CC
-            BY-SA. <br />
+            Site design / logo © 2022 Stack Exchange Inc; user contributions
+            licensed under CC BY-SA. <br />
             rev 2022.12.19.43125
           </SideCopyright>
         </SideFooter>
