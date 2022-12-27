@@ -5,6 +5,7 @@ import LeftSidebar from "../components/LetfSidebar";
 import RightSidebar from "../components/RightSidebar";
 import useFetch from "../util/useFetch";
 import Delete from "../components/Delete";
+import QuestionViewer from "../components/Viewer";
 // 나중에 나머지 svg도 불러오기
 // import { UpVote, UpVoteDone, DownVote, DownVoteDone, CheckIcon, CheckedIcon } from "../img/index";
 import { UpVote, DownVote } from "../img/index";
@@ -123,7 +124,6 @@ const QuestionBody = styled.div`
 `;
 const QuestionContent = styled.div`
   width: 100%;
-  line-height: 25px;
 `;
 const EditUserContainer = styled.div`
   margin-bottom: 0;
@@ -212,7 +212,9 @@ const QuestionDetail = () => {
                   </VoteContainer>
                 </QuestionVote>
                 <QuestionBody>
-                  <QuestionContent>{content}</QuestionContent>
+                  <QuestionContent>
+                    <QuestionViewer content={content} />
+                  </QuestionContent>
                   <EditUserContainer>
                     <div className="container">
                       <div className="order-button">
