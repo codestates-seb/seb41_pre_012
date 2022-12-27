@@ -5,7 +5,6 @@ import { useRef } from "react";
 const InputEditor = ({ content, setContent }) => {
   const editorRef = useRef();
 
-
   const handleChangeInput = () => {
     setContent(editorRef.current.getInstance().getMarkdown());
   };
@@ -13,7 +12,7 @@ const InputEditor = ({ content, setContent }) => {
   return (
     <div className="edit_wrap">
       <Editor
-        initialValue={content}
+        initialValue={content || " "}
         height="400px"
         initialEditType="markdown"
         useCommandShortcut={false}
