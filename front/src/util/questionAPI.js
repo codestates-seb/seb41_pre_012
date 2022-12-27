@@ -14,7 +14,7 @@ export const questionCreate = async (url, title, content) => {
       modifiedAt: nowDate,
       view: 0,
       question_recommend: 0,
-      username: "윤뿔소",
+      userInfo: "윤뿔소",
       answer_list: [],
     });
     // .then((response) => {

@@ -172,7 +172,7 @@ const QuestionDetail = () => {
   const { questionData, loading } = useFetch(`${url}/${id}`);
 
   if (questionData && !loading) {
-    const { title, content, createdAt, modifiedAt, view, question_recommend, username } =
+    const { title, content, createdAt, modifiedAt, view, question_recommend, userInfo } =
       questionData;
 
     return (
@@ -223,7 +223,7 @@ const QuestionDetail = () => {
                         </EditLinkStyled>
                         <Delete url={url} id={id} />
                       </div>
-                      <UserInfo>{username}</UserInfo>
+                      <UserInfo>{userInfo}</UserInfo>
                     </div>
                   </EditUserContainer>
                 </QuestionBody>

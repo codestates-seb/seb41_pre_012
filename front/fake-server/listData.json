@@ -8,11 +8,11 @@
       "modifiedAt": "2022-12-27",
       "view": 2,
       "question_recommend": 0,
-      "username": "윤뿔소",
+      "userInfo": "윤뿔소",
       "answer_list": [
         {
           "content": "최고에요",
-          "username": "장예진",
+          "userInfo": "장예진",
           "answer_recommend": 1,
           "isSelected": true,
           "createdAt": "2022-12-21",
@@ -20,7 +20,7 @@
         },
         {
           "content": "좋아요",
-          "username": "이건희",
+          "userInfo": "이건희",
           "answer_recommend": 1,
           "isSelected": false,
           "createdAt": "2022-12-21",
@@ -36,7 +36,7 @@
       "modifiedAt": "2022-12-26",
       "view": 1,
       "question_recommend": 1,
-      "username": "장예진",
+      "userInfo": "장예진",
       "answer_list": []
     },
     {
@@ -47,7 +47,7 @@
       "modifiedAt": "2022-12-16",
       "view": 1,
       "question_recommend": 0,
-      "username": "이건희",
+      "userInfo": "이건희",
       "answer_list": []
     },
     {
@@ -58,7 +58,7 @@
       "modifiedAt": "2022-12-21",
       "view": 2,
       "question_recommend": 0,
-      "username": "윤뿔소",
+      "userInfo": "윤뿔소",
       "answer_list": []
     },
     {
@@ -69,7 +69,7 @@
       "modifiedAt": "2022-12-25",
       "view": 0,
       "question_recommend": 0,
-      "username": "윤뿔소",
+      "userInfo": "윤뿔소",
       "answer_list": []
     },
     {
@@ -80,7 +80,7 @@
       "modifiedAt": "2022-12-27",
       "view": 0,
       "question_recommend": 0,
-      "username": "윤뿔소",
+      "userInfo": "윤뿔소",
       "answer_list": []
     },
     {
@@ -91,7 +91,7 @@
       "modifiedAt": "2022-12-27",
       "view": 0,
       "question_recommend": 0,
-      "username": "윤뿔소",
+      "userInfo": "윤뿔소",
       "answer_list": []
     }
   ]
