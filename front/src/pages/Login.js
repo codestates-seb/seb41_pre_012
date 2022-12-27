@@ -101,6 +101,17 @@ const LoginBtn = styled.button`
   }
 `;
 
+const DesBox = styled.div`
+  padding: 16px;
+  font-size: 14px;
+  text-align: center;
+  a {
+    padding-left: 3px;
+    text-decoration: none;
+    color: #0074d4;
+  }
+`;
+
 const Login = () => {
   return (
     <StyledLogin>
@@ -125,6 +136,10 @@ const Login = () => {
           <InputBox type="password" />
           <LoginBtn>Log in</LoginBtn>
         </InputForm>
+        <DesBox>
+          Don’t have an account?
+          <a href="/signup">Sign up</a>
+        </DesBox>
       </LoginBox>
     </StyledLogin>
   );
