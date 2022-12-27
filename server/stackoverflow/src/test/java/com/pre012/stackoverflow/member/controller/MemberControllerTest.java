@@ -10,17 +10,23 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static com.pre012.stackoverflow.utils.ApiDocumentUtils.getRequestPreProcessor;
+import static com.pre012.stackoverflow.utils.ApiDocumentUtils.getResponsePreProcessor;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doNothing;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -41,7 +47,7 @@ public class MemberControllerTest {
     private MemberMapper memberMapper;
 
     @Test
-    public void memberControllerTest() throws Exception {
+    public void memberPostTest() throws Exception {
         // given
         // postDto로 요청받아서 mapper로 Member entity로 매핑
         // service에 member 넣어서 결과 리턴
@@ -78,6 +84,33 @@ public class MemberControllerTest {
                                 )
                         )
                 ));
+    }
+
+    @Test
+    public void memberDeleteTest() throws Exception {
+        // given
+        // 회원 삭제 시키면, doNothing 리턴
+        long mid = 1L;
+        doNothing().when(memberService).deleteMember(Mockito.anyLong());
+
+        // when
+        ResultActions actions =
+                mockMvc.perform(
+                        RestDocumentationRequestBuilders.delete("/members/{member-id}", mid));
+
+        // then
+        actions
+                .andExpect(status().isNoContent())
+                .andDo(
+                        document(
+                                "delete-member",
+                                getRequestPreProcessor(),
+                                getResponsePreProcessor(),
+                                pathParameters(
+                                        Arrays.asList(parameterWithName("member-id").description("회원 식별자 ID"))
+                                )
+                        )
+                );
     }
 
 }

@@ -68,7 +68,7 @@ public class MemberServiceTest {
         Exception result = assertThrows(Exception.class, () -> memberService.createMember(member));
 
         //then
-        assertThat(result.getMessage()).isEqualTo("등록된 멤버가 존재합니다");
+        assertThat(result.getMessage()).isEqualTo("Member Exist");
     }
 
 }

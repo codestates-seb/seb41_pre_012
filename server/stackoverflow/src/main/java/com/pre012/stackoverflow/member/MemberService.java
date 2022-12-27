@@ -19,4 +19,12 @@ public class MemberService {
         }
         return memberRepository.save(member);
     }
+
+    public void deleteMember(Long mid) {
+        memberRepository.delete(findMember(mid));
+    }
+
+    public Member findMember(Long mid) {
+        return memberRepository.findById(mid).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+    }
 }

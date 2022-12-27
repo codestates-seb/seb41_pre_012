@@ -2,10 +2,7 @@ package com.pre012.stackoverflow.member;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -24,5 +21,11 @@ public class MemberController {
     public ResponseEntity postMember(@Valid @RequestBody MemberPostDto memberPostDto) throws Exception {
         memberService.createMember(memberMapper.memberPostDtoToMember(memberPostDto));
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{member-id}")
+    public ResponseEntity deleteMember(@PathVariable("member-id") Long mid) {
+        memberService.deleteMember(mid);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
