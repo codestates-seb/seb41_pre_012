@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import logo from "../img/Logo.svg";
 import { Link } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -51,6 +52,7 @@ const InputContainer = styled.div`
   padding: 0 8px;
   position: relative;
   flex-grow: 1;
+  position: relative;
   input {
     width: 100%;
     height: 33px;
@@ -63,6 +65,13 @@ const InputContainer = styled.div`
       box-shadow: 0 0 0 4px #d3e5f2;
     }
   }
+`;
+
+const IconBox = styled.div`
+  position: absolute;
+  top: 5px;
+  left: 13px;
+  color: #757575;
 `;
 
 const BtnContainer = styled.ul`
@@ -112,6 +121,9 @@ const Header = () => {
         </HeaderLogo>
         <SearchForm>
           <InputContainer>
+            <IconBox>
+              <SearchIcon />
+            </IconBox>
             <input type="text" className="inputBox" placeholder="Search..." />
           </InputContainer>
         </SearchForm>
