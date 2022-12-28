@@ -1,6 +1,7 @@
 package com.pre012.stackoverflow.question.dto;
 
 import com.pre012.stackoverflow.question.entity.Question;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -8,19 +9,24 @@ import java.time.LocalDateTime;
 @Data
 public class QuestionPatchDto {
 
-    private Long qId;
+//    @ApiModelProperty(example = "게시글 번호")
+//    private Long qid;
 
+    @ApiModelProperty(example = "제목")
     private String title;
 
+    @ApiModelProperty(example = "내용")
     private String content;
 
-    private LocalDateTime modifiedAt;
+//    @ApiModelProperty(example = "수정 시간")
+//    private LocalDateTime modifiedAt;
 
-    public Question toQuestion(QuestionPatchDto dto){
+    public Question toQuestion(Long qid, QuestionPatchDto questionPatchDto){
         return Question.builder()
-                .title(dto.getTitle())
-                .content(dto.getContent())
-                .modifiedAt(LocalDateTime.now())
+                .qid(qid)
+                .title(questionPatchDto.getTitle())
+                .content(questionPatchDto.getContent())
+                .modifiedAt(LocalDateTime.now().withNano(0))
                 .build();
     }
 

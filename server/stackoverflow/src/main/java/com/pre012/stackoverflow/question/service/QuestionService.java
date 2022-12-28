@@ -33,14 +33,14 @@ public class QuestionService {
         Long qid = repository.save(question).getQid();
         question = repository.findById(qid).orElseThrow();
 
-        return new ResponseEntity(question, HttpStatus.OK);
+        return new ResponseEntity(question, HttpStatus.CREATED);
     }
 
     @Transactional
-    public ResponseEntity update(QuestionPatchDto questionPatchDto) {
+    public ResponseEntity update(Long qid, QuestionPatchDto questionPatchDto) {
 
-        Question question = repository.findById(questionPatchDto.getQId()).orElseThrow();
-        repository.save(questionPatchDto.toQuestion(questionPatchDto));
+        Question question = repository.findById(qid).orElseThrow();
+        repository.save(questionPatchDto.toQuestion(qid, questionPatchDto));
 
         return new ResponseEntity(question, HttpStatus.OK);
     }
@@ -48,7 +48,7 @@ public class QuestionService {
     @Transactional(readOnly = true)
     public ResponseEntity list(int page, int size) {
 
-        Pageable pageable = PageRequest.of(page - 1, size, Sort.by("qid").descending());   // 최신순 정렬(id=글번호)
+        Pageable pageable = PageRequest.of(page - 1, size, Sort.by("qid").descending());
         Page<QuestionDto> pageQuestion = repository.findAll(pageable).map(QuestionDto::result);
         return new ResponseEntity<>(pageQuestion, HttpStatus.OK);
     }

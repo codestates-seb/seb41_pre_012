@@ -6,18 +6,28 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class QuestionDto {
     private Long qid;
+
     private String title;
+
     private String content;
+
 //    private Member username;
-    private Long questionVotes;
+
+    private Long questionRecommends;
+
     private Long answers;
+
     private Long view;
+
+    private LocalDateTime createdAt;
 
     public static QuestionDto result(Question question) {
 
@@ -26,8 +36,9 @@ public class QuestionDto {
                 .title(question.getTitle())
                 .content(question.getContent())
 //                .username(question.getUsername())
-                .questionVotes((long) question.getQuestionVote().size())
+                .questionRecommends((long) question.getQuestionRecommend().size())
 //                .answers(question.getAnswers())
-                .view(question.getView()).build();
+                .view(question.getView())
+                .createdAt(question.getCreatedAt()).build();
     }
 }

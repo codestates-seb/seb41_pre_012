@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Data
-public class QuestionVote {
+public class QuestionRecommend {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

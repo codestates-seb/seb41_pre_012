@@ -27,7 +27,7 @@ public class Question {
 
     @OneToMany(mappedBy = "question")
 //    @OneToMany(mappedBy = "question", cascade = CascadeType.MERGE) 다삭제
-    private List<QuestionVote> questionVote;
+    private List<QuestionRecommend> questionRecommend;
 
     private String title;
 

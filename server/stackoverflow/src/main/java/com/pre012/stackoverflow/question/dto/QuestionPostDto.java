@@ -1,9 +1,11 @@
 package com.pre012.stackoverflow.question.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.pre012.stackoverflow.question.entity.Question;
-import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -13,24 +15,20 @@ import java.time.LocalDateTime;
 @Builder
 public class QuestionPostDto {
 
+    @ApiModelProperty(example = "제목")
     private String title;
 
+    @ApiModelProperty(example = "내용")
     private String content;
 
 //    private Member member;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createdAt;
-
-    private Long view;
 
     public Question toQuestion(){
         return Question.builder()
                 .title(title)
                 .content(content)
 //                .member(question.getMember())
-                .createdAt(LocalDateTime.now())
+                .createdAt(LocalDateTime.now().withNano(0))
                 .view(0L)
                 .build();
     }
