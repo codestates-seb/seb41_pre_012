@@ -90,34 +90,24 @@ const ButtonSample = styled.button`
   right: 0;
 `;
 const SaveButton = styled(ButtonSample)`
-  width: 130px;
-  height: 45px;
-  padding: 1px 6px;
-  margin: 10px 8px 0 0;
-  color: #ffffff;
-  border: 1px solid #0a95ff;
-  background-color: #0a95ff;
-  border-radius: 3px;
-  :hover {
-    background-color: #0074cc;
+  margin-right: 10px;
+  box-shadow: inset 0 1.5px 0 0 #80c0ff;
+  background-color: #0995ff;
+  color: white;
+  &:hover {
+    background-color: #0a5dc1;
     cursor: pointer;
   }
 `;
 const CancelButton = styled(ButtonSample)`
-  width: 97px;
-  height: 45px;
-  padding: 1px 6px;
-  color: #c22e32;
-  border: none;
-  border-radius: 3px;
-  margin-top: 10px;
-  :hover {
-    background-color: #fdf2f2;
+  color: #004fb5;
+  &:hover {
+    background-color: #ecf6ff;
     cursor: pointer;
   }
 `;
 const CancelLink = styled(Link)`
-  color: #c22e32;
+  color: #004fb5;
   text-decoration: none;
 `;
 

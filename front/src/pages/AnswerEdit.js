@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
-import { questionUpdate } from "../util/questionAPI";
+import { answerUpdate } from "../util/answerAPI";
 import InputEditor from "../components/InputEditor";
 import QuestionViewer from "../components/Viewer";
 
@@ -32,36 +32,14 @@ const EditBox = styled.div`
   width: 100%;
   height: 1000px;
 `;
-const TextAreaName = styled.div`
-  font-size: 18px;
-  margin-top: 20px;
+const TextAreaAnswer = styled.div`
+  font-size: 35px;
+  margin: 20px 0 8% 0;
 `;
-const TextArea = styled.input`
-  width: 100%;
-  color: #18191a;
-  border-radius: 5px;
-  border: 1px solid #e3e6e8;
-  padding: 10px;
-`;
-// const MainArea = styled.textarea`
-//   width: 100%;
-//   height: 250px;
-//   color: #18191a;
-//   border-radius: 5px;
-//   border: 1px solid #e3e6e8;
-//   padding: 10px;
-//   overflow: scroll;
-// `;
 const ResultArea = styled.div`
   margin-top: 20px;
   height: auto;
 `;
-const ResultTitle = styled.div`
-  font-size: 2.07692308rem;
-`;
-// const ResultContent = styled.div`
-//   margin-top: 50px;
-// `;
 const ButtonCarrier = styled.div`
   margin-top: 10px;
   width: 80%;
@@ -110,7 +88,7 @@ const CancelLink = styled(Link)`
 `;
 
 const QuestionEdit = () => {
-  const url = "http://localhost:3001/Question"; /* 추후 수정*/
+  const url = "http://localhost:3001/Answer"; /* 추후 수정*/
   /*id는 페이지 라우팅에 활용해야 되기때문에 params로 따로 받아 온다*/
   const location = useLocation();
   const id = location.state.id;
@@ -119,17 +97,12 @@ const QuestionEdit = () => {
   console.log(title);
   console.log(content);
 
-  const [editTitle, setEditTitle] = useState(`${title}`);
   const [editContent, setEditContent] = useState(`${content}`);
   /*fake 서버 양식에 맞추어 작성*/
-  /*기존 데이터를 받아와서 화면 출력 후 편집 하고 싶다면 정보를 받아와야 한다. 어떻게?*/
 
   /*answer list 는 어떻게 받아와야 하나 고민 */
-  /*화면에 노출되지 않는 정보는 어떻게 처리할지 고민*/
-  // console.log(id);
   const onEdit = () => {
-    questionUpdate(url, id, editTitle, editContent);
-    setEditTitle();
+    answerUpdate(url, id, editContent);
     setEditContent();
   };
   return (
@@ -139,28 +112,18 @@ const QuestionEdit = () => {
         <StyledSection>
           <MainSection>
             <EditBox>
-              <TextAreaName>Title</TextAreaName>
-              <TextArea
-                type="text"
-                value={editTitle}
-                onChange={(e) => {
-                  setEditTitle(e.target.value);
-                  console.log(e.target.value);
-                }}
-              ></TextArea>
-              <TextAreaName>Body</TextAreaName>
+              <TextAreaAnswer>Answer</TextAreaAnswer>
               <InputEditor content={editContent} setContent={setEditContent} />
               <ResultArea>
-                <ResultTitle>{editTitle}</ResultTitle>
                 <QuestionViewer content={editContent} />
               </ResultArea>
               <ButtonCarrier>
                 <Link to={`/question/${id}`}>
                   <SaveButton
                     onClick={() => {
-                      !(editTitle === "" || editContent === "")
+                      !(editContent === "")
                         ? onEdit()
-                        : alert("빈 문항이 없어야 합니다.");
+                        : alert("답변이 작성 되어야 합니다.");
                     }}
                   >
                     SaveEdits
