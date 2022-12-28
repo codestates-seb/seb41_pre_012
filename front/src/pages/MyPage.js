@@ -7,8 +7,12 @@ import useFetch from "../util/useFetch";
 
 const Page = styled.div`
   width: 100%;
+  max-width: 1264px;
+  height: auto;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
 `;
 const Container = styled.div`
   width: 100%;
@@ -147,6 +151,26 @@ const UserStatBox = styled(UserDataBox)`
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  @media screen and (max-width: 1150px) {
+    flex-direction: column;
+  }
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    height: 30%;
+    flex-direction: row;
+  }
+`;
+const UserStatDetailBox = styled.div`
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+const UserStatDetailNumberBox = styled.div`
+  width: 60%;
+  text-align: left;
 `;
 
 const MyPage = () => {
@@ -179,7 +203,14 @@ const MyPage = () => {
               <StatsBox>
                 <TextStatBox>Stats</TextStatBox>
                 <UserStatBox>
-                  0 answers &nbsp;&nbsp;&nbsp;0 questions
+                  <UserStatDetailBox>
+                    <UserStatDetailNumberBox>0</UserStatDetailNumberBox>
+                    <UserStatDetailNumberBox>answers</UserStatDetailNumberBox>
+                  </UserStatDetailBox>
+                  <UserStatDetailBox>
+                    <UserStatDetailNumberBox>0</UserStatDetailNumberBox>
+                    <UserStatDetailNumberBox>questions</UserStatDetailNumberBox>
+                  </UserStatDetailBox>
                 </UserStatBox>
               </StatsBox>
               <DetailBox>
