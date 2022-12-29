@@ -14,6 +14,12 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
+  @media screen and (max-width: 1150px) {
+    height: 1920px;
+  }
+  @media screen and (max-width: 800px) {
+    height: 2100px;
+  }
 `;
 const StyledSection = styled.section`
   max-width: 1100px;
@@ -90,24 +96,34 @@ const ButtonSample = styled.button`
   right: 0;
 `;
 const SaveButton = styled(ButtonSample)`
-  margin-right: 10px;
-  box-shadow: inset 0 1.5px 0 0 #80c0ff;
-  background-color: #0995ff;
-  color: white;
-  &:hover {
-    background-color: #0a5dc1;
+  width: 130px;
+  height: 45px;
+  padding: 1px 6px;
+  margin: 10px 8px 0 0;
+  color: #ffffff;
+  border: 1px solid #0a95ff;
+  background-color: #0a95ff;
+  border-radius: 3px;
+  :hover {
+    background-color: #0074cc;
     cursor: pointer;
   }
 `;
 const CancelButton = styled(ButtonSample)`
-  color: #004fb5;
-  &:hover {
-    background-color: #ecf6ff;
+  width: 97px;
+  height: 45px;
+  padding: 1px 6px;
+  color: #c22e32;
+  border: none;
+  border-radius: 3px;
+  margin-top: 10px;
+  :hover {
+    background-color: #fdf2f2;
     cursor: pointer;
   }
 `;
 const CancelLink = styled(Link)`
-  color: #004fb5;
+  color: #c22e32;
   text-decoration: none;
 `;
 

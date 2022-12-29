@@ -14,6 +14,12 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
+  @media screen and (max-width: 1150px) {
+    height: 1920px;
+  }
+  @media screen and (max-width: 800px) {
+    height: 2100px;
+  } ;
 `;
 const StyledSection = styled.section`
   max-width: 1100px;
@@ -86,7 +92,6 @@ const CancelLink = styled(Link)`
   color: #c22e32;
   text-decoration: none;
 `;
-
 const QuestionEdit = () => {
   const url = "http://localhost:3001/Answer"; /* 추후 수정*/
   /*id는 페이지 라우팅에 활용해야 되기때문에 params로 따로 받아 온다*/
