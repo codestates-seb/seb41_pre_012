@@ -10,6 +10,8 @@ import QuestionViewer from "../components/Viewer";
 // import { UpVote, UpVoteDone, DownVote, DownVoteDone, CheckIcon, CheckedIcon } from "../img/index";
 import { UpVote, DownVote } from "../img/index";
 import InputEditor from "../components/InputEditor";
+import { useState } from "react";
+import { answerCreate } from "../util/answerAPI";
 
 const InnerContent = styled.div`
   width: 100%;
@@ -194,6 +196,7 @@ const PostAnswerBtn = styled.button`
 `;
 
 const QuestionDetail = () => {
+  const [answer, setAnswer] = useState("");
   const url = "http://localhost:3001/Question";
   const { id } = useParams();
   const { questionData, loading } = useFetch(`${url}/${id}`);
@@ -209,6 +212,11 @@ const QuestionDetail = () => {
       userInfo,
     } = questionData;
 
+    const onCreate = async () => {
+      console.log(answer);
+      await answerCreate(url, id, answer);
+      setAnswer("");
+    };
     return (
       <>
         <InnerContent>
@@ -270,8 +278,10 @@ const QuestionDetail = () => {
                 {/* List 자리 */}
                 <form className="post-form">
                   <AnswerTitle>Your Answer</AnswerTitle>
-                  <InputEditor />
-                  <PostAnswerBtn>Post Your Answer</PostAnswerBtn>
+                  <InputEditor setAnswer={setAnswer} />
+                  <PostAnswerBtn onClick={onCreate}>
+                    Post Your Answer
+                  </PostAnswerBtn>
                 </form>
               </div>
             </PostLayout>
