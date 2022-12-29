@@ -27,26 +27,27 @@ public class QuestionController {
     @PostMapping
     public ResponseEntity postQuestion(@RequestBody QuestionPostDto questionPostDto,
                                        @AuthenticationPrincipal String email) {
-        System.out.println(email);
+//        System.out.println(email);
         return service.create(questionPostDto, email);
     }
 
-    @PostMapping("/test")
-    public String test(@AuthenticationPrincipal String email,
-                       @RequestBody QuestionPostDto questionPostDto){
-        System.out.println(email);
-        System.out.println(questionPostDto.toString());
-        service.test(questionPostDto, email);
-        return "test";
-    }
+//    @PostMapping("/test")
+//    public String test(@AuthenticationPrincipal String email,
+//                       @RequestBody QuestionPostDto questionPostDto){
+//        System.out.println(email);
+//        System.out.println(questionPostDto.toString());
+//        service.test(questionPostDto, email);
+//        return "test";
+//    }
 
 
     @ApiOperation(value = "질문 수정", notes = "게시판에 등록한 질문을 수정한다.")
     @PatchMapping("/{qid}")
     public ResponseEntity patchQuestion(@PathVariable("qid") Long qid,
-                                        @Valid @RequestBody QuestionPatchDto questionPatchDto) {
+                                        @Valid @RequestBody QuestionPatchDto questionPatchDto,
+                                        @AuthenticationPrincipal String email) {
 
-        return service.update(qid, questionPatchDto);
+        return service.update(qid, email, questionPatchDto);
     }
 
     @ApiOperation(value = "질문 조회", notes = "게시판 질문을 조회한다.")
@@ -68,8 +69,9 @@ public class QuestionController {
     @ApiOperation(value = "질문 삭제", notes = "등록된 질문을 삭제한다.")
     @ApiImplicitParam(name = "qid", value = "게시글 번호", paramType = "path")
     @DeleteMapping("/{qid}")
-    public ResponseEntity delete(@PathVariable("qid") Long qid) {
+    public ResponseEntity delete(@PathVariable("qid") Long qid,
+                                 @AuthenticationPrincipal String email) {
 
-        return service.delete(qid);
+        return service.delete(qid, email);
     }
 }

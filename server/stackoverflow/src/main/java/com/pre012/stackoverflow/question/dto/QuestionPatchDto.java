@@ -21,7 +21,7 @@ public class QuestionPatchDto {
 //    @ApiModelProperty(example = "수정 시간")
 //    private LocalDateTime modifiedAt;
 
-    public Question toQuestion(Long qid, QuestionPatchDto questionPatchDto){
+    public Question toQuestion(Long qid, String email, QuestionPatchDto questionPatchDto){
         return Question.builder()
                 .qid(qid)
                 .title(questionPatchDto.getTitle())

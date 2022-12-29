@@ -1,11 +1,10 @@
 package com.pre012.stackoverflow.question.service;
 
+import com.pre012.stackoverflow.exception.BusinessLogicException;
+import com.pre012.stackoverflow.exception.ExceptionCode;
 import com.pre012.stackoverflow.member.Member;
 import com.pre012.stackoverflow.member.MemberRepository;
-import com.pre012.stackoverflow.question.dto.QuestionDetailDto;
-import com.pre012.stackoverflow.question.dto.QuestionDto;
-import com.pre012.stackoverflow.question.dto.QuestionPatchDto;
-import com.pre012.stackoverflow.question.dto.QuestionPostDto;
+import com.pre012.stackoverflow.question.dto.*;
 import com.pre012.stackoverflow.question.entity.Question;
 import com.pre012.stackoverflow.question.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +28,7 @@ public class QuestionService {
     @Transactional
     public ResponseEntity create(QuestionPostDto questionPostDto, String email) {
 
-        if( questionPostDto == null || questionPostDto.getTitle().isEmpty() ){
+        if (questionPostDto == null || questionPostDto.getTitle().isEmpty()) {
             return new ResponseEntity("fail", HttpStatus.BAD_REQUEST);
         }
 
@@ -38,16 +37,20 @@ public class QuestionService {
         Long qid = repository.save(question).getQid();
         question = repository.findById(qid).orElseThrow();
 
-        return new ResponseEntity(question, HttpStatus.CREATED);
+        QuestionResponseDto response = new QuestionResponseDto(question);
+
+        return new ResponseEntity(response, HttpStatus.CREATED);
     }
 
     @Transactional
-    public ResponseEntity update(Long qid, QuestionPatchDto questionPatchDto) {
+    public ResponseEntity update(Long qid, String email, QuestionPatchDto questionPatchDto) {
 
         Question question = repository.findById(qid).orElseThrow();
-        repository.save(questionPatchDto.toQuestion(qid, questionPatchDto));
+        Question savedQuestion = repository.save(questionPatchDto.toQuestion(qid, email, questionPatchDto));
 
-        return new ResponseEntity(question, HttpStatus.OK);
+        QuestionResponseDto response = new QuestionResponseDto(savedQuestion);
+
+        return new ResponseEntity(response, HttpStatus.OK);
     }
 
     @Transactional(readOnly = true)
@@ -61,15 +64,18 @@ public class QuestionService {
     @Transactional(readOnly = true)
     public ResponseEntity detail(Long qid) {
 
-        QuestionDetailDto question = repository.findById(qid).map(QuestionDetailDto::result).orElseThrow();
+        QuestionDetailDto question = repository.findById(qid).map(QuestionDetailDto::result).orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
 
         return new ResponseEntity<>(question, HttpStatus.OK);
     }
 
     @Transactional
-    public ResponseEntity delete(Long qid) {
+    public ResponseEntity delete(Long qid, String email) {
 
-        Question question = repository.findById(qid).orElseThrow();
+        Question question = repository.findById(qid).orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
+        if (!question.getMember().getEmail().equals(email)) {
+            throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_ALLOWED);
+        }
         repository.delete(question);
 
         return new ResponseEntity<>(qid, HttpStatus.OK);
