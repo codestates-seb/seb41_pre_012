@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StackOverflowicon from "../img/StackOverflowicon.png";
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -13,10 +14,13 @@ const StyledFooter = styled.footer`
 `;
 const FooterLogoContainer = styled.div`
   margin: 10px 20px 10px 120px;
+  @media screen and (max-width: 800px) {
+    margin: 0px;
+  }
 `;
 const FooterLogo = styled.img`
-  width: 37px;
-  height: 32px;
+  width: 52px;
+  height: 45px;
 `;
 const FooterContentsContainer = styled.div`
   width: 100%;
@@ -84,7 +88,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <FooterLogoContainer>
-        <FooterLogo src="https://cdn.icon-icons.com/icons2/836/PNG/512/Stack_Overflow_icon-icons.com_66761.png" />
+        <FooterLogo src={StackOverflowicon} />
       </FooterLogoContainer>
       <FooterContentsContainer>
         <FooterListCarrier>

@@ -146,7 +146,7 @@ const UserDataBox = styled.div`
 `;
 const UserStatBox = styled(UserDataBox)`
   width: 80%;
-  height: 20%;
+  height: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
