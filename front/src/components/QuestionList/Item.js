@@ -21,6 +21,7 @@ const VotesAnswersViews = styled.div`
   margin-right: 16px;
   margin-bottom: 4px;
   font-size: 13px;
+  gap: 6px;
 `;
 const Votes = styled.div`
   display: inline-flex;
@@ -63,24 +64,17 @@ const Title = styled.h3`
   line-height: calc((13+4) / 13);
   overflow-wrap: break-word;
   margin: 0 0 1em;
+  cursor: pointer;
+`;
+const LinkStyled = styled(Link)`
   text-decoration: none;
   color: #2961b9;
 `;
-const Content = styled.div`
-  font-size: 14px;
-  color: #6a737d;
-  margin-bottom: 8px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  word-break: break-word !important;
-  overflow-wrap: break-word !important;
-`;
+
 const User = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
@@ -89,22 +83,22 @@ const User = styled.div`
 `;
 
 const Item = ({ questionData }) => {
-  const { title, content, createdAt, view, question_recommend, username } = questionData;
+  const { id, title, createdAt, view, question_recommend, userInfo, answer_list } = questionData;
 
   return (
     <ItemContainer>
       <VotesAnswersViews>
         <Votes>{question_recommend} votes</Votes>
-        <Answers> answers</Answers>
+        <Answers>{answer_list.length} answers</Answers>
         <Views>{view} views</Views>
       </VotesAnswersViews>
       <TitleContentUser>
         <Title>
-          <Link to="/question">{title}</Link>
+          <LinkStyled to={`/question/${id}`}>{title}</LinkStyled>
         </Title>
-        <Content>{content}</Content>
+
         <User>
-          {username}, {createdAt}
+          {userInfo}, {createdAt}
         </User>
       </TitleContentUser>
     </ItemContainer>

@@ -126,3 +126,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+.toastui-editor-contents p,
+.toastui-editor-contents pre {
+  font-size: 15px !important;
+}

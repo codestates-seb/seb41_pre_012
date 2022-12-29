@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import backimg from "../img/bckImage.svg";
 import { questionCreate } from "../util/questionAPI";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+import InputEditor from "../components/InputEditor";
 
 const StyledAskQuestion = styled.div`
   @media screen and (max-width: 1150px) {
@@ -21,7 +22,7 @@ const StyledAskQuestion = styled.div`
 `;
 const QuestionForm = styled.div`
   width: 75%;
-  height: 1000px;
+  height: 100%;
   margin-bottom: 48px;
 `;
 const QuestionHeader = styled.div`
@@ -78,18 +79,14 @@ const Desc = styled.div`
 `;
 
 const ProblemBox = styled.div`
-  height: 330px;
+  height: 100%;
   padding: 24px;
   border: 1px solid #e3e6e8;
   background-color: #ffffff;
   border-radius: 3px;
   margin-bottom: 20px;
-
-  textarea {
-    width: 100%;
-    height: 200px;
-  }
 `;
+
 const RegisterBtn = styled.button`
   width: 130px;
   height: 45px;
@@ -123,10 +120,7 @@ const AskQuestion = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const url = "http://localhost:3001/Question";
-
-  // useEffect(() => {
-  //   console.log(title, content);
-  // }, [title, content]);
+  const navigate = useNavigate();
 
   const fetchAskItem = async () => {
     //title 비었을 때
@@ -137,24 +131,14 @@ const AskQuestion = () => {
     if (content === "") {
       alert("내용을 입력하세요");
     }
-
-    // const payload = {
-    //   title,
-    //   content,
-    // };
-
-    // const res = await fetch(``, JSON.stringify(payload)).then((res) =>
-    //   res.json()
-    // );
-
-    // if (res.result) {
-    //   //fetch 성공
-    // } else {
-    //   //fetch 실패
-    // }
   };
-  const onCreate = (e) => {
-    questionCreate(url, title, content);
+  const onCreate = async () => {
+    console.log(content);
+    await questionCreate(url, title, content);
+    // .then((id) => {
+    //   console.log(id);
+    //   navigate(`/question/${id}`);
+    // });
     setTitle("");
     setContent("");
   };
@@ -188,22 +172,10 @@ const AskQuestion = () => {
               Introduce the problem and expand on what you put in the title.
               Minimum 20 characters.
             </Desc>
-            <textarea
-              type="text"
-              value={content}
-              onChange={(e) => {
-                setContent(e.target.value);
-              }}
-            ></textarea>
+            <InputEditor setContent={setContent}></InputEditor>
           </ProblemBox>
           <Link to="/">
-            <RegisterBtn
-              onClick={() => {
-                onCreate();
-              }}
-            >
-              Post your question
-            </RegisterBtn>
+            <RegisterBtn onClick={onCreate}>Post your question</RegisterBtn>
           </Link>
           <CancleBtn>Discard draft</CancleBtn>
         </QuestionForm>

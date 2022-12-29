@@ -3,7 +3,6 @@ import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
 import RightSidebar from "../components/RightSidebar";
 import ItemLists from "../components/QuestionList/ItemLists";
-import useFetch from "../util/useFetch";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -18,7 +17,8 @@ const StyledSection = styled.section`
   max-width: 1100px;
   width: calc(100% - 164px);
   padding: 24px;
-  height: 1080px;
+  min-height: 1200px;
+  height: 100%;
   border-left: 1px solid #d7d9dc;
   display: flex;
   justify-content: space-between;
@@ -42,7 +42,7 @@ const TopContainer = styled.div`
 const AllQuestions = styled.div`
   font-size: 30px;
 `;
-const AskQuestion = styled.a`
+const AskQuestion = styled.div`
   font-size: 14px;
   width: 103px;
   height: 38px;
@@ -88,9 +88,12 @@ const HeadlineContainer = styled.div`
   margin-left: -24px;
 `;
 
-const Domain = () => {
-  const url = "http://localhost:3001/Question";
-  const { questionData, loading } = useFetch(url);
+const LinkStyled = styled(Link)`
+  text-decoration: none;
+  color: #fff;
+`;
+
+const Domain = ({ questionData, loading }) => {
   return (
     <>
       <Container>
@@ -100,9 +103,9 @@ const Domain = () => {
             <HeadlineContainer>
               <TopContainer>
                 <AllQuestions>All Questions</AllQuestions>
-                <AskQuestion>
-                  <Link to="/ask">Ask Question</Link>
-                </AskQuestion>
+                <LinkStyled to="/ask">
+                  <AskQuestion>Ask Question</AskQuestion>
+                </LinkStyled>
               </TopContainer>
               <ButtonContainer>
                 <div>{!loading && questionData ? questionData.length : "Loading..."} questions</div>

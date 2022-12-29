@@ -8,20 +8,24 @@ import AskQuestion from "./pages/AskQuestion";
 import QuestionEdit from "./pages/QuestionEdit";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import useFetch from "./util/useFetch";
 
 const StyledApp = styled.div`
   margin-top: 50px;
 `;
 
 function App() {
+  const url = "http://localhost:3001/Question";
+  const { questionData, loading } = useFetch(url);
+
   return (
     <BrowserRouter>
       <Header />
       <StyledApp>
         <Routes>
-          <Route path="/" element={<Domain />} />
+          <Route path="/" element={<Domain questionData={questionData} loading={loading} />} />
           <Route path="/ask" element={<AskQuestion />} />
-          <Route path="/question" element={<QuestionDetail />} />
+          <Route path="/question/:id" element={<QuestionDetail />} />
           <Route path="/edit" element={<QuestionEdit />} />
           {/* <Route path="/" element={<Domain />} /> */}
           <Route path="/login" element={<Login />} />
