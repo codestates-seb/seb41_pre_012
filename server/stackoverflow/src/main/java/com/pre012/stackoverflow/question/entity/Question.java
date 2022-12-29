@@ -25,12 +25,8 @@ public class Question {
     @ManyToOne
     private Member member;
 
-//    @OneToMany(mappedBy = "question")
-//    private List<Answer> answer;        // Answer entity 필요
-
-
     @OneToMany(mappedBy = "question")
-//    @OneToMany(mappedBy = "question", cascade = CascadeType.MERGE) 다삭제
+
     private List<QuestionRecommend> questionRecommend;
 
     private String title;

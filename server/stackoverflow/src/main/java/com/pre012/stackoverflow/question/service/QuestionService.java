@@ -17,6 +17,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class QuestionService {
@@ -45,9 +48,14 @@ public class QuestionService {
     @Transactional
     public ResponseEntity update(Long qid, String email, QuestionPatchDto questionPatchDto) {
 
-        Question question = repository.findById(qid).orElseThrow();
-        Question savedQuestion = repository.save(questionPatchDto.toQuestion(qid, email, questionPatchDto));
-
+        Question question = repository.findById(qid).orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
+        if (!question.getMember().getEmail().equals(email)) {
+            throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_ALLOWED);
+        }
+        Optional.ofNullable(questionPatchDto.getTitle()).ifPresent(question::setTitle);
+        Optional.ofNullable(questionPatchDto.getContent()).ifPresent(question::setContent);
+        question.setModifiedAt(LocalDateTime.now().withNano(0));
+        Question savedQuestion = repository.save(question);
         QuestionResponseDto response = new QuestionResponseDto(savedQuestion);
 
         return new ResponseEntity(response, HttpStatus.OK);
@@ -79,13 +87,5 @@ public class QuestionService {
         repository.delete(question);
 
         return new ResponseEntity<>(qid, HttpStatus.OK);
-    }
-
-    public void test(QuestionPostDto questionPostDto, String email) {
-
-        Member member = memberRepository.findByEmail(email).orElseThrow();
-        Question question = questionPostDto.toQuestion(member);
-        Long qid = repository.save(question).getQid();
-        question = repository.findById(qid).orElseThrow();
     }
 }

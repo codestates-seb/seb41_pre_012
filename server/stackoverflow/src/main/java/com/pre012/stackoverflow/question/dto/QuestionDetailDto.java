@@ -33,8 +33,6 @@ public class QuestionDetailDto {
 
     private LocalDateTime modifiedAt;
 
-//    private List<Answer> answer;
-
     public static QuestionDetailDto result(Question question) {
 
         return QuestionDetailDto.builder()
@@ -47,7 +45,6 @@ public class QuestionDetailDto {
                 .view(question.getView())
                 .createdAt(question.getCreatedAt())
                 .modifiedAt(question.getModifiedAt())
-//                .answer(question.getAnswer())
                 .build();
     }
 }

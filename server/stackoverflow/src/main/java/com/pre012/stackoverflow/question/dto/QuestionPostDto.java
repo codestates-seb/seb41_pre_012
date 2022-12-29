@@ -31,6 +31,7 @@ public class QuestionPostDto {
                 .title(title)
                 .content(content)
                 .createdAt(LocalDateTime.now().withNano(0))
+                .modifiedAt(LocalDateTime.now().withNano(0))
                 .view(0L)
                 .build();
     }

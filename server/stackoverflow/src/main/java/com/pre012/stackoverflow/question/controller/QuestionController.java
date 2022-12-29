@@ -23,23 +23,13 @@ public class QuestionController {
     private final QuestionService service;
 
     @ApiOperation(value = "질문 등록", notes = "게시판에 질문을 등록한다.")
-//    @ApiModelProperty(hidden = true)
+
     @PostMapping
     public ResponseEntity postQuestion(@RequestBody QuestionPostDto questionPostDto,
                                        @AuthenticationPrincipal String email) {
-//        System.out.println(email);
+
         return service.create(questionPostDto, email);
     }
-
-//    @PostMapping("/test")
-//    public String test(@AuthenticationPrincipal String email,
-//                       @RequestBody QuestionPostDto questionPostDto){
-//        System.out.println(email);
-//        System.out.println(questionPostDto.toString());
-//        service.test(questionPostDto, email);
-//        return "test";
-//    }
-
 
     @ApiOperation(value = "질문 수정", notes = "게시판에 등록한 질문을 수정한다.")
     @PatchMapping("/{qid}")
