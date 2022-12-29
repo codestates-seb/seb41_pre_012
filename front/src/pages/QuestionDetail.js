@@ -9,6 +9,7 @@ import QuestionViewer from "../components/Viewer";
 // 나중에 나머지 svg도 불러오기
 // import { UpVote, UpVoteDone, DownVote, DownVoteDone, CheckIcon, CheckedIcon } from "../img/index";
 import { UpVote, DownVote } from "../img/index";
+import AnswerLists from "../components/AnswerList/AnswerLists";
 
 const InnerContent = styled.div`
   width: 100%;
@@ -167,9 +168,9 @@ const EditLinkStyled = styled(Link)`
 `;
 
 const QuestionDetail = () => {
-  const url = "http://localhost:3001/Question";
+  const qUrl = "http://localhost:3001/Question";
   const { id } = useParams();
-  const { questionData, loading } = useFetch(`${url}/${id}`);
+  const { questionData, loading } = useFetch(`${qUrl}/${id}`);
 
   if (questionData && !loading) {
     const { title, content, createdAt, modifiedAt, view, question_recommend, userInfo } =
@@ -221,7 +222,7 @@ const QuestionDetail = () => {
                         <EditLinkStyled to={`/edit`} state={{ id, title, content }}>
                           Edit
                         </EditLinkStyled>
-                        <Delete url={url} id={id} />
+                        <Delete url={qUrl} id={id} />
                       </div>
                       <UserInfo>{userInfo}</UserInfo>
                     </div>
@@ -230,7 +231,7 @@ const QuestionDetail = () => {
               </div>
               Answers
               <div className="answers">
-                {/* List 자리 */}
+                <AnswerLists questionData={questionData} url={`${qUrl}/${id}`} />
                 <form className="post-form"></form>
               </div>
             </PostLayout>
