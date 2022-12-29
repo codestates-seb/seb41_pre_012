@@ -6,6 +6,8 @@ import Header from "./components/Header";
 import QuestionDetail from "./pages/QuestionDetail";
 import AskQuestion from "./pages/AskQuestion";
 import QuestionEdit from "./pages/QuestionEdit";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import useFetch from "./util/useFetch";
 
 const StyledApp = styled.div`
@@ -26,6 +28,8 @@ function App() {
           <Route path="/question/:id" element={<QuestionDetail />} />
           <Route path="/edit" element={<QuestionEdit />} />
           {/* <Route path="/" element={<Domain />} /> */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </StyledApp>
     </BrowserRouter>

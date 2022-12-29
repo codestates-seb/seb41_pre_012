@@ -12,6 +12,8 @@ import { UpVote, DownVote } from "../img/index";
 import InputEditor from "../components/InputEditor";
 import { useState } from "react";
 import { answerCreate } from "../util/answerAPI";
+import AnswerLists from "../components/AnswerList/AnswerLists";
+
 
 const InnerContent = styled.div`
   width: 100%;
@@ -197,9 +199,9 @@ const PostAnswerBtn = styled.button`
 
 const QuestionDetail = () => {
   const [answer, setAnswer] = useState("");
-  const url = "http://localhost:3001/Question";
+  const qUrl = "http://localhost:3001/Question";
   const { id } = useParams();
-  const { questionData, loading } = useFetch(`${url}/${id}`);
+  const { questionData, loading } = useFetch(`${qUrl}/${id}`);
 
   if (questionData && !loading) {
     const {
@@ -214,7 +216,7 @@ const QuestionDetail = () => {
 
     const onCreate = async () => {
       console.log(answer);
-      await answerCreate(url, id, answer);
+      await answerCreate(qUrl, id, answer);
       setAnswer("");
     };
     return (
@@ -266,7 +268,7 @@ const QuestionDetail = () => {
                         >
                           Edit
                         </EditLinkStyled>
-                        <Delete url={url} id={id} />
+                        <Delete url={qUrl} id={id} />
                       </div>
                       <UserInfo>{userInfo}</UserInfo>
                     </div>
@@ -275,7 +277,7 @@ const QuestionDetail = () => {
               </div>
               Answers
               <div className="answers">
-                {/* List 자리 */}
+                <AnswerLists questionData={questionData} url={`${qUrl}/${id}`} />
                 <form className="post-form">
                   <AnswerTitle>Your Answer</AnswerTitle>
                   <InputEditor setAnswer={setAnswer} />
