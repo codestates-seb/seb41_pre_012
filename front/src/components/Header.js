@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 // import GitHubIcon from "@mui/icons-material/GitHub";
 
-
 const StyledHeader = styled.header`
   width: 100%;
   height: 50px;
@@ -163,8 +162,6 @@ const Header = () => {
           <Link to="/signup">
             <button className="signupBtn"> Sign up</button>
           </Link>
-          <button className="loginBtn"> Log in</button>
-          <button className="signupBtn"> Sign up</button>
         </BtnContainer>
         {/* <>
           <img src="http://via.placeholder.com/27x27" alt="" />

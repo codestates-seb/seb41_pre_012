@@ -12,9 +12,10 @@ const DeleteStyled = styled.div`
 
 const Text = styled.span`
   color: #f48024;
-  font-size: 1.30769231rem;
+  font-size: 1.25769231rem;
   position: absolute;
   top: 30%;
+  text-align: center;
 `;
 
 const ModalContainer = styled.div`
@@ -41,8 +42,8 @@ const ModalView = styled.div.attrs(() => ({
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  width: 400px;
-  height: 150px;
+  width: 450px;
+  height: 200px;
 `;
 const DeleteBtn = styled.button`
   background-color: #fff;
