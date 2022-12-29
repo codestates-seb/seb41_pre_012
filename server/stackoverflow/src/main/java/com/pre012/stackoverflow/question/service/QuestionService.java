@@ -1,5 +1,7 @@
 package com.pre012.stackoverflow.question.service;
 
+import com.pre012.stackoverflow.member.Member;
+import com.pre012.stackoverflow.member.MemberRepository;
 import com.pre012.stackoverflow.question.dto.QuestionDetailDto;
 import com.pre012.stackoverflow.question.dto.QuestionDto;
 import com.pre012.stackoverflow.question.dto.QuestionPatchDto;
@@ -22,14 +24,17 @@ public class QuestionService {
 
     private final QuestionRepository repository;
 
+    private final MemberRepository memberRepository;
+
     @Transactional
     public ResponseEntity create(QuestionPostDto questionPostDto) {
 
         if( questionPostDto == null || questionPostDto.getTitle().isEmpty() ){
             return new ResponseEntity("fail", HttpStatus.BAD_REQUEST);
         }
-
-        Question question = questionPostDto.toQuestion();
+        Long mid = 1L; // 로그인 할 떄 받아오는 정보로 수정 필요함
+        Member member = memberRepository.findById(mid).orElseThrow();
+        Question question = questionPostDto.toQuestion(member);
         Long qid = repository.save(question).getQid();
         question = repository.findById(qid).orElseThrow();
 

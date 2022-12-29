@@ -3,6 +3,7 @@ package com.pre012.stackoverflow.question.controller;
 import com.pre012.stackoverflow.question.dto.QuestionPatchDto;
 import com.pre012.stackoverflow.question.dto.QuestionPostDto;
 import com.pre012.stackoverflow.question.service.QuestionService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
-@ApiOperation(value="질문 생성 API", notes="질문의 제목, 내용을 입력해 질문을 등록한다.")
+@Api (tags = {"질문"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/questions")

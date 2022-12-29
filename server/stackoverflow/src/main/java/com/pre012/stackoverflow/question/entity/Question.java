@@ -1,6 +1,10 @@
 package com.pre012.stackoverflow.question.entity;
 
-import lombok.*;
+import com.pre012.stackoverflow.member.Member;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -17,12 +21,12 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long qid;
 
-/*    @JoinColumn(name="mid")
+    @JoinColumn(name="mid")
     @ManyToOne
-    private Member member;              // Member entity 필요
+    private Member member;
 
-    @OneToMany(mappedBy = "question")
-    private List<Answer> answer;        // Answer entity 필요*/
+//    @OneToMany(mappedBy = "question")
+//    private List<Answer> answer;        // Answer entity 필요
 
 
     @OneToMany(mappedBy = "question")

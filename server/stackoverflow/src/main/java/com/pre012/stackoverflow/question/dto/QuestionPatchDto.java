@@ -29,5 +29,4 @@ public class QuestionPatchDto {
                 .modifiedAt(LocalDateTime.now().withNano(0))
                 .build();
     }
-
 }

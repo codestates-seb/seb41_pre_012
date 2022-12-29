@@ -1,5 +1,6 @@
 package com.pre012.stackoverflow.question.dto;
 
+import com.pre012.stackoverflow.member.Member;
 import com.pre012.stackoverflow.question.entity.Question;
 import com.pre012.stackoverflow.question.entity.QuestionRecommend;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ public class QuestionDetailDto {
 
     private String content;
 
-    //    private Member username;
+    private Member member;
 
     private List<QuestionRecommend> questionRecommends;
 
@@ -37,7 +38,7 @@ public class QuestionDetailDto {
                 .qid(question.getQid())
                 .title(question.getTitle())
                 .content(question.getContent())
-//                .username(question.getUsername())
+                .member(question.getMember())
                 .questionRecommends(question.getQuestionRecommend())
                 .view(question.getView())
                 .createdAt(question.getCreatedAt())

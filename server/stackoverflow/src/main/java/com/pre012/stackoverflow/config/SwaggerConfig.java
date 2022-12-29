@@ -42,7 +42,7 @@ public class SwaggerConfig {
                 .globalOperationParameters(globalParamters)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.pre012.stackoverflow.question"))
+                .apis(RequestHandlerSelectors.basePackage("com.pre012.stackoverflow"))
                 .paths(PathSelectors.any())
                 .build();
     }
