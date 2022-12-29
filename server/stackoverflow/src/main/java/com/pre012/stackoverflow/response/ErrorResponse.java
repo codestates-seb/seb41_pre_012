@@ -1,11 +1,16 @@
 package com.pre012.stackoverflow.response;
 
+import com.google.gson.Gson;
 import com.pre012.stackoverflow.exception.ExceptionCode;
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
 
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -39,6 +44,17 @@ public class ErrorResponse {
 
     public static ErrorResponse of(int status, String message) {
         return new ErrorResponse(status, message);
+    }
+
+    public static ErrorResponse of(HttpStatus httpStatus) {
+        return new ErrorResponse(httpStatus.value(), httpStatus.getReasonPhrase());
+    }
+    public static void sendErrorResponse(HttpServletResponse response, HttpStatus status) throws IOException {
+        Gson gson = new Gson();
+        ErrorResponse errorResponse = ErrorResponse.of(status);
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.setStatus(status.value());
+        response.getWriter().write(gson.toJson(errorResponse, ErrorResponse.class));
     }
 
     @Getter
