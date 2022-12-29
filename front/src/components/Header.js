@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import logo from "../img/Logo.svg";
 import { Link } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+// import GitHubIcon from "@mui/icons-material/GitHub";
+
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -51,6 +54,8 @@ const InputContainer = styled.div`
   padding: 0 8px;
   position: relative;
   flex-grow: 1;
+  position: relative;
+
   input {
     width: 100%;
     height: 33px;
@@ -63,6 +68,13 @@ const InputContainer = styled.div`
       box-shadow: 0 0 0 4px #d3e5f2;
     }
   }
+`;
+
+const IconBox = styled.div`
+  position: absolute;
+  top: 5px;
+  left: 13px;
+  color: #757575;
 `;
 
 const BtnContainer = styled.ul`
@@ -80,6 +92,7 @@ const BtnContainer = styled.ul`
     border: 1px solid #7aa7c7;
     background-color: #e1ecf4;
     border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 #ffffff;
     color: #38749e;
     :hover {
       background-color: #b3d3ea;
@@ -96,12 +109,28 @@ const BtnContainer = styled.ul`
     border: 1px solid #0a95ff;
     background-color: #0a95ff;
     border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 #80c0ff;
     :hover {
       background-color: #0074cc;
       cursor: pointer;
     }
   }
 `;
+
+// const GitHubBtn = styled.div`
+//   width: 7%;
+//   height: 27px;
+//   border-radius: 20px;
+//   background-color: #2f3337;
+//   text-align: center;
+//   margin: 0 8px;
+//   font-size: 28px;
+//   color: #ffffff;
+//   :hover {
+//     background-color: #232629;
+//     cursor: pointer;
+//   }
+// `;
 
 const Header = () => {
   return (
@@ -112,6 +141,9 @@ const Header = () => {
         </HeaderLogo>
         <SearchForm>
           <InputContainer>
+            <IconBox>
+              <SearchIcon />
+            </IconBox>
             <input type="text" className="inputBox" placeholder="Search..." />
           </InputContainer>
         </SearchForm>
@@ -124,10 +156,22 @@ const Header = () => {
             Sign up
           </li> */}
           {/* 로그인 전 */}
+
+          <Link to="/login">
+            <button className="loginBtn"> Log in</button>
+          </Link>
+          <Link to="/signup">
+            <button className="signupBtn"> Sign up</button>
+          </Link>
           <button className="loginBtn"> Log in</button>
           <button className="signupBtn"> Sign up</button>
         </BtnContainer>
-        {/* <img src="http://via.placeholder.com/25x25" alt="" /> */}
+        {/* <>
+          <img src="http://via.placeholder.com/27x27" alt="" />
+          <GitHubBtn>
+            <GitHubIcon />
+          </GitHubBtn>
+        </> */}
       </TopContainer>
     </StyledHeader>
   );
