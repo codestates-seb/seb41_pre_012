@@ -2,6 +2,11 @@ import styled from "styled-components";
 import miniLogo from "../img/miniLogo.svg";
 import googleImg from "../img/GoogleImg.svg";
 import githubImg from "../img/githubImg.svg";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { loginRequest, loginSuccess, loginError } from "../util/store/slice/loginSlice";
+import { useNavigate } from "react-router-dom";
 
 const StyledLogin = styled.div`
   width: 100%;
@@ -58,7 +63,7 @@ const OAuthButton2 = styled(OAuthButton)`
   }
 `;
 
-const InputForm = styled.div`
+const InputForm = styled.form`
   padding: 24px;
   margin-bottom: 24px;
   border-radius: 4px;
@@ -66,8 +71,8 @@ const InputForm = styled.div`
   text-align: left;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05),
-    0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05), 0 20px 48px hsla(0, 0%, 0%, 0.05),
+    0 1px 4px hsla(0, 0%, 0%, 0.1);
 `;
 
 const InputLabel = styled.label`
@@ -113,6 +118,33 @@ const DesBox = styled.div`
 `;
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const submitHandler = async () => {
+    dispatch(loginRequest());
+    try {
+      const response = await axios.post("http://localhost:8080/login", {
+        email,
+        password,
+      });
+      dispatch(loginSuccess(response.data.user));
+      navigate("/");
+    } catch (error) {
+      dispatch(loginError(error.message));
+    }
+  };
+
   return (
     <StyledLogin>
       <LoginBox>
@@ -131,10 +163,10 @@ const Login = () => {
         </OAuthButtonForm>
         <InputForm>
           <InputLabel>Email</InputLabel>
-          <InputBox type="email" />
+          <InputBox type="email" value={email} onChange={emailHandler} />
           <InputLabel>Password</InputLabel>
-          <InputBox type="password" />
-          <LoginBtn>Log in</LoginBtn>
+          <InputBox type="password" value={password} onChange={passwordHandler} />
+          <LoginBtn onClick={submitHandler}>Log in</LoginBtn>
         </InputForm>
         <DesBox>
           Don’t have an account?

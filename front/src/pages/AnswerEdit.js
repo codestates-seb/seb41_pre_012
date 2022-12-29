@@ -96,18 +96,18 @@ const QuestionEdit = () => {
   const url = "http://localhost:3001/Answer"; /* 추후 수정*/
   /*id는 페이지 라우팅에 활용해야 되기때문에 params로 따로 받아 온다*/
   const location = useLocation();
-  const id = location.state.id;
-  const title = location.state.title;
+  const qId = location.state.qId;
+  const aId = location.state.aId;
   const content = location.state.content;
-  console.log(title);
   console.log(content);
+  console.log(qId);
 
   const [editContent, setEditContent] = useState(`${content}`);
   /*fake 서버 양식에 맞추어 작성*/
 
   /*answer list 는 어떻게 받아와야 하나 고민 */
   const onEdit = () => {
-    answerUpdate(url, id, editContent);
+    answerUpdate(url, aId, editContent);
     setEditContent();
   };
   return (
@@ -123,7 +123,7 @@ const QuestionEdit = () => {
                 <QuestionViewer content={editContent} />
               </ResultArea>
               <ButtonCarrier>
-                <Link to={`/question/${id}`}>
+                <Link to={`/question/${qId}`}>
                   <SaveButton
                     onClick={() => {
                       !(editContent === "")
@@ -135,7 +135,7 @@ const QuestionEdit = () => {
                   </SaveButton>
                 </Link>
                 <CancelButton>
-                  <CancelLink to={`/question/${id}`}>Cancel</CancelLink>
+                  <CancelLink to={`/question/${qId}`}>Cancel</CancelLink>
                 </CancelButton>
               </ButtonCarrier>
             </EditBox>

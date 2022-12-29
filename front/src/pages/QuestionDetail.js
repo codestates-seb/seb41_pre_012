@@ -14,7 +14,6 @@ import { useState } from "react";
 import { answerCreate } from "../util/answerAPI";
 import AnswerLists from "../components/AnswerList/AnswerLists";
 
-
 const InnerContent = styled.div`
   width: 100%;
   max-width: 1264px;
@@ -277,7 +276,11 @@ const QuestionDetail = () => {
               </div>
               Answers
               <div className="answers">
-                <AnswerLists questionData={questionData} url={`${qUrl}/${id}`} />
+                <AnswerLists
+                  questionData={questionData}
+                  url={`${qUrl}/${id}`}
+                  qid={id}
+                />
                 <form className="post-form">
                   <AnswerTitle>Your Answer</AnswerTitle>
                   <InputEditor setAnswer={setAnswer} />
