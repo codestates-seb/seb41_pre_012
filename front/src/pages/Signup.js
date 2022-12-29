@@ -2,6 +2,9 @@ import styled from "styled-components";
 import miniLogo from "../img/miniLogo.svg";
 import googleImg from "../img/GoogleImg.svg";
 import githubImg from "../img/githubImg.svg";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StyledSignup = styled.div`
   width: 100%;
@@ -66,8 +69,8 @@ const InputForm = styled.div`
   text-align: left;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05),
-    0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05), 0 20px 48px hsla(0, 0%, 0%, 0.05),
+    0 1px 4px hsla(0, 0%, 0%, 0.1);
 `;
 
 const InputLabel = styled.label`
@@ -112,6 +115,36 @@ const DesBox = styled.div`
 `;
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const usernameHandler = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const submitHandler = async () => {
+    try {
+      await axios.post("http://localhost:8080/member", {
+        username,
+        email,
+        password,
+      });
+      navigate("/login");
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <StyledSignup>
       <SignupBox>
@@ -130,12 +163,12 @@ const Signup = () => {
         </OAuthButtonForm>
         <InputForm>
           <InputLabel>Display name</InputLabel>
-          <InputBox type="text" />
+          <InputBox type="text" value={username} onChange={usernameHandler} />
           <InputLabel>Email</InputLabel>
-          <InputBox type="email" />
+          <InputBox type="email" value={email} onChange={emailHandler} />
           <InputLabel>Password</InputLabel>
-          <InputBox type="password" />
-          <SignupBtn>Sign up</SignupBtn>
+          <InputBox type="password" value={password} onChange={passwordHandler} />
+          <SignupBtn onClick={submitHandler}>Sign up</SignupBtn>
         </InputForm>
         <DesBox>
           Already have an account? <a href="/login">Log in</a>

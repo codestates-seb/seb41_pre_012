@@ -10,7 +10,6 @@ import AnswerEdit from "./pages/AnswerEdit";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import useFetch from "./util/useFetch";
-
 const StyledApp = styled.div`
   margin-top: 50px;
 `;
@@ -24,10 +23,7 @@ function App() {
       <Header />
       <StyledApp>
         <Routes>
-          <Route
-            path="/"
-            element={<Domain questionData={questionData} loading={loading} />}
-          />
+          <Route path="/" element={<Domain questionData={questionData} loading={loading} />} />
           <Route path="/ask" element={<AskQuestion />} />
           <Route path="/question/:id" element={<QuestionDetail />} />
           <Route path="/edit" element={<QuestionEdit />} />

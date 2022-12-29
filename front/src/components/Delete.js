@@ -121,7 +121,7 @@ const Delete = ({ url, id }) => {
           <ModalBackdrop>
             <ModalView>
               <Header>Discard question</Header>
-              <Text>Are you sure you want to discard this question? This cannot be undone.</Text>
+              <Text>Are you sure you want to discard this question?</Text>
               <div className="button-container">
                 <Link to="/">
                   <DeleteBtn onClick={onRemove} onKeyPress={onKeyPress}>
