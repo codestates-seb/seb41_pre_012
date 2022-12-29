@@ -120,7 +120,7 @@ const MyPage = () => {
   const { questionData, loading } = useFetch(`${url}/${id}`);
 
   if (questionData && !loading) {
-    const { username } = questionData;
+    const { userInfo } = questionData;
     return (
       <>
         <Page>
@@ -132,7 +132,7 @@ const MyPage = () => {
               </UserImgBox>
               <UserNameBox>
                 <UserValue>
-                  <UserName>{username}</UserName>
+                  <UserName>{userInfo}</UserName>
                   <UserFunction>
                     <UserButton>logout</UserButton> | <UserButton>edit</UserButton>
                   </UserFunction>

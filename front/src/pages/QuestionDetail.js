@@ -5,9 +5,11 @@ import LeftSidebar from "../components/LetfSidebar";
 import RightSidebar from "../components/RightSidebar";
 import useFetch from "../util/useFetch";
 import Delete from "../components/Delete";
+import QuestionViewer from "../components/Viewer";
 // 나중에 나머지 svg도 불러오기
 // import { UpVote, UpVoteDone, DownVote, DownVoteDone, CheckIcon, CheckedIcon } from "../img/index";
 import { UpVote, DownVote } from "../img/index";
+import AnswerLists from "../components/AnswerList/AnswerLists";
 
 const InnerContent = styled.div`
   width: 100%;
@@ -20,7 +22,8 @@ const StyledSection = styled.section`
   max-width: 1100px;
   width: calc(100% - 164px);
   padding: 24px;
-  height: 1080px;
+  min-height: 1200px;
+  height: 100%;
   border-left: 1px solid #d7d9dc;
 `;
 const QuestionHeader = styled.div`
@@ -122,7 +125,6 @@ const QuestionBody = styled.div`
 `;
 const QuestionContent = styled.div`
   width: 100%;
-  line-height: 25px;
 `;
 const EditUserContainer = styled.div`
   margin-bottom: 0;
@@ -166,12 +168,12 @@ const EditLinkStyled = styled(Link)`
 `;
 
 const QuestionDetail = () => {
-  const url = "http://localhost:3001/Question";
+  const qUrl = "http://localhost:3001/Question";
   const { id } = useParams();
-  const { questionData, loading } = useFetch(`${url}/${id}`);
+  const { questionData, loading } = useFetch(`${qUrl}/${id}`);
 
   if (questionData && !loading) {
-    const { title, content, createdAt, modifiedAt, view, question_recommend, username } =
+    const { title, content, createdAt, modifiedAt, view, question_recommend, userInfo } =
       questionData;
 
     return (
@@ -181,9 +183,9 @@ const QuestionDetail = () => {
           <StyledSection>
             <QuestionHeader>
               <QuestionTitle>{title}</QuestionTitle>
-              <AskQuestion>
-                <AskLinkStyled to="/ask">Ask Question</AskLinkStyled>
-              </AskQuestion>
+              <AskLinkStyled to="/ask">
+                <AskQuestion>Ask Question</AskQuestion>
+              </AskLinkStyled>
             </QuestionHeader>
             <QuestionInfo>
               <div className="infoContainer">
@@ -211,19 +213,26 @@ const QuestionDetail = () => {
                   </VoteContainer>
                 </QuestionVote>
                 <QuestionBody>
-                  <QuestionContent>{content}</QuestionContent>
+                  <QuestionContent>
+                    <QuestionViewer content={content} />
+                  </QuestionContent>
                   <EditUserContainer>
                     <div className="container">
                       <div className="order-button">
                         <EditLinkStyled to={`/edit`} state={{ id, title, content }}>
                           Edit
                         </EditLinkStyled>
-                        <Delete url={url} id={id} />
+                        <Delete url={qUrl} id={id} />
                       </div>
-                      <UserInfo>{username}</UserInfo>
+                      <UserInfo>{userInfo}</UserInfo>
                     </div>
                   </EditUserContainer>
                 </QuestionBody>
+              </div>
+              Answers
+              <div className="answers">
+                <AnswerLists questionData={questionData} url={`${qUrl}/${id}`} />
+                <form className="post-form"></form>
               </div>
             </PostLayout>
             <RightSidebar />
