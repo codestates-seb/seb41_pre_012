@@ -12,6 +12,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
 logging:
   level:
     org:
