@@ -23,7 +23,6 @@ public class QuestionController {
     private final QuestionService service;
 
     @ApiOperation(value = "질문 등록", notes = "게시판에 질문을 등록한다.")
-
     @PostMapping
     public ResponseEntity postQuestion(@RequestBody QuestionPostDto questionPostDto,
                                        @AuthenticationPrincipal String email) {
