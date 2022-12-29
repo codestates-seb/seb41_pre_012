@@ -27,13 +27,13 @@ public class QuestionService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public ResponseEntity create(QuestionPostDto questionPostDto) {
+    public ResponseEntity create(QuestionPostDto questionPostDto, String email) {
 
         if( questionPostDto == null || questionPostDto.getTitle().isEmpty() ){
             return new ResponseEntity("fail", HttpStatus.BAD_REQUEST);
         }
-        Long mid = 1L; // 로그인 할 떄 받아오는 정보로 수정 필요함
-        Member member = memberRepository.findById(mid).orElseThrow();
+
+        Member member = memberRepository.findByEmail(email).orElseThrow();
         Question question = questionPostDto.toQuestion(member);
         Long qid = repository.save(question).getQid();
         question = repository.findById(qid).orElseThrow();
@@ -73,5 +73,13 @@ public class QuestionService {
         repository.delete(question);
 
         return new ResponseEntity<>(qid, HttpStatus.OK);
+    }
+
+    public void test(QuestionPostDto questionPostDto, String email) {
+
+        Member member = memberRepository.findByEmail(email).orElseThrow();
+        Question question = questionPostDto.toQuestion(member);
+        Long qid = repository.save(question).getQid();
+        question = repository.findById(qid).orElseThrow();
     }
 }

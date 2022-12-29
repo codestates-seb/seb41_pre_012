@@ -49,6 +49,12 @@ public class SecurityConfiguration {
                         // 권한 추가
                         .antMatchers(HttpMethod.POST, "/members").permitAll()
                         .antMatchers(HttpMethod.DELETE, "/members/**").hasRole("USER")
+                        .antMatchers(HttpMethod.POST, "/questions").hasRole("USER")
+                        .antMatchers(HttpMethod.PATCH, "/questions/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/questions/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/questions?**").permitAll()
+                        .antMatchers(HttpMethod.DELETE, "/questions/**").hasRole("USER")
+                        .antMatchers(HttpMethod.POST, "/questions/test").hasRole("USER")
                         .anyRequest().permitAll()
                 );
         return http.build();
