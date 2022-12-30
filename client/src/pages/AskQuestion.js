@@ -122,18 +122,19 @@ const AskQuestion = () => {
   const url = "http://localhost:3001/Question";
   const navigate = useNavigate();
 
-  const fetchAskItem = async () => {
-    //title 비었을 때
-    if (title === "") {
-      alert("제목을 입력하세요");
-    }
-    //content 비었을 때
-    if (content === "") {
-      alert("내용을 입력하세요");
-    }
-  };
+  // const fetchAskItem = async () => {
+  //   //title 비었을 때
+  //   if (title === "") {
+  //     alert("제목을 입력하세요");
+  //   }
+  //   //content 비었을 때
+  //   if (content === "") {
+  //     alert("내용을 입력하세요");
+  //   }
+  // };
   const onCreate = async () => {
-    fetchAskItem();
+    // fetchAskItem();
+    console.log(content);
     await questionCreate(url, title, content);
     // .then((id) => {
     //   console.log(id);
@@ -141,6 +142,17 @@ const AskQuestion = () => {
     // });
     setTitle("");
     setContent("");
+  };
+
+  const goTo = () => {
+    if (title === "") {
+      alert("제목을 입력해야 합니다.");
+    } else if (content === "") {
+      alert("내용을 입력해야 합니다.");
+    } else {
+      navigate(`/`);
+      onCreate();
+    }
   };
 
   return (
@@ -170,9 +182,7 @@ const AskQuestion = () => {
             </Desc>
             <InputEditor setContent={setContent}></InputEditor>
           </ProblemBox>
-          <Link to="/">
-            <RegisterBtn onClick={onCreate}>Post your question</RegisterBtn>
-          </Link>
+          <RegisterBtn onClick={goTo}>Post your question</RegisterBtn>
           <CancleBtn>Discard draft</CancleBtn>
         </QuestionForm>
       </StyledAskQuestion>
