@@ -71,21 +71,39 @@ const ButtonContainer = styled.div`
   word-break: break-all;
   margin-left: 24px;
 `;
-const SortButton = styled.button`
+
+const SortButtonContainer = styled.div`
+  border: 0.5px solid #838c95;
+  border-radius: 3px;
+  display: flex;
+  flex-wrap: wrap;
+`;
+const SortButtonLeft = styled.button`
+  border: 0;
+  border-right: 0.5px solid #838c95;
+  border-radius: 3px 0 0 3px;
   height: 34px;
   background-color: white;
   outline: 0;
   color: #6a737d;
-  border: 1px groove #6a737d52;
-  border-radius: 3px 0 0 3px;
   &:hover {
     background-color: #d9d9d9;
     cursor: pointer;
   }
 `;
-const SortButtonLeft = styled(SortButton)`
-  border-right: 0px;
+const SortButton = styled.button`
+  border: 0;
+  border-radius: 0 3px 3px 0;
+  height: 34px;
+  background-color: white;
+  outline: 0;
+  color: #6a737d;
+  &:hover {
+    background-color: #d9d9d9;
+    cursor: pointer;
+  }
 `;
+
 const HeadlineContainer = styled.div`
   border-bottom: 1px solid #d7d9dc;
   margin-left: -24px;
@@ -112,10 +130,10 @@ const Domain = ({ questionData, loading }) => {
               </TopContainer>
               <ButtonContainer>
                 <div>{!loading && questionData ? questionData.length : "Loading..."} questions</div>
-                <div>
+                <SortButtonContainer>
                   <SortButtonLeft>Newest</SortButtonLeft>
                   <SortButton>Unanswered</SortButton>
-                </div>
+                </SortButtonContainer>
               </ButtonContainer>
             </HeadlineContainer>
             <Questions>
