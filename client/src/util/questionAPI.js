@@ -1,8 +1,12 @@
 import axios from "axios";
+const jwtToken = localStorage.getItem("Authorization");
+axios.defaults.headers.common["Authorization"] = `${jwtToken}`;
+
+const url = "http://localhost:3001/Question";
 
 export const questionRead = async () => {
   try {
-    const response = await axios.get("/questions?page=1&size=15");
+    const response = await axios.get(url);
     console.log(response.data);
     // window.location.reload();
   } catch (error) {
@@ -12,7 +16,7 @@ export const questionRead = async () => {
 
 export const questionDetail = async (id) => {
   try {
-    const response = await axios.get(`/questions/${id}`);
+    const response = await axios.get(`http://localhost:3001/Question/${id}`);
     console.log(response.data);
     // window.location.reload();
   } catch (error) {

@@ -9,16 +9,16 @@ import QuestionEdit from "./pages/QuestionEdit";
 import AnswerEdit from "./pages/AnswerEdit";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-// import useFetch from "./util/useFetch";
+import useFetch from "./util/useFetch";
 import MyPage from "./pages/MyPage";
-import { questionRead } from "./util/questionAPI";
+// import { questionRead } from "./util/questionAPI";
 const StyledApp = styled.div`
   margin-top: 50px;
 `;
 
 function App() {
-  // const url = "http://localhost:3001/Question";
-  const { questionData, loading } = questionRead("/questions?page=1&size=15");
+  const url = "http://localhost:3001/Question";
+  const { questionData, loading } = useFetch(url);
   console.log(questionData);
 
   return (
@@ -26,7 +26,10 @@ function App() {
       <Header />
       <StyledApp>
         <Routes>
-          <Route path="/" element={<Domain questionData={questionData} loading={loading} />} />
+          <Route
+            path="/"
+            element={<Domain questionData={questionData} loading={loading} />}
+          />
           <Route path="/ask" element={<AskQuestion />} />
           <Route path="/question/:id" element={<QuestionDetail />} />
           <Route path="/edit" element={<QuestionEdit />} />
