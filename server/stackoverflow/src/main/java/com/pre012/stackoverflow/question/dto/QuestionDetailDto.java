@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class QuestionDetailDto {
     private Long qid;
 
-    private Long mid;
+    private String img;
 
     private String title;
 
@@ -39,13 +39,13 @@ public class QuestionDetailDto {
     public static QuestionDetailDto result(Question question) {
 
         List<AnswerResponseDto> answerResponseDtos = question.getAnswerList().stream().map(answer
-                -> new AnswerResponseDto(answer.getAid(), answer.getMember().getUsername(), answer.getContent(),
+                -> new AnswerResponseDto(answer.getAid(), answer.getMember().getImg(), answer.getMember().getUsername(), answer.getContent(),
                 answer.getCreatedAt(), answer.getModifiedAt(), answer.isSelected(),
                 answer.getAnswerRecommend() == null ? 0 : answer.getAnswerRecommend().size())).collect(Collectors.toList());
 
         return QuestionDetailDto.builder()
                 .qid(question.getQid())
-                .mid(question.getMember().getMid())
+                .img(question.getMember().getImg())
                 .title(question.getTitle())
                 .content(question.getContent())
                 .userInfo(question.getMember().getUsername())

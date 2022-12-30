@@ -43,6 +43,8 @@ public class Member {
     @Column(length = 100, nullable = false)
     private String password;
 
+    private String img = "";
+
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
 }
