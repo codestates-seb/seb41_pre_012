@@ -135,8 +135,6 @@ const QuestionEdit = () => {
   const title = location.state.title;
   const content = location.state.content;
   const navigate = useNavigate();
-  console.log(title);
-  console.log(content);
 
   const [editTitle, setEditTitle] = useState(`${title}`);
   const [editContent, setEditContent] = useState(`${content}`);
@@ -183,7 +181,6 @@ const QuestionEdit = () => {
                 value={editTitle}
                 onChange={(e) => {
                   setEditTitle(e.target.value);
-                  console.log(e.target.value);
                 }}
               ></TextArea>
               <TextAreaName>Body</TextAreaName>

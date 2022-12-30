@@ -1,9 +1,11 @@
 import axios from "axios";
+const jwtToken = localStorage.getItem("Authorization");
+axios.defaults.headers.common["Authorization"] = `${jwtToken}`;
 
 // post는 생성 위해 qid(우리는 지금 id)
 export const answerCreate = async (id, content) => {
   try {
-    await axios.post(`/answer/${id}`, {
+    await axios.post(`/answers/${id}`, {
       content: content,
     });
     window.location.reload();
@@ -18,15 +20,6 @@ export const answerUpdate = async (id, content) => {
     await axios.patch(`answers/${id}`, {
       content: content,
     });
-    window.location.reload();
-  } catch (error) {
-    console.error("Error", error);
-  }
-};
-
-export const questionDelete = async (id) => {
-  try {
-    await axios.delete(`/questions/${id}`);
     window.location.reload();
   } catch (error) {
     console.error("Error", error);
