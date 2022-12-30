@@ -1,0 +1,98 @@
+{
+  "Question": [
+    {
+      "id": "1",
+      "title": "Print rows where one column is the same but another is different",
+      "content": "I want to find rows where name is the same but severity has changed (ie foo) and print the change. I have got this far using awk:\n\nHi!\n\n```js\nArray.prototype.getUnique = function() {\n var o = {}, a = [], i, e;\n for (i = 0; e = this[i]; i++) {o[e] = 1};\n for (e in o) {a.push (e)};\n return a;\n}\n```\n",
+      "createdAt": "2022-12-21",
+      "modifiedAt": "2022-12-27",
+      "view": 2,
+      "question_recommend": 0,
+      "userInfo": "윤뿔소",
+      "answer_list": [
+        {
+          "aid": "1",
+          "content": "최고에요",
+          "userInfo": "장예진",
+          "answer_recommend": 1,
+          "isSelected": true,
+          "createdAt": "2022-12-21",
+          "modifiedAt": "2022-12-21"
+        },
+        {
+          "aid": "2",
+          "content": "좋아요",
+          "userInfo": "이건희",
+          "answer_recommend": 1,
+          "isSelected": false,
+          "createdAt": "2022-12-21",
+          "modifiedAt": "2022-12-21"
+        },
+        {
+          "aid": "3",
+          "content": "xptmxm",
+          "userInfo": "이건ss희",
+          "answer_recommend": 0,
+          "isSelected": false,
+          "createdAt": "2022-12-28",
+          "modifiedAt": "2022-12-28"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Put Axis Range label above in am4charts",
+      "content": "I have a am4charts (v5) chart with a bars and a line (made with axis range), but i cannot put the axis range label above series line. I tried with above param, with zIndex, but i cannot make it work.I put the above param here in the axis range creation",
+      "createdAt": "2022-12-12",
+      "modifiedAt": "2022-12-26",
+      "view": 1,
+      "question_recommend": 1,
+      "userInfo": "장예진",
+      "answer_list": []
+    },
+    {
+      "id": "3",
+      "title": "Duplicate values both there and not, what?",
+      "content": " want to see duplicates values. I counted duplicate values. And saved in a dictionary with counts. When I try to search in dataframe. I can't see the duplicate values.",
+      "createdAt": "2022-12-15",
+      "modifiedAt": "2022-12-16",
+      "view": 1,
+      "question_recommend": 0,
+      "userInfo": "이건희",
+      "answer_list": []
+    },
+    {
+      "id": "4",
+      "title": "Zustand object functions not setting state / not working",
+      "content": "I am very new to react. I came across zustand for state management but it apparently isn't working in my application I basically cant update state of any object / variable",
+      "createdAt": "2022-12-10",
+      "modifiedAt": "2022-12-21",
+      "view": 2,
+      "question_recommend": 0,
+      "userInfo": "윤뿔소",
+      "answer_list": []
+    },
+    {
+      "id": "202212255945594559",
+      "title": "안녕",
+      "content": "나는 윤뿔소야",
+      "createdAt": "2022-12-25",
+      "modifiedAt": "2022-12-25",
+      "view": 0,
+      "question_recommend": 0,
+      "userInfo": "윤뿔소",
+      "answer_list": []
+    },
+    {
+      "id": "202212273553355335",
+      "title": "test",
+      "content": "**test***test*t~~est~~\n\n\n\n\ntest\n",
+      "createdAt": "2022-12-27",
+      "modifiedAt": "2022-12-27",
+      "view": 0,
+      "question_recommend": 0,
+      "userInfo": "윤뿔소",
+      "answer_list": []
+    }
+  ]
+}
