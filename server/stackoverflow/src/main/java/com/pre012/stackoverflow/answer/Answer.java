@@ -19,15 +19,13 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long aid;
 
-
     @JoinColumn(name="mid")
     @ManyToOne
     private Member member;
 
-   @JoinColumn(name = "qid")
+    @JoinColumn(name = "qid")
     @ManyToOne
     private Question question;
-
 
     @Column
     private String content;
@@ -41,10 +39,6 @@ public class Answer {
     @Column
     private boolean isSelected;
 
-
     @OneToMany(mappedBy = "answer")
     private List<AnswerRecommend> answerRecommend;
-
-
-
 }

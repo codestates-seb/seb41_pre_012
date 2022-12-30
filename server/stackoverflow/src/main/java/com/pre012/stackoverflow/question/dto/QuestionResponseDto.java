@@ -10,7 +10,7 @@ public class QuestionResponseDto {
     private Long qid;
     private Long mid;
 
-    private int questionRecommendCount;
+    private int questionRecommend;
 
     private String title;
 
@@ -25,7 +25,7 @@ public class QuestionResponseDto {
     public QuestionResponseDto(Question question) {
         this.qid = question.getQid();
         this.mid = question.getMember().getMid();
-        this.questionRecommendCount = question.getQuestionRecommend() == null ? 0 : question.getQuestionRecommend().size();
+        this.questionRecommend = question.getQuestionRecommend() == null ? 0 : question.getQuestionRecommend().size();
         this.title = question.getTitle();
         this.content = question.getContent();
         this.createdAt = question.getCreatedAt();

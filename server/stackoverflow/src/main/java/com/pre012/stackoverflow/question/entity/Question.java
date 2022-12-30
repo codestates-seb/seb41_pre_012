@@ -30,7 +30,6 @@ public class Question {
     private List<Answer> answerList;
 
     @OneToMany(mappedBy = "question")
-
     private List<QuestionRecommend> questionRecommend;
 
     private String title;
