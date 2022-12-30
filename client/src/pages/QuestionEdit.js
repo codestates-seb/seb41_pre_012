@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
 import { questionUpdate } from "../util/questionAPI";
@@ -134,6 +134,7 @@ const QuestionEdit = () => {
   const id = location.state.id;
   const title = location.state.title;
   const content = location.state.content;
+  const navigate = useNavigate();
   console.log(title);
   console.log(content);
 
@@ -150,6 +151,16 @@ const QuestionEdit = () => {
     setEditTitle();
     setEditContent();
   };
+  const goToMain = () => {
+    if (editTitle === "") {
+      alert("제목을 입력해야 합니다.");
+    } else if (editContent === "") {
+      alert("내용을 입력해야 합니다.");
+    } else {
+      navigate(`/question/${id}`);
+      onEdit();
+    }
+  };
   return (
     <>
       <Container>
@@ -158,15 +169,12 @@ const QuestionEdit = () => {
           <MainSection>
             <EditBox>
               <TipBox>
+                <Tipp>Your edit will be placed in a queue until it is peer reviewed.</Tipp>
                 <Tipp>
-                  Your edit will be placed in a queue until it is peer reviewed.
-                </Tipp>
-                <Tipp>
-                  We welcome edits that make the post easier to understand and
-                  more valuable for readers. Because community members review
-                  edits, please try to make the post substantially better than
-                  how you found it, for example, by fixing grammar or adding
-                  additional resources and hyperlinks.
+                  We welcome edits that make the post easier to understand and more valuable for
+                  readers. Because community members review edits, please try to make the post
+                  substantially better than how you found it, for example, by fixing grammar or
+                  adding additional resources and hyperlinks.
                 </Tipp>
               </TipBox>
               <TextAreaName>Title</TextAreaName>
@@ -185,17 +193,7 @@ const QuestionEdit = () => {
                 <QuestionViewer content={editContent} />
               </ResultArea>
               <ButtonCarrier>
-                <Link to={`/question/${id}`}>
-                  <SaveButton
-                    onClick={() => {
-                      !(editTitle === "" || editContent === "")
-                        ? onEdit()
-                        : alert("빈 문항이 없어야 합니다.");
-                    }}
-                  >
-                    SaveEdits
-                  </SaveButton>
-                </Link>
+                <SaveButton onClick={goToMain}>SaveEdits</SaveButton>
                 <CancelButton>
                   <CancelLink to={`/question/${id}`}>Cancel</CancelLink>
                 </CancelButton>
