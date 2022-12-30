@@ -146,6 +146,7 @@ const Login = () => {
       // console.log(decoded);
       dispatch(loginSuccess(response.data.user));
       navigate("/");
+      window.location.reload();
     } catch (error) {
       dispatch(loginError(error.message));
     }

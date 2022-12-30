@@ -2,7 +2,8 @@ import styled from "styled-components";
 import logo from "../img/Logo.svg";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
-// import GitHubIcon from "@mui/icons-material/GitHub";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import basicUser from "../img/basicUser.svg";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -116,22 +117,24 @@ const BtnContainer = styled.ul`
   }
 `;
 
-// const GitHubBtn = styled.div`
-//   width: 7%;
-//   height: 27px;
-//   border-radius: 20px;
-//   background-color: #2f3337;
-//   text-align: center;
-//   margin: 0 8px;
-//   font-size: 28px;
-//   color: #ffffff;
-//   :hover {
-//     background-color: #232629;
-//     cursor: pointer;
-//   }
-// `;
+const GitHubBtn = styled.a`
+  width: 7%;
+  height: 27px;
+  border-radius: 20px;
+  background-color: #2f3337;
+  text-align: center;
+  margin: 0 8px;
+  font-size: 28px;
+  color: #ffffff;
+  :hover {
+    background-color: #232629;
+    cursor: pointer;
+  }
+`;
 
 const Header = () => {
+  const jwtToken = localStorage.getItem("Authorization");
+
   return (
     <StyledHeader>
       <TopContainer>
@@ -146,29 +149,25 @@ const Header = () => {
             <input type="text" className="inputBox" placeholder="Search..." />
           </InputContainer>
         </SearchForm>
-        <BtnContainer>
-          {/* 링크 연결 후 변경하기 */}
-          {/* <li button className="loginBtn" onClick={''}>
-            Login
-          </li>
-          <li button className="signupBtn" onClick={''}>
-            Sign up
-          </li> */}
-          {/* 로그인 전 */}
-
-          <Link to="/login">
-            <button className="loginBtn"> Log in</button>
-          </Link>
-          <Link to="/signup">
-            <button className="signupBtn"> Sign up</button>
-          </Link>
-        </BtnContainer>
-        {/* <>
-          <img src="http://via.placeholder.com/27x27" alt="" />
-          <GitHubBtn>
-            <GitHubIcon />
-          </GitHubBtn>
-        </> */}
+        {!jwtToken ? (
+          <BtnContainer>
+            <Link to="/login">
+              <button className="loginBtn"> Log in</button>
+            </Link>
+            <Link to="/signup">
+              <button className="signupBtn"> Sign up</button>
+            </Link>
+          </BtnContainer>
+        ) : (
+          <>
+            <Link to="/mypage">
+              <img src={basicUser} alt="basicUser" />
+            </Link>
+            <GitHubBtn href="https://github.com/codestates-seb/seb41_pre_012">
+              <GitHubIcon />
+            </GitHubBtn>
+          </>
+        )}
       </TopContainer>
     </StyledHeader>
   );
