@@ -2,8 +2,8 @@ import styled from "styled-components";
 import LeftSidebar from "../components/LetfSidebar";
 import Footer from "../components/Footer";
 import useravatar from "../img/Rhino.jpeg";
-import { useParams } from "react-router-dom";
-import useFetch from "../util/useFetch";
+// import { useParams } from "react-router-dom";
+// import useFetch from "../util/useFetch";
 
 const Page = styled.div`
   width: 100%;
@@ -174,64 +174,63 @@ const UserStatDetailNumberBox = styled.div`
 `;
 
 const MyPage = () => {
-  const url = "http://localhost:3001/Question";
-  const { id } = useParams();
-  const { questionData, loading } = useFetch(`${url}/${id}`);
+  // const url = "http://localhost:3001/Question";
+  // const { id } = useParams();
+  // const { questionData, loading } = useFetch(`${url}/${id}`);
 
-  if (questionData && !loading) {
-    const { userInfo } = questionData;
-    return (
-      <>
-        <Page>
-          <LeftSidebar />
-          <Container>
-            <UserBox>
-              <UserImgBox>
-                <UserImg src={useravatar} alt="useravatar" />
-              </UserImgBox>
-              <UserNameBox>
-                <UserValue>
-                  <UserName>{userInfo}</UserName>
-                  <UserFunction>
-                    <UserButton>logout</UserButton> |{" "}
-                    <UserButton>edit</UserButton>
-                  </UserFunction>
-                </UserValue>
-              </UserNameBox>
-            </UserBox>
-            <StatsDetailBox>
-              <StatsBox>
-                <TextStatBox>Stats</TextStatBox>
-                <UserStatBox>
-                  <UserStatDetailBox>
-                    <UserStatDetailNumberBox>0</UserStatDetailNumberBox>
-                    <UserStatDetailNumberBox>answers</UserStatDetailNumberBox>
-                  </UserStatDetailBox>
-                  <UserStatDetailBox>
-                    <UserStatDetailNumberBox>0</UserStatDetailNumberBox>
-                    <UserStatDetailNumberBox>questions</UserStatDetailNumberBox>
-                  </UserStatDetailBox>
-                </UserStatBox>
-              </StatsBox>
-              <DetailBox>
-                <QusetionAnswerBox>
-                  <TextBox>Answers</TextBox>
-                  <UserDataBox></UserDataBox>
-                </QusetionAnswerBox>
-                <QusetionAnswerBox>
-                  <TextBox>Questions</TextBox>
-                  <UserDataBox></UserDataBox>
-                </QusetionAnswerBox>
-              </DetailBox>
-            </StatsDetailBox>
-          </Container>
-        </Page>
-        <Footer />
-      </>
-    );
-  } else {
-    ("Loading...");
-  }
+  // if (questionData && !loading) {
+  //   const { userInfo } = questionData;
+  return (
+    <>
+      <Page>
+        <LeftSidebar />
+        <Container>
+          <UserBox>
+            <UserImgBox>
+              <UserImg src={useravatar} alt="useravatar" />
+            </UserImgBox>
+            <UserNameBox>
+              <UserValue>
+                <UserName>윤뿔소</UserName>
+                <UserFunction>
+                  <UserButton>logout</UserButton> | <UserButton>edit</UserButton>
+                </UserFunction>
+              </UserValue>
+            </UserNameBox>
+          </UserBox>
+          <StatsDetailBox>
+            <StatsBox>
+              <TextStatBox>Stats</TextStatBox>
+              <UserStatBox>
+                <UserStatDetailBox>
+                  <UserStatDetailNumberBox>0</UserStatDetailNumberBox>
+                  <UserStatDetailNumberBox>answers</UserStatDetailNumberBox>
+                </UserStatDetailBox>
+                <UserStatDetailBox>
+                  <UserStatDetailNumberBox>0</UserStatDetailNumberBox>
+                  <UserStatDetailNumberBox>questions</UserStatDetailNumberBox>
+                </UserStatDetailBox>
+              </UserStatBox>
+            </StatsBox>
+            <DetailBox>
+              <QusetionAnswerBox>
+                <TextBox>Answers</TextBox>
+                <UserDataBox></UserDataBox>
+              </QusetionAnswerBox>
+              <QusetionAnswerBox>
+                <TextBox>Questions</TextBox>
+                <UserDataBox></UserDataBox>
+              </QusetionAnswerBox>
+            </DetailBox>
+          </StatsDetailBox>
+        </Container>
+      </Page>
+      <Footer />
+    </>
+  );
+  // } else {
+  //   ("Loading...");
+  // }
 };
 
 export default MyPage;
