@@ -151,7 +151,7 @@ const QuestionEdit = () => {
     setEditTitle();
     setEditContent();
   };
-  const goToMain = () => {
+  const goTo = () => {
     if (editTitle === "") {
       alert("제목을 입력해야 합니다.");
     } else if (editContent === "") {
@@ -193,7 +193,7 @@ const QuestionEdit = () => {
                 <QuestionViewer content={editContent} />
               </ResultArea>
               <ButtonCarrier>
-                <SaveButton onClick={goToMain}>SaveEdits</SaveButton>
+                <SaveButton onClick={goTo}>SaveEdits</SaveButton>
                 <CancelButton>
                   <CancelLink to={`/question/${id}`}>Cancel</CancelLink>
                 </CancelButton>

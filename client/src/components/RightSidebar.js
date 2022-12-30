@@ -27,12 +27,13 @@ const Header = styled.li`
 
 const Item = styled.li`
   margin: 12px 0;
+  font-size: 13px;
   display: flex;
   align-items: center;
   padding: 0 16px;
-  color: #3b4045;
+  color: #525960;
   :hover {
-    color: #525960;
+    color: #3b4045;
   }
   .icon {
     margin-right: 6px;
