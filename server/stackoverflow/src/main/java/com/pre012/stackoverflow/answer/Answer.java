@@ -1,5 +1,7 @@
 package com.pre012.stackoverflow.answer;
 
+import com.pre012.stackoverflow.member.Member;
+import com.pre012.stackoverflow.question.entity.Question;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,30 +20,31 @@ public class Answer {
     private Long aid;
 
 
-    /* @JoinColumn(name="mid)
+    @JoinColumn(name="mid")
     @ManyToOne
     private Member member;
 
-    @JoinColumn(name = "qid")
+   @JoinColumn(name = "qid")
     @ManyToOne
     private Question question;
-     */
+
 
     @Column
     private String content;
 
-    @Column(name = "created_at", updatable = false)
-    private LocalDateTime createdAt;
+    @Column(updatable = false)
+    private LocalDateTime createdAt = LocalDateTime.now().withNano(0);
 
-    @Column(name = "modified_at", updatable = true)
-    private LocalDateTime modifiedAt;
+    @Column
+    private LocalDateTime modifiedAt= LocalDateTime.now().withNano(0);
 
     @Column
     private boolean isSelected;
 
 
     @OneToMany(mappedBy = "answer")
-    private List<AnswerVote> answerVote;
+    private List<AnswerRecommend> answerRecommend;
+
 
 
 }

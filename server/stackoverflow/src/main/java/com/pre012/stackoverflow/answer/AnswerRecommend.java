@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Entity
-public class AnswerVote {
+public class AnswerRecommend {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +22,11 @@ public class AnswerVote {
     private Answer answer;
 
 
-    //@JoinColumn(name="mid")
-    //@ManyToOne
-    //private Member member;
+  /*  @JoinColumn(name="mid")
+    @ManyToOne
+    private Member member;
+
+   */
+
 
 }

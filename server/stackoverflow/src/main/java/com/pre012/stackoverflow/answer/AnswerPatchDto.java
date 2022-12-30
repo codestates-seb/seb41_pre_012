@@ -9,19 +9,14 @@ import java.time.LocalDateTime;
 
 @Data
 public class AnswerPatchDto {
-    private long aid;
+
 
     private String content;
 
 
 
-    private LocalDateTime createdAt;
+    //private boolean isSelected;
 
-    private LocalDateTime modifiedAt = LocalDateTime.now();
 
-    private boolean isSelected;
 
-    public void setAid(long aid){
-        this.aid = aid;
-    }
 }
