@@ -132,6 +132,17 @@ const GitHubBtn = styled.a`
   }
 `;
 
+const MyPageLinkButton = styled(Link)`
+  display: flex;
+  background-color: #2f3337;
+  border-radius: 3px;
+  padding: 3px;
+  :hover {
+    background-color: #232629;
+    cursor: pointer;
+  }
+`;
+
 const Header = () => {
   const jwtToken = localStorage.getItem("Authorization");
 
@@ -160,9 +171,9 @@ const Header = () => {
           </BtnContainer>
         ) : (
           <>
-            <Link to="/mypage">
+            <MyPageLinkButton to="/mypage">
               <img src={basicUser} alt="basicUser" />
-            </Link>
+            </MyPageLinkButton>
             <GitHubBtn href="https://github.com/codestates-seb/seb41_pre_012">
               <GitHubIcon />
             </GitHubBtn>
