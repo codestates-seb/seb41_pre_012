@@ -1,20 +1,10 @@
 import axios from "axios";
-import dayjs from "dayjs";
 
-const nowDate = dayjs(new Date()).format("YYYY-MM-DD");
-const nowDateId = dayjs(new Date()).format("YYYYMMDDssmsms");
-
-// TODO: question id를 그대로 받아주고, Question에서 했던 것처럼 버튼 누를 시 요청이 가게 모양만 잡아주기
-export const answerCreate = async (url, id, content) => {
+// post는 생성 위해 qid(우리는 지금 id)
+export const answerCreate = async (id, content) => {
   try {
-    await axios.post(`${url}/${id}`, {
-      aid: nowDateId,
-      userInfo: "윤뿔소",
+    await axios.post(`/answer/${id}`, {
       content: content,
-      answer_recommend: 0,
-      isSelected: false,
-      createdAt: nowDate,
-      modifiedAt: nowDate,
     });
     window.location.reload();
   } catch (error) {
@@ -22,13 +12,11 @@ export const answerCreate = async (url, id, content) => {
   }
 };
 
-// Read는 useFetch로
-
-export const answerUpdate = async (url, id, content) => {
+// patch는 수정위해 aid
+export const answerUpdate = async (id, content) => {
   try {
-    await axios.patch(`${url}/${id}`, {
+    await axios.patch(`answers/${id}`, {
       content: content,
-      modifiedAt: nowDate,
     });
     window.location.reload();
   } catch (error) {
@@ -36,9 +24,9 @@ export const answerUpdate = async (url, id, content) => {
   }
 };
 
-export const questionDelete = async (url, id) => {
+export const questionDelete = async (id) => {
   try {
-    await axios.delete(`${url}/${id}`);
+    await axios.delete(`/questions/${id}`);
     window.location.reload();
   } catch (error) {
     console.error("Error", error);

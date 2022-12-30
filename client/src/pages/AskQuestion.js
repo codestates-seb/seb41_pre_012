@@ -122,24 +122,9 @@ const AskQuestion = () => {
   const url = "http://localhost:3001/Question";
   const navigate = useNavigate();
 
-  // const fetchAskItem = async () => {
-  //   //title 비었을 때
-  //   if (title === "") {
-  //     alert("제목을 입력하세요");
-  //   }
-  //   //content 비었을 때
-  //   if (content === "") {
-  //     alert("내용을 입력하세요");
-  //   }
-  // };
   const onCreate = async () => {
-    // fetchAskItem();
     console.log(content);
     await questionCreate(url, title, content);
-    // .then((id) => {
-    //   console.log(id);
-    //   navigate(`/question/${id}`);
-    // });
     setTitle("");
     setContent("");
   };

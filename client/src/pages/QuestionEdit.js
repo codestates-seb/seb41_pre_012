@@ -128,7 +128,7 @@ const CancelLink = styled(Link)`
 `;
 
 const QuestionEdit = () => {
-  const url = "http://localhost:3001/Question"; /* 추후 수정*/
+  /* 추후 수정*/
   /*id는 페이지 라우팅에 활용해야 되기때문에 params로 따로 받아 온다*/
   const location = useLocation();
   const id = location.state.id;
@@ -147,7 +147,7 @@ const QuestionEdit = () => {
   /*화면에 노출되지 않는 정보는 어떻게 처리할지 고민*/
   // console.log(id);
   const onEdit = () => {
-    questionUpdate(url, id, editTitle, editContent);
+    questionUpdate(id, editTitle, editContent);
     setEditTitle();
     setEditContent();
   };

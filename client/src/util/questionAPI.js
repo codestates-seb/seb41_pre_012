@@ -1,40 +1,31 @@
 import axios from "axios";
-import dayjs from "dayjs";
 
-const nowDate = dayjs(new Date()).format("YYYY-MM-DD");
-const nowDateId = dayjs(new Date()).format("YYYYMMDDssmsms");
+export const questionRead = async () => {
+  try {
+    const response = await axios.get("/questions?page=1&size=15");
+    console.log(response.data);
+    // window.location.reload();
+  } catch (error) {
+    console.error("Error", error);
+  }
+};
+
+export const questionDetail = async (id) => {
+  try {
+    const response = await axios.get(`/questions/${id}`);
+    console.log(response.data);
+    // window.location.reload();
+  } catch (error) {
+    console.error("Error", error);
+  }
+};
 
 // title, content, userInfo(아이디) 만 넘겨줘도 됨 나중에~
-export const questionCreate = async (url, title, content) => {
+export const questionCreate = async (title, content) => {
   try {
-    await axios.post(url, {
-      id: nowDateId,
+    await axios.post("/questions", {
       title: title,
       content: content,
-      createdAt: nowDate,
-      modifiedAt: nowDate,
-      view: 0,
-      question_recommend: 0,
-      userInfo: "윤뿔소",
-      answer_list: [],
-    });
-    // .then((response) => {
-    //   return response.data.id;
-    // });
-    window.location.reload();
-  } catch (error) {
-    console.error("Error", error);
-  }
-};
-
-// Read는 useFetch로
-
-export const questionUpdate = async (url, id, title, content) => {
-  try {
-    await axios.patch(`${url}/${id}`, {
-      title: title,
-      content: content,
-      modifiedAt: nowDate,
     });
     window.location.reload();
   } catch (error) {
@@ -42,9 +33,21 @@ export const questionUpdate = async (url, id, title, content) => {
   }
 };
 
-export const questionDelete = async (url, id) => {
+export const questionUpdate = async (qid, title, content) => {
   try {
-    await axios.delete(`${url}/${id}`);
+    await axios.patch(`/questions/${qid}`, {
+      title: title,
+      content: content,
+    });
+    window.location.reload();
+  } catch (error) {
+    console.error("Error", error);
+  }
+};
+
+export const questionDelete = async (id) => {
+  try {
+    await axios.delete(`/questions/${id}`);
     window.location.reload();
   } catch (error) {
     console.error("Error", error);
