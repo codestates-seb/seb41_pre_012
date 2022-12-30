@@ -54,7 +54,10 @@ public class SecurityConfiguration {
                         .regexMatchers(HttpMethod.GET, "\\/questions\\?page=.").permitAll()
                         .antMatchers(HttpMethod.GET, "/questions/**").permitAll()
                         .antMatchers(HttpMethod.DELETE, "/questions/**").hasRole("USER")
-                        .antMatchers(HttpMethod.POST, "/questions/test").hasRole("USER")
+                        .antMatchers(HttpMethod.POST, "/answers/**").hasRole("USER")
+                        .antMatchers(HttpMethod.PATCH, "/answers/**").hasRole("USER")
+                        .antMatchers(HttpMethod.DELETE, "/answers/**").hasRole("USER")
+                        //.antMatchers(HttpMethod.GET, "/h2").hasRole("ADMIN") // 배포 시 주석 해제
                         .anyRequest().permitAll()
                 );
         return http.build();
