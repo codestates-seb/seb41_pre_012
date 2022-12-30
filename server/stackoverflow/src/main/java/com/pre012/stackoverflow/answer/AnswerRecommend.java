@@ -1,5 +1,6 @@
 package com.pre012.stackoverflow.answer;
 
+import com.pre012.stackoverflow.member.Member;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,11 +23,11 @@ public class AnswerRecommend {
     private Answer answer;
 
 
-  /*  @JoinColumn(name="mid")
+    @JoinColumn(name="mid")
     @ManyToOne
     private Member member;
 
-   */
+
 
 
 }
