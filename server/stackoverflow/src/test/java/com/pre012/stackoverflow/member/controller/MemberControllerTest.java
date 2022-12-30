@@ -91,7 +91,7 @@ public class MemberControllerTest {
         // given
         // 회원 삭제 시키면, doNothing 리턴
         long mid = 1L;
-        doNothing().when(memberService).deleteMember(Mockito.anyLong());
+        doNothing().when(memberService).deleteMember(Mockito.anyLong(),Mockito.any());
 
         // when
         ResultActions actions =
