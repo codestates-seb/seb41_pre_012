@@ -21,7 +21,7 @@ public class QuestionDto {
 
     private String content;
 
-    private int questionRecommendsCount;
+    private int questionRecommend;
 
     private Long view;
 
@@ -33,7 +33,7 @@ public class QuestionDto {
                 .username(question.getMember().getUsername())
                 .title(question.getTitle())
                 .content(question.getContent())
-                .questionRecommendsCount(question.getQuestionRecommend() == null ? 0 : question.getQuestionRecommend().size())
+                .questionRecommend(question.getQuestionRecommend() == null ? 0 : question.getQuestionRecommend().size())
                 .view(question.getView())
                 .build();
     }

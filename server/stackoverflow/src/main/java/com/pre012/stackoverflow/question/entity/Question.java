@@ -26,7 +26,6 @@ public class Question {
     private Member member;
 
     @OneToMany(mappedBy = "question")
-
     private List<QuestionRecommend> questionRecommend;
 
     private String title;
