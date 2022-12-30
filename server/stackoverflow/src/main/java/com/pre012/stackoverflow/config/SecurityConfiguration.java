@@ -16,8 +16,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.Arrays;
-
 @Configuration
 public class SecurityConfiguration {
     private final JwtTokenizer jwtTokenizer;
@@ -57,6 +55,8 @@ public class SecurityConfiguration {
                         .antMatchers(HttpMethod.POST, "/answers/**").hasRole("USER")
                         .antMatchers(HttpMethod.PATCH, "/answers/**").hasRole("USER")
                         .antMatchers(HttpMethod.DELETE, "/answers/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/members/**").hasRole("USER")
+                        .antMatchers(HttpMethod.PATCH, "/members/**").hasRole("USER")
                         //.antMatchers(HttpMethod.GET, "/h2").hasRole("ADMIN") // 배포 시 주석 해제
                         .anyRequest().permitAll()
                 );
@@ -69,10 +69,14 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    CorsConfigurationSource corsConfigurationSource() {
+    public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE"));
+        configuration.addAllowedOriginPattern("*");
+        configuration.addAllowedMethod("*");
+        configuration.addAllowedHeader("*");
+        configuration.addExposedHeader("authorization");
+        configuration.setAllowCredentials(true);
+        configuration.setMaxAge(3600L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);

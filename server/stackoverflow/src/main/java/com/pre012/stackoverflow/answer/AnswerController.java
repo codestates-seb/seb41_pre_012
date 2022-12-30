@@ -3,8 +3,6 @@ package com.pre012.stackoverflow.answer;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 
+@Api(tags = {"답변"})
 @RestController
 @RequestMapping("/answers")
-@Api(tags = {"회원"})
 public class AnswerController {
 
     AnswerService answerService;

@@ -22,7 +22,7 @@ public class MemberController {
         this.memberMapper = memberMapper;
     }
 
-    @ApiOperation(value="회원 정보 등록", notes="회원 정보를 등록한다.")
+    @ApiOperation(value="회원가입", notes="회원 정보를 등록한다.")
     @PostMapping
     public ResponseEntity postMember(@Valid @RequestBody MemberPostDto memberPostDto) throws Exception {
         Member member = memberService.createMember(memberMapper.memberPostDtoToMember(memberPostDto));
@@ -30,7 +30,7 @@ public class MemberController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @ApiOperation(value="회원 삭제", notes="회원 정보를 삭제한다.")
+    @ApiOperation(value="회원탈퇴", notes="회원 정보를 삭제한다.")
     @ApiImplicitParam(name = "member-id", value = "회원 정보", paramType = "path")
     @DeleteMapping("/{mid}")
     public ResponseEntity deleteMember(@PathVariable("mid") long mid,
@@ -38,7 +38,6 @@ public class MemberController {
         memberService.deleteMember(mid, email);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 
 
     @PatchMapping("/{mid}")
@@ -55,6 +54,7 @@ public class MemberController {
     }
 
 
+    @ApiOperation(value = "내 질문,내 답변 조회", notes = "내 질문,내 답변 조회 API")
     @GetMapping
     public ResponseEntity getAnswer(@AuthenticationPrincipal String email){
         Member member = memberService.getMember(email);
@@ -62,8 +62,4 @@ public class MemberController {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
-
-
-
 }
