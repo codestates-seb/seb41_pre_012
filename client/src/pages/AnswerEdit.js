@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
 import { answerUpdate } from "../util/answerAPI";
@@ -99,6 +99,7 @@ const QuestionEdit = () => {
   const qId = location.state.qId;
   const aId = location.state.aId;
   const content = location.state.content;
+  const navigate = useNavigate();
   console.log(content);
   console.log(qId);
 
@@ -109,6 +110,14 @@ const QuestionEdit = () => {
   const onEdit = () => {
     answerUpdate(url, aId, editContent);
     setEditContent();
+  };
+  const goToMain = () => {
+    if (editContent === "") {
+      alert("내용을 입력해야 합니다.");
+    } else {
+      navigate(`/question/${qId}`);
+      onEdit();
+    }
   };
   return (
     <>
@@ -123,17 +132,7 @@ const QuestionEdit = () => {
                 <QuestionViewer content={editContent} />
               </ResultArea>
               <ButtonCarrier>
-                <Link to={`/question/${qId}`}>
-                  <SaveButton
-                    onClick={() => {
-                      !(editContent === "")
-                        ? onEdit()
-                        : alert("답변이 작성 되어야 합니다.");
-                    }}
-                  >
-                    SaveEdits
-                  </SaveButton>
-                </Link>
+                <SaveButton onClick={goToMain}>SaveEdits</SaveButton>
                 <CancelButton>
                   <CancelLink to={`/question/${qId}`}>Cancel</CancelLink>
                 </CancelButton>
