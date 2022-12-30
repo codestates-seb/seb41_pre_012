@@ -8,6 +8,9 @@ const DeleteStyled = styled.div`
   color: #6a737c;
   margin: 4px;
   cursor: pointer;
+  :hover {
+    color: #838c95;
+  }
 `;
 
 const ModalContainer = styled.div`
