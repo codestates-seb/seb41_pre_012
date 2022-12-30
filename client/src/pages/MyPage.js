@@ -4,6 +4,8 @@ import Footer from "../components/Footer";
 import useravatar from "../img/Rhino.jpeg";
 // import { useParams } from "react-router-dom";
 // import useFetch from "../util/useFetch";
+import LogoutIcon from "@mui/icons-material/Logout";
+import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 
 const Page = styled.div`
   width: 100%;
@@ -16,26 +18,29 @@ const Page = styled.div`
 `;
 const Container = styled.div`
   width: 100%;
-  max-width: 1264px;
+  max-width: 1100px;
   height: 1080px;
   display: flex;
   flex-direction: column;
-  margin: 1 auto;
-  padding-left: 10px;
-  background: #d9d9d9;
+  padding: 24px;
+  border: solid #d6d9dc;
+  border-left-width: 1px;
+  border-top-width: 0;
+  border-bottom-width: 0;
+  border-right-width: 0;
 `;
 const UserBox = styled.div`
   width: 100%;
-  height: 20%;
   display: flex;
   flex-direction: row;
+  margin-bottom: 16px;
   @media screen and (max-width: 800px) {
     display: flex;
     flex-direction: column;
+    align-items: start;
   }
 `;
 const UserImgBox = styled.div`
-  width: 20%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -44,6 +49,8 @@ const UserImgBox = styled.div`
 const UserImg = styled.img`
   width: 128px;
   height: 128px;
+  margin: 8px;
+  border-radius: 5px;
   @media screen and (max-width: 1150px) {
     width: 96px;
     height: 96px;
@@ -59,6 +66,7 @@ const UserNameBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 8px;
   @media screen and (max-width: 800px) {
     flex-direction: column;
   }
@@ -73,15 +81,21 @@ const UserName = styled.p`
 const UserFunction = styled.p`
   font-size: 20px;
   margin-top: 5px;
+  margin: 8px;
 `;
 const UserButton = styled.button`
   background: inherit;
   border: none;
   box-shadow: none;
   border-radius: 0;
-  padding: 0;
+  padding: 3px;
   overflow: visible;
+  color: #6a737c;
   cursor: pointer;
+  .icon {
+    font-size: 13px;
+    padding-top: 3px;
+  }
 `;
 
 const StatsDetailBox = styled.div`
@@ -94,33 +108,28 @@ const StatsDetailBox = styled.div`
   }
 `;
 const StatsBox = styled.div`
-  width: 35%;
+  width: 25%;
   height: 100%;
-  margin-left: 20px;
   @media screen and (max-width: 800px) {
     width: 100%;
     height: 20%;
-    margin-left: 0px;
   }
 `;
 const DetailBox = styled.div`
-  width: 65%;
+  width: 80%;
   height: 100%;
-  margin-right: 20px;
   @media screen and (max-width: 800px) {
     width: 100%;
     height: 80%;
-    margin-right: 0px;
   }
 `;
 const QusetionAnswerBox = styled.div`
   width: 100%;
   height: 50%;
-  padding: 10px;
 `;
 const TextBox = styled.div`
   width: 100%;
-  height: 15%;
+  height: 10%;
   padding-left: 5px;
   font-size: 25px;
   display: flex;
@@ -130,27 +139,27 @@ const TextBox = styled.div`
   }
 `;
 const TextStatBox = styled(TextBox)`
-  height: 50px;
+  height: 5%;
   @media screen and (max-width: 800px) {
-    height: 40%;
-    margin: 0px;
+    margin-bottom: 10px;
   }
 `;
 const UserDataBox = styled.div`
   width: 100%;
   height: 80%;
   border-radius: 5px;
-  background: white;
+  background: #f8f9f9;
   text-align: center;
   font-size: 15px;
+  border: 1px solid #d7dadd;
 `;
 const UserStatBox = styled(UserDataBox)`
-  width: 80%;
-  height: 15%;
+  width: 90%;
+  height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  background: white;
   @media screen and (max-width: 1150px) {
     flex-direction: column;
   }
@@ -169,8 +178,15 @@ const UserStatDetailBox = styled.div`
   flex-direction: column;
 `;
 const UserStatDetailNumberBox = styled.div`
-  width: 60%;
+  width: 90%;
   text-align: left;
+  font-size: 20px;
+  padding-left: 10px;
+  margin-bottom: 3px;
+`;
+const UserStatDetailTextBox = styled(UserStatDetailNumberBox)`
+  font-size: 15px;
+  color: #8a9096;
 `;
 
 const MyPage = () => {
@@ -193,7 +209,12 @@ const MyPage = () => {
               <UserValue>
                 <UserName>윤뿔소</UserName>
                 <UserFunction>
-                  <UserButton>logout</UserButton> | <UserButton>edit</UserButton>
+                  <UserButton>
+                    log out <LogoutIcon className="icon" />
+                  </UserButton>
+                  <UserButton>
+                    | edit <PersonRemoveIcon className="icon" />
+                  </UserButton>
                 </UserFunction>
               </UserValue>
             </UserNameBox>
@@ -204,11 +225,11 @@ const MyPage = () => {
               <UserStatBox>
                 <UserStatDetailBox>
                   <UserStatDetailNumberBox>0</UserStatDetailNumberBox>
-                  <UserStatDetailNumberBox>answers</UserStatDetailNumberBox>
+                  <UserStatDetailTextBox>answers</UserStatDetailTextBox>
                 </UserStatDetailBox>
                 <UserStatDetailBox>
                   <UserStatDetailNumberBox>0</UserStatDetailNumberBox>
-                  <UserStatDetailNumberBox>questions</UserStatDetailNumberBox>
+                  <UserStatDetailTextBox>questions</UserStatDetailTextBox>
                 </UserStatDetailBox>
               </UserStatBox>
             </StatsBox>
