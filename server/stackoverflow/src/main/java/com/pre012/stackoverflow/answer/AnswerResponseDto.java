@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class AnswerResponseDto {
 
     private long aid;
-
+    private String img;
     private String UserInfo;
 
     private String content;

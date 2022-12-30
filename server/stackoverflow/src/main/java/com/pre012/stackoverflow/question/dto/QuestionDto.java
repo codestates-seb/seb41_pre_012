@@ -1,14 +1,11 @@
 package com.pre012.stackoverflow.question.dto;
 
-import com.pre012.stackoverflow.answer.AnswerResponseDto;
 import com.pre012.stackoverflow.question.entity.Question;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @NoArgsConstructor
@@ -17,7 +14,7 @@ import java.util.stream.Collectors;
 public class QuestionDto {
     private Long qid;
 
-    private Long mid;
+    private String img;
 
     private String userInfo;
 
@@ -32,14 +29,10 @@ public class QuestionDto {
     private Long view;
 
     public static QuestionDto result(Question question) {
-        List<AnswerResponseDto> answerResponseDtos = question.getAnswerList().stream().map(answer
-                -> new AnswerResponseDto(answer.getAid(), answer.getMember().getUsername(), answer.getContent(),
-                answer.getCreatedAt(), answer.getModifiedAt(), answer.isSelected(),
-                answer.getAnswerRecommend() == null ? 0 : answer.getAnswerRecommend().size())).collect(Collectors.toList());
 
         return QuestionDto.builder()
                 .qid(question.getQid())
-                .mid(question.getMember().getMid())
+                .img(question.getMember().getImg())
                 .userInfo(question.getMember().getUsername())
                 .title(question.getTitle())
                 .content(question.getContent())
