@@ -6,6 +6,7 @@ import useravatar from "../img/Rhino.jpeg";
 // import useFetch from "../util/useFetch";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
+import { useNavigate } from "react-router-dom";
 
 const Page = styled.div`
   width: 100%;
@@ -190,6 +191,12 @@ const UserStatDetailTextBox = styled(UserStatDetailNumberBox)`
 `;
 
 const MyPage = () => {
+  const navigate = useNavigate();
+  const deleteToken = () => {
+    localStorage.removeItem("Authorization");
+    navigate("/");
+    window.location.reload();
+  };
   // const url = "http://localhost:3001/Question";
   // const { id } = useParams();
   // const { questionData, loading } = useFetch(`${url}/${id}`);
@@ -209,7 +216,7 @@ const MyPage = () => {
               <UserValue>
                 <UserName>윤뿔소</UserName>
                 <UserFunction>
-                  <UserButton>
+                  <UserButton onClick={deleteToken}>
                     log out <LogoutIcon className="icon" />
                   </UserButton>
                   <UserButton>
