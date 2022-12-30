@@ -6,11 +6,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Api(tags = {"회원"})
 @RestController
@@ -57,10 +55,9 @@ public class MemberController {
     }
 
 
-    @GetMapping("/{mid}")
-    public ResponseEntity getAnswer(@PathVariable("mid") long mid,
-                                    @AuthenticationPrincipal String email){
-        Member member = memberService.getMember(mid, email);
+    @GetMapping
+    public ResponseEntity getAnswer(@AuthenticationPrincipal String email){
+        Member member = memberService.getMember(email);
         MemberDetailResponseDto response = memberMapper.memberToMemberDetailResponseDto(member);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
