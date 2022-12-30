@@ -25,7 +25,7 @@ const StyledSection = styled.section`
 `;
 
 const MainSection = styled.div`
-  width: calc(100% - 324px);
+  width: 100%;
 `;
 
 const Questions = styled.div`

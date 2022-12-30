@@ -80,7 +80,10 @@ const QuestionInfo = styled.div`
   }
 `;
 const PostLayout = styled.div`
-  width: calc(100% - 324px);
+  @media screen and (max-width: 980px) {
+    width: 100%;
+  }
+  width: calc(100% - 224px);
   float: left;
   .post-layout {
     display: grid;
