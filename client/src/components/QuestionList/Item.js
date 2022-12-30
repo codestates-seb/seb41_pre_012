@@ -69,6 +69,9 @@ const Title = styled.h3`
 const LinkStyled = styled(Link)`
   text-decoration: none;
   color: #2961b9;
+  :hover {
+    color: #0a95ff;
+  }
 `;
 
 const User = styled.div`

@@ -133,7 +133,7 @@ const AskQuestion = () => {
     }
   };
   const onCreate = async () => {
-    console.log(content);
+    fetchAskItem();
     await questionCreate(url, title, content);
     // .then((id) => {
     //   console.log(id);
