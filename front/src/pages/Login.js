@@ -131,13 +131,19 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const submitHandler = async () => {
+  const submitHandler = async (e) => {
+    e.preventDefault();
     dispatch(loginRequest());
     try {
-      const response = await axios.post("http://localhost:8080/login", {
-        email,
-        password,
+      const response = await axios.post("/login", {
+        email: email,
+        password: password,
       });
+      // console.log(response);
+      const jwtToken = response.headers.authorization;
+      localStorage.setItem("Authorization", jwtToken);
+      // const decoded = jwt.decode(jwtToken);
+      // console.log(decoded);
       dispatch(loginSuccess(response.data.user));
       navigate("/");
     } catch (error) {

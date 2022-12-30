@@ -153,10 +153,7 @@ const AskQuestion = () => {
           </QuestionHeader>
           <TitleBox>
             <Title>Title</Title>
-            <Desc>
-              Be specific and imagine you’re asking a question to another
-              person.
-            </Desc>
+            <Desc>Be specific and imagine you’re asking a question to another person.</Desc>
             <TitleInput
               type="text"
               placeholder="e.g. Is there an R function for finding the index of element in a vector?"
@@ -169,8 +166,7 @@ const AskQuestion = () => {
           <ProblemBox>
             <Title>What are the details of your problem?</Title>
             <Desc>
-              Introduce the problem and expand on what you put in the title.
-              Minimum 20 characters.
+              Introduce the problem and expand on what you put in the title. Minimum 20 characters.
             </Desc>
             <InputEditor setContent={setContent}></InputEditor>
           </ProblemBox>

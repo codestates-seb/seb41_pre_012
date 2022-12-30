@@ -203,15 +203,8 @@ const QuestionDetail = () => {
   const { questionData, loading } = useFetch(`${qUrl}/${id}`);
 
   if (questionData && !loading) {
-    const {
-      title,
-      content,
-      createdAt,
-      modifiedAt,
-      view,
-      question_recommend,
-      userInfo,
-    } = questionData;
+    const { title, content, createdAt, modifiedAt, view, question_recommend, userInfo } =
+      questionData;
 
     const onCreate = async () => {
       console.log(answer);
@@ -261,10 +254,7 @@ const QuestionDetail = () => {
                   <EditUserContainer>
                     <div className="container">
                       <div className="order-button">
-                        <EditLinkStyled
-                          to={`/edit`}
-                          state={{ id, title, content }}
-                        >
+                        <EditLinkStyled to={`/edit`} state={{ id, title, content }}>
                           Edit
                         </EditLinkStyled>
                         <Delete url={qUrl} id={id} />
@@ -276,17 +266,11 @@ const QuestionDetail = () => {
               </div>
               Answers
               <div className="answers">
-                <AnswerLists
-                  questionData={questionData}
-                  url={`${qUrl}/${id}`}
-                  qid={id}
-                />
+                <AnswerLists questionData={questionData} url={`${qUrl}/${id}`} qid={id} />
                 <form className="post-form">
                   <AnswerTitle>Your Answer</AnswerTitle>
                   <InputEditor setAnswer={setAnswer} />
-                  <PostAnswerBtn onClick={onCreate}>
-                    Post Your Answer
-                  </PostAnswerBtn>
+                  <PostAnswerBtn onClick={onCreate}>Post Your Answer</PostAnswerBtn>
                 </form>
               </div>
             </PostLayout>

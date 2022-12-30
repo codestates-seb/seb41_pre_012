@@ -56,5 +56,5 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0"
   },
-  "proxy": "https://f506-218-149-150-223.jp.ngrok.io"
+  "proxy": "https://8693-218-149-150-223.jp.ngrok.io/"
 }
