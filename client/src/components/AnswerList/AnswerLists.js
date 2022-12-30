@@ -1,9 +1,9 @@
 import AnswerItem from "./AnswerItem";
 
 AnswerItem;
-const AnswerLists = ({ questionData, url, qid }) => {
+const AnswerLists = ({ questionData, qid }) => {
   return questionData.answer_list.map((item) => (
-    <AnswerItem key={item.aid} answerData={item} url={url} qId={qid} />
+    <AnswerItem key={item.aid} answerData={item} qId={qid} />
   ));
 };
 

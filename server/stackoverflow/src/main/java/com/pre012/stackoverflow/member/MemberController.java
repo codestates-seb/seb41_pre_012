@@ -40,7 +40,6 @@ public class MemberController {
     }
 
 
-
     @PatchMapping("/{mid}")
     @ApiOperation(value = "회원정보 수정", notes = "회원정보 수정 API")
     public ResponseEntity patchAnswer(@PathVariable("mid") long mid,
@@ -56,16 +55,11 @@ public class MemberController {
 
 
     @ApiOperation(value = "내 질문,내 답변 조회", notes = "내 질문,내 답변 조회 API")
-    @GetMapping("/{mid}")
-    public ResponseEntity getAnswer(@PathVariable("mid") long mid,
-                                    @AuthenticationPrincipal String email){
-        Member member = memberService.getMember(mid, email);
+    @GetMapping
+    public ResponseEntity getAnswer(@AuthenticationPrincipal String email){
+        Member member = memberService.getMember(email);
         MemberDetailResponseDto response = memberMapper.memberToMemberDetailResponseDto(member);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
-
-
-
 }

@@ -6,6 +6,9 @@ import useravatar from "../img/Rhino.jpeg";
 // import useFetch from "../util/useFetch";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+// import axios from "axios";
 
 const Page = styled.div`
   width: 100%;
@@ -190,12 +193,28 @@ const UserStatDetailTextBox = styled(UserStatDetailNumberBox)`
 `;
 
 const MyPage = () => {
-  // const url = "http://localhost:3001/Question";
-  // const { id } = useParams();
-  // const { questionData, loading } = useFetch(`${url}/${id}`);
+  const navigate = useNavigate();
+  const deleteToken = () => {
+    localStorage.removeItem("Authorization");
+    navigate("/");
+    window.location.reload();
+  };
 
-  // if (questionData && !loading) {
-  //   const { userInfo } = questionData;
+  const userRead = async () => {
+    try {
+      const jwtToken = localStorage.getItem("Authorization");
+      const headers = {
+        Authorization: jwtToken,
+      };
+      const response = await axios.get("/members", { headers });
+      console.log(response.data);
+      // window.location.reload();
+    } catch (error) {
+      console.error("Error", error);
+    }
+  };
+  userRead();
+
   return (
     <>
       <Page>
@@ -209,7 +228,7 @@ const MyPage = () => {
               <UserValue>
                 <UserName>윤뿔소</UserName>
                 <UserFunction>
-                  <UserButton>
+                  <UserButton onClick={deleteToken}>
                     log out <LogoutIcon className="icon" />
                   </UserButton>
                   <UserButton>

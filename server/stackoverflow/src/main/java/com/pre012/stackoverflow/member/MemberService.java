@@ -3,12 +3,9 @@ package com.pre012.stackoverflow.member;
 import com.pre012.stackoverflow.auth.CustomAuthorityUtils;
 import com.pre012.stackoverflow.exception.BusinessLogicException;
 import com.pre012.stackoverflow.exception.ExceptionCode;
-import com.pre012.stackoverflow.question.entity.Question;
-import com.pre012.stackoverflow.question.repository.QuestionRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,18 +14,16 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
 
-    private final QuestionRepository questionRepository;
 
-    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder, CustomAuthorityUtils authorityUtils, QuestionRepository questionRepository) {
+    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder, CustomAuthorityUtils authorityUtils) {
         this.memberRepository = memberRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityUtils = authorityUtils;
-        this.questionRepository = questionRepository;
     }
 
 
 
-    public Member createMember(Member member) throws Exception {
+    public Member createMember(Member member) {
         if (memberRepository.findByEmail(member.getEmail()).isPresent()) {
             throw new BusinessLogicException(ExceptionCode.MEMBER_EXIST);
         }
@@ -68,13 +63,7 @@ public class MemberService {
     }
 
 
-    public Member getMember(long mid, String email) {
-        Member findMember = memberRepository.findById(mid).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
-
-        if (!findMember.getEmail().equals(email)) {
-            throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_ALLOWED);
-        }
-
-        return findMember;
+    public Member getMember(String email) {
+        return memberRepository.findByEmail(email).orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
     }
 }

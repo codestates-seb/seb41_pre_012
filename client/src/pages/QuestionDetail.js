@@ -216,8 +216,7 @@ const QuestionDetail = () => {
       questionData;
 
     const onCreate = async () => {
-      console.log(answer);
-      await answerCreate(qUrl, id, answer);
+      await answerCreate(id, answer);
       setAnswer("");
     };
     return (
@@ -275,7 +274,7 @@ const QuestionDetail = () => {
               </div>
               Answers
               <div className="answers">
-                <AnswerLists questionData={questionData} url={`${qUrl}/${id}`} qid={id} />
+                <AnswerLists questionData={questionData} qid={id} />
                 <form className="post-form">
                   <AnswerTitle>Your Answer</AnswerTitle>
                   <InputEditor setAnswer={setAnswer} />
