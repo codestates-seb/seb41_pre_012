@@ -34,7 +34,7 @@ const ModalView = styled.div.attrs(() => ({
   background-color: #fff;
   border-radius: 7px;
   padding: 24px;
-  width: 510px;
+  width: 450px;
   height: 173px;
   box-shadow: 1px 0px 86px -17px rgba(0, 0, 0, 0.75);
 

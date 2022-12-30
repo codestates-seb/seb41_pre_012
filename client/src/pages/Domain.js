@@ -14,6 +14,9 @@ const Container = styled.div`
 `;
 
 const StyledSection = styled.section`
+  @media screen and (max-width: 640px) {
+    width: 100%;
+  }
   max-width: 1100px;
   width: calc(100% - 164px);
   padding: 24px;
