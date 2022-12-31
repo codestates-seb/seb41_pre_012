@@ -6,6 +6,7 @@ import LeftSidebar from "../components/LetfSidebar";
 import { answerUpdate } from "../util/answerAPI";
 import InputEditor from "../components/InputEditor";
 import QuestionViewer from "../components/Viewer";
+import swal from "sweetalert";
 
 const Container = styled.div`
   width: 100%;
@@ -111,7 +112,7 @@ const AnswerEdit = () => {
   };
   const goTo = () => {
     if (editContent === "") {
-      alert("내용을 입력해야 합니다.");
+      swal("답변 수정 불가", "내용을 입력해야 합니다.", "error");
     } else {
       navigate(`/question/${qId}`);
       onEdit();

@@ -5,8 +5,13 @@ import githubImg from "../img/githubImg.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import { loginRequest, loginSuccess, loginError } from "../util/store/slice/loginSlice";
+import {
+  loginRequest,
+  loginSuccess,
+  loginError,
+} from "../util/store/slice/loginSlice";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const url = "https://d9ab-218-149-150-223.jp.ngrok.io";
 
@@ -73,8 +78,8 @@ const InputForm = styled.form`
   text-align: left;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05), 0 20px 48px hsla(0, 0%, 0%, 0.05),
-    0 1px 4px hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05),
+    0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
 `;
 
 const InputLabel = styled.label`
@@ -147,7 +152,7 @@ const Login = () => {
       navigate("/");
       window.location.reload();
     } catch (error) {
-      alert("이메일 혹은 비밀번호가 틀렸어잉~");
+      swal("로그인 실패", "이메일 혹은 비밀번호가 틀렸습니다.", "error");
       dispatch(loginError(error.message));
     }
   };
@@ -172,7 +177,11 @@ const Login = () => {
           <InputLabel>Email</InputLabel>
           <InputBox type="email" value={email} onChange={emailHandler} />
           <InputLabel>Password</InputLabel>
-          <InputBox type="password" value={password} onChange={passwordHandler} />
+          <InputBox
+            type="password"
+            value={password}
+            onChange={passwordHandler}
+          />
           <LoginBtn onClick={submitHandler}>Log in</LoginBtn>
         </InputForm>
         <DesBox>

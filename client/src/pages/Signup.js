@@ -5,6 +5,7 @@ import githubImg from "../img/githubImg.svg";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const url = "https://d9ab-218-149-150-223.jp.ngrok.io";
 
@@ -71,8 +72,8 @@ const InputForm = styled.div`
   text-align: left;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05), 0 20px 48px hsla(0, 0%, 0%, 0.05),
-    0 1px 4px hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05),
+    0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
 `;
 
 const InputLabel = styled.label`
@@ -136,7 +137,7 @@ const Signup = () => {
 
   const submitHandler = async () => {
     if (email === "" || username === "" || password === "") {
-      alert("빈칸 있어잉~ 채워줘잉~");
+      swal("회원가입 실패", "빈 칸이 없어야 합니다.", "error");
     } else {
       try {
         await axios
@@ -175,7 +176,11 @@ const Signup = () => {
           <InputLabel>Email</InputLabel>
           <InputBox type="email" value={email} onChange={emailHandler} />
           <InputLabel>Password</InputLabel>
-          <InputBox type="password" value={password} onChange={passwordHandler} />
+          <InputBox
+            type="password"
+            value={password}
+            onChange={passwordHandler}
+          />
           <SignupBtn onClick={submitHandler}>Sign up</SignupBtn>
         </InputForm>
         <DesBox>

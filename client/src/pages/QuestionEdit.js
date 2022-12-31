@@ -6,6 +6,7 @@ import LeftSidebar from "../components/LetfSidebar";
 import { questionUpdate } from "../util/questionAPI";
 import InputEditor from "../components/InputEditor";
 import QuestionViewer from "../components/Viewer";
+import swal from "sweetalert";
 
 const Container = styled.div`
   width: 100%;
@@ -151,9 +152,9 @@ const QuestionEdit = () => {
   };
   const goTo = () => {
     if (editTitle === "") {
-      alert("제목을 입력해야 합니다.");
+      swal("답변 수정 실패", "제목을 입력해야 합니다.", "error");
     } else if (editContent === "") {
-      alert("내용을 입력해야 합니다.");
+      swal("답변 수정 실패", "내용을 입력해야 합니다.", "error");
     } else {
       navigate(`/question/${id}`);
       onEdit();
@@ -167,12 +168,15 @@ const QuestionEdit = () => {
           <MainSection>
             <EditBox>
               <TipBox>
-                <Tipp>Your edit will be placed in a queue until it is peer reviewed.</Tipp>
                 <Tipp>
-                  We welcome edits that make the post easier to understand and more valuable for
-                  readers. Because community members review edits, please try to make the post
-                  substantially better than how you found it, for example, by fixing grammar or
-                  adding additional resources and hyperlinks.
+                  Your edit will be placed in a queue until it is peer reviewed.
+                </Tipp>
+                <Tipp>
+                  We welcome edits that make the post easier to understand and
+                  more valuable for readers. Because community members review
+                  edits, please try to make the post substantially better than
+                  how you found it, for example, by fixing grammar or adding
+                  additional resources and hyperlinks.
                 </Tipp>
               </TipBox>
               <TextAreaName>Title</TextAreaName>

@@ -4,6 +4,7 @@ import LeftSidebar from "../components/LetfSidebar";
 import RightSidebar from "../components/RightSidebar";
 import ItemLists from "../components/QuestionList/ItemLists";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const Container = styled.div`
   width: 100%;
@@ -123,7 +124,7 @@ const Domain = ({ questionData, loading }) => {
     if (jwtToken) {
       navigate("/ask");
     } else {
-      alert("로그인 해줘잉!");
+      swal("권한이 없습니다.", "로그인을 해주셔야 합니다.", "warning");
       navigate("/login");
     }
   };
@@ -141,7 +142,12 @@ const Domain = ({ questionData, loading }) => {
                 </LinkStyled>
               </TopContainer>
               <ButtonContainer>
-                <div>{!loading && questionData ? questionData.length : "Loading..."} questions</div>
+                <div>
+                  {!loading && questionData
+                    ? questionData.length
+                    : "Loading..."}{" "}
+                  questions
+                </div>
                 <SortButtonContainer>
                   <SortButtonLeft>Newest</SortButtonLeft>
                   <SortButton>Unanswered</SortButton>
@@ -149,7 +155,11 @@ const Domain = ({ questionData, loading }) => {
               </ButtonContainer>
             </HeadlineContainer>
             <Questions>
-              {!loading && questionData ? <ItemLists questionData={questionData} /> : "Loading..."}
+              {!loading && questionData ? (
+                <ItemLists questionData={questionData} />
+              ) : (
+                "Loading..."
+              )}
             </Questions>
           </MainSection>
           <RightSidebar />

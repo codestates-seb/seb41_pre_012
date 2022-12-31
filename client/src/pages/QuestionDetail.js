@@ -13,6 +13,7 @@ import InputEditor from "../components/InputEditor";
 import { useState } from "react";
 import { answerCreate } from "../util/answerAPI";
 import AnswerLists from "../components/AnswerList/AnswerLists";
+import swal from "sweetalert";
 
 const InnerContent = styled.div`
   width: 100%;
@@ -216,14 +217,21 @@ const QuestionDetail = () => {
   const jwtToken = localStorage.getItem("Authorization");
 
   if (questionData && !loading) {
-    const { title, content, createdAt, modifiedAt, view, question_recommend, userInfo } =
-      questionData;
+    const {
+      title,
+      content,
+      createdAt,
+      modifiedAt,
+      view,
+      question_recommend,
+      userInfo,
+    } = questionData;
 
     const nextLevel = () => {
       if (jwtToken) {
         navigate("/ask");
       } else {
-        alert("로그인 해줘잉!");
+        swal("권한이 없습니다.", "로그인을 해주셔야 합니다.", "warning");
         navigate("/login");
       }
     };
@@ -233,7 +241,11 @@ const QuestionDetail = () => {
     };
     const goTo = () => {
       if (answer === "") {
-        alert("내용을 입력해야 합니다.");
+        swal(
+          "답변 작성 실패",
+          "빈칸이 있습니다. 내용을 채워주셔야 합니다.",
+          "warning"
+        );
       } else if (jwtToken === null) {
         navigate(`/login`);
       } else {
@@ -283,7 +295,10 @@ const QuestionDetail = () => {
                   <EditUserContainer>
                     <div className="container">
                       <div className="order-button">
-                        <EditLinkStyled to={`/edit`} state={{ id, title, content }}>
+                        <EditLinkStyled
+                          to={`/edit`}
+                          state={{ id, title, content }}
+                        >
                           Edit
                         </EditLinkStyled>
                         <Delete url={qUrl} id={id} />
