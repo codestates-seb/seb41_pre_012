@@ -8,6 +8,8 @@ import axios from "axios";
 import { loginRequest, loginSuccess, loginError } from "../util/store/slice/loginSlice";
 import { useNavigate } from "react-router-dom";
 
+const url = "https://d9ab-218-149-150-223.jp.ngrok.io";
+
 const StyledLogin = styled.div`
   width: 100%;
   height: 100vh;
@@ -135,7 +137,7 @@ const Login = () => {
     e.preventDefault();
     dispatch(loginRequest());
     try {
-      const response = await axios.post("/login", {
+      const response = await axios.post(`${url}/login`, {
         email: email,
         password: password,
       });

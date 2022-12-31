@@ -6,6 +6,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const url = "https://d9ab-218-149-150-223.jp.ngrok.io";
+
 const StyledSignup = styled.div`
   width: 100%;
   height: 100vh;
@@ -138,7 +140,7 @@ const Signup = () => {
     } else {
       try {
         await axios
-          .post("/members", {
+          .post(`${url}/members`, {
             email: email,
             username: username,
             password: password,
