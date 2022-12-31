@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { questionDelete } from "../util/questionAPI";
 
@@ -98,20 +98,21 @@ const ModalCloseBtn = styled.button`
 `;
 
 const Delete = ({ url, id }) => {
+  const navigate = useNavigate();
+  const jwtToken = localStorage.getItem("Authorization");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const modalOpenHandler = () => {
+    if (!jwtToken) {
+      alert("권한이 없어잉~ 확인으로 로그인 해줘잉!");
+      navigate("/login");
+    }
     setIsModalOpen(true);
   };
   const modalCloseHandler = () => {
     setIsModalOpen(false);
   };
 
-  const onKeyPress = (e) => {
-    if (e.key === "Enter") {
-      questionDelete(url, id);
-    }
-  };
   const onRemove = () => {
     questionDelete(url, id);
   };
@@ -127,9 +128,7 @@ const Delete = ({ url, id }) => {
               <Text>Are you sure you want to discard this question?</Text>
               <div className="button-container">
                 <Link to="/">
-                  <DeleteBtn onClick={onRemove} onKeyPress={onKeyPress}>
-                    Discard question
-                  </DeleteBtn>
+                  <DeleteBtn onClick={onRemove}>Discard question</DeleteBtn>
                 </Link>
                 <ModalCloseBtn onClick={modalCloseHandler}>Cancel</ModalCloseBtn>
               </div>

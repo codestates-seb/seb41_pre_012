@@ -129,12 +129,11 @@ const AskQuestion = () => {
   };
 
   const goTo = () => {
-    if (title === "") {
-      alert("제목을 입력해야 합니다.");
-    } else if (content === "") {
-      alert("내용을 입력해야 합니다.");
-    } else if (jwtToken === null) {
+    if (jwtToken === null) {
+      alert("계정이 없어잉~ 로그인 해줘잉");
       navigate(`/login`);
+    } else if (title === "" || content === "") {
+      alert("빈칸이 있습니다. 내용을 채워주세요.");
     } else {
       navigate(`/`);
       onCreate();
@@ -151,10 +150,7 @@ const AskQuestion = () => {
           </QuestionHeader>
           <TitleBox>
             <Title>Title</Title>
-            <Desc>
-              Be specific and imagine you’re asking a question to another
-              person.
-            </Desc>
+            <Desc>Be specific and imagine you’re asking a question to another person.</Desc>
             <TitleInput
               type="text"
               placeholder="e.g. Is there an R function for finding the index of element in a vector?"
@@ -167,8 +163,7 @@ const AskQuestion = () => {
           <ProblemBox>
             <Title>What are the details of your problem?</Title>
             <Desc>
-              Introduce the problem and expand on what you put in the title.
-              Minimum 20 characters.
+              Introduce the problem and expand on what you put in the title. Minimum 20 characters.
             </Desc>
             <InputEditor setContent={setContent}></InputEditor>
           </ProblemBox>
