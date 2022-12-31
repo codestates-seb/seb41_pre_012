@@ -5,11 +5,7 @@ import githubImg from "../img/githubImg.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import {
-  loginRequest,
-  loginSuccess,
-  loginError,
-} from "../util/store/slice/loginSlice";
+import { loginRequest, loginSuccess, loginError } from "../util/store/slice/loginSlice";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
@@ -78,8 +74,8 @@ const InputForm = styled.form`
   text-align: left;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05),
-    0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05), 0 20px 48px hsla(0, 0%, 0%, 0.05),
+    0 1px 4px hsla(0, 0%, 0%, 0.1);
 `;
 
 const InputLabel = styled.label`
@@ -177,11 +173,7 @@ const Login = () => {
           <InputLabel>Email</InputLabel>
           <InputBox type="email" value={email} onChange={emailHandler} />
           <InputLabel>Password</InputLabel>
-          <InputBox
-            type="password"
-            value={password}
-            onChange={passwordHandler}
-          />
+          <InputBox type="password" value={password} onChange={passwordHandler} />
           <LoginBtn onClick={submitHandler}>Log in</LoginBtn>
         </InputForm>
         <DesBox>

@@ -72,8 +72,8 @@ const InputForm = styled.div`
   text-align: left;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05),
-    0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05), 0 20px 48px hsla(0, 0%, 0%, 0.05),
+    0 1px 4px hsla(0, 0%, 0%, 0.1);
 `;
 
 const InputLabel = styled.label`
@@ -176,11 +176,7 @@ const Signup = () => {
           <InputLabel>Email</InputLabel>
           <InputBox type="email" value={email} onChange={emailHandler} />
           <InputLabel>Password</InputLabel>
-          <InputBox
-            type="password"
-            value={password}
-            onChange={passwordHandler}
-          />
+          <InputBox type="password" value={password} onChange={passwordHandler} />
           <SignupBtn onClick={submitHandler}>Sign up</SignupBtn>
         </InputForm>
         <DesBox>

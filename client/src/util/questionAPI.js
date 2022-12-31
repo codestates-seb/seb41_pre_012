@@ -1,6 +1,7 @@
 import axios from "axios";
 const jwtToken = localStorage.getItem("Authorization");
 axios.defaults.headers.common["Authorization"] = `${jwtToken}`;
+import swal from "sweetalert";
 
 const url = "https://d9ab-218-149-150-223.jp.ngrok.io";
 
@@ -25,7 +26,7 @@ export const questionUpdate = async (qid, title, content) => {
     });
     window.location.reload();
   } catch (error) {
-    alert("본인이 쓰지않는 글은 수정 불가잉~");
+    swal("권한이 없습니다.", "본인이 작성하지 않은 글은 수정 불가능합니다.", "warning");
     console.error("Error", error);
   }
 };
@@ -35,7 +36,7 @@ export const questionDelete = async (id) => {
     await axios.delete(`${url}/questions/${id}`);
     window.location.reload();
   } catch (error) {
-    alert("본인이 쓰지않는 글은 삭제 불가잉~");
+    swal("권한이 없습니다.", "본인이 작성하지 않은 글은 삭제 불가능합니다.", "warning");
     console.error("Error", error);
   }
 };

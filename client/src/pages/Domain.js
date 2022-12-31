@@ -142,12 +142,7 @@ const Domain = ({ questionData, loading }) => {
                 </LinkStyled>
               </TopContainer>
               <ButtonContainer>
-                <div>
-                  {!loading && questionData
-                    ? questionData.length
-                    : "Loading..."}{" "}
-                  questions
-                </div>
+                <div>{!loading && questionData ? questionData.length : "Loading..."} questions</div>
                 <SortButtonContainer>
                   <SortButtonLeft>Newest</SortButtonLeft>
                   <SortButton>Unanswered</SortButton>
@@ -155,11 +150,7 @@ const Domain = ({ questionData, loading }) => {
               </ButtonContainer>
             </HeadlineContainer>
             <Questions>
-              {!loading && questionData ? (
-                <ItemLists questionData={questionData} />
-              ) : (
-                "Loading..."
-              )}
+              {!loading && questionData ? <ItemLists questionData={questionData} /> : "Loading..."}
             </Questions>
           </MainSection>
           <RightSidebar />

@@ -217,15 +217,8 @@ const QuestionDetail = () => {
   const jwtToken = localStorage.getItem("Authorization");
 
   if (questionData && !loading) {
-    const {
-      title,
-      content,
-      createdAt,
-      modifiedAt,
-      view,
-      question_recommend,
-      userInfo,
-    } = questionData;
+    const { title, content, createdAt, modifiedAt, view, question_recommend, userInfo } =
+      questionData;
 
     const nextLevel = () => {
       if (jwtToken) {
@@ -241,11 +234,7 @@ const QuestionDetail = () => {
     };
     const goTo = () => {
       if (answer === "") {
-        swal(
-          "답변 작성 실패",
-          "빈칸이 있습니다. 내용을 채워주셔야 합니다.",
-          "warning"
-        );
+        swal("답변 작성 실패", "빈칸이 있습니다. 내용을 채워주셔야 합니다.", "warning");
       } else if (jwtToken === null) {
         navigate(`/login`);
       } else {
@@ -295,10 +284,7 @@ const QuestionDetail = () => {
                   <EditUserContainer>
                     <div className="container">
                       <div className="order-button">
-                        <EditLinkStyled
-                          to={`/edit`}
-                          state={{ id, title, content }}
-                        >
+                        <EditLinkStyled to={`/edit`} state={{ id, title, content }}>
                           Edit
                         </EditLinkStyled>
                         <Delete url={qUrl} id={id} />

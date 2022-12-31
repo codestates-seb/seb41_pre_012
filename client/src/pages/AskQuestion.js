@@ -131,18 +131,10 @@ const AskQuestion = () => {
 
   const goTo = () => {
     if (jwtToken === null) {
-      swal(
-        "권한이 없습니다.",
-        "로그인 상태에서만 질문 작성이 가능합니다.",
-        "warning"
-      );
+      swal("권한이 없습니다.", "로그인 상태에서만 질문 작성이 가능합니다.", "warning");
       navigate(`/login`);
     } else if (title === "" || content === "") {
-      swal(
-        "질문 작성 실패",
-        "빈칸이 있습니다. 내용을 채워주셔야 합니다.",
-        "error"
-      );
+      swal("질문 작성 실패", "빈칸이 있습니다. 내용을 채워주셔야 합니다.", "error");
     } else {
       navigate(`/`);
       onCreate();
@@ -159,10 +151,7 @@ const AskQuestion = () => {
           </QuestionHeader>
           <TitleBox>
             <Title>Title</Title>
-            <Desc>
-              Be specific and imagine you’re asking a question to another
-              person.
-            </Desc>
+            <Desc>Be specific and imagine you’re asking a question to another person.</Desc>
             <TitleInput
               type="text"
               placeholder="e.g. Is there an R function for finding the index of element in a vector?"
@@ -175,8 +164,7 @@ const AskQuestion = () => {
           <ProblemBox>
             <Title>What are the details of your problem?</Title>
             <Desc>
-              Introduce the problem and expand on what you put in the title.
-              Minimum 20 characters.
+              Introduce the problem and expand on what you put in the title. Minimum 20 characters.
             </Desc>
             <InputEditor content={content} setContent={setContent}></InputEditor>
           </ProblemBox>

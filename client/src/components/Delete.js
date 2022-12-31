@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { questionDelete } from "../util/questionAPI";
+import swal from "sweetalert";
 
 const DeleteStyled = styled.div`
   text-decoration: none;
@@ -104,7 +105,7 @@ const Delete = ({ url, id }) => {
 
   const modalOpenHandler = () => {
     if (!jwtToken) {
-      alert("권한이 없어잉~ 확인으로 로그인 해줘잉!");
+      swal("권한이 없습니다.", "삭제할 권한이 필요합니다.", "warning");
       navigate("/login");
     }
     setIsModalOpen(true);

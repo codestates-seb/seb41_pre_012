@@ -168,15 +168,12 @@ const QuestionEdit = () => {
           <MainSection>
             <EditBox>
               <TipBox>
+                <Tipp>Your edit will be placed in a queue until it is peer reviewed.</Tipp>
                 <Tipp>
-                  Your edit will be placed in a queue until it is peer reviewed.
-                </Tipp>
-                <Tipp>
-                  We welcome edits that make the post easier to understand and
-                  more valuable for readers. Because community members review
-                  edits, please try to make the post substantially better than
-                  how you found it, for example, by fixing grammar or adding
-                  additional resources and hyperlinks.
+                  We welcome edits that make the post easier to understand and more valuable for
+                  readers. Because community members review edits, please try to make the post
+                  substantially better than how you found it, for example, by fixing grammar or
+                  adding additional resources and hyperlinks.
                 </Tipp>
               </TipBox>
               <TextAreaName>Title</TextAreaName>
