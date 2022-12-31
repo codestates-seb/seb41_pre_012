@@ -194,6 +194,8 @@ const UserStatDetailTextBox = styled(UserStatDetailNumberBox)`
 
 const MyPage = () => {
   const navigate = useNavigate();
+  const jwtToken = localStorage.getItem("Authorization");
+  axios.defaults.headers.common["Authorization"] = `${jwtToken}`;
   const deleteToken = () => {
     localStorage.removeItem("Authorization");
     navigate("/");
@@ -202,11 +204,7 @@ const MyPage = () => {
 
   const userRead = async () => {
     try {
-      const jwtToken = localStorage.getItem("Authorization");
-      const headers = {
-        Authorization: jwtToken,
-      };
-      const response = await axios.get("/members", { headers });
+      const response = await axios.get("/members");
       console.log(response.data);
       // window.location.reload();
     } catch (error) {
