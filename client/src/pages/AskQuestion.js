@@ -178,7 +178,7 @@ const AskQuestion = () => {
               Introduce the problem and expand on what you put in the title.
               Minimum 20 characters.
             </Desc>
-            <InputEditor setContent={setContent}></InputEditor>
+            <InputEditor content={content} setContent={setContent}></InputEditor>
           </ProblemBox>
           <RegisterBtn onClick={goTo}>Post your question</RegisterBtn>
           <CancleBtn>Discard draft</CancleBtn>
