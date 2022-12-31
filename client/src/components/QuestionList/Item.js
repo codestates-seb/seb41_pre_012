@@ -31,7 +31,7 @@ const Votes = styled.div`
   white-space: nowrap;
   border: 1px solid transparent;
 `;
-const Answers = styled.div`
+const Answer = styled.div`
   display: inline-flex;
   gap: 0.3em;
   align-items: center;
@@ -39,6 +39,21 @@ const Answers = styled.div`
   white-space: nowrap;
   border: 1px solid transparent;
   color: #6a737d;
+`;
+const Answers = styled.div`
+  display: inline-flex;
+  gap: 0.3em;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border: 1px solid #2f6f44;
+  color: #2f6f44;
+  border-radius: 3px;
+  padding: 3px 5px;
+  span {
+    font-size: 14px;
+    font-weight: 500;
+  }
 `;
 const Views = styled.div`
   display: inline-flex;
@@ -92,7 +107,14 @@ const Item = ({ questionData }) => {
     <ItemContainer>
       <VotesAnswersViews>
         <Votes>{question_recommend} votes</Votes>
-        <Answers>{answer_list.length} answers</Answers>
+        {answer_list.length ? (
+          <Answers>
+            <span>{answer_list.length}</span> answers
+          </Answers>
+        ) : (
+          <Answer>{answer_list.length} answers</Answer>
+        )}
+
         <Views>{view} views</Views>
       </VotesAnswersViews>
       <TitleContentUser>
