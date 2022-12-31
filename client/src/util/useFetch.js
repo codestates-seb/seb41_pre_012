@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+const url = "http://localhost:3001/Question";
 
-function useFetch(url) {
+function useFetch() {
   //null설정한 이유: 모든 data가 같진 않기 때문
   const [questionData, setQuestionData] = useState(null);
   const [loading, setLoading] = useState(false);

@@ -17,8 +17,7 @@ const StyledApp = styled.div`
 `;
 
 function App() {
-  const url = "http://localhost:3001/Question";
-  const { questionData, loading } = useFetch(url);
+  const { questionData, loading } = useFetch();
   console.log(questionData);
 
   return (
@@ -26,10 +25,7 @@ function App() {
       <Header />
       <StyledApp>
         <Routes>
-          <Route
-            path="/"
-            element={<Domain questionData={questionData} loading={loading} />}
-          />
+          <Route path="/" element={<Domain questionData={questionData} loading={loading} />} />
           <Route path="/ask" element={<AskQuestion />} />
           <Route path="/question/:id" element={<QuestionDetail />} />
           <Route path="/edit" element={<QuestionEdit />} />

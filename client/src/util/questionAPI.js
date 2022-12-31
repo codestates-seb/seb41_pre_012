@@ -2,27 +2,7 @@ import axios from "axios";
 const jwtToken = localStorage.getItem("Authorization");
 axios.defaults.headers.common["Authorization"] = `${jwtToken}`;
 
-const url = "http://localhost:3001/Question";
-
-export const questionRead = async () => {
-  try {
-    const response = await axios.get(url);
-    console.log(response.data);
-    // window.location.reload();
-  } catch (error) {
-    console.error("Error", error);
-  }
-};
-
-export const questionDetail = async (id) => {
-  try {
-    const response = await axios.get(`http://localhost:3001/Question/${id}`);
-    console.log(response.data);
-    // window.location.reload();
-  } catch (error) {
-    console.error("Error", error);
-  }
-};
+const url = "https://d9ab-218-149-150-223.jp.ngrok.io";
 
 // title, content, userInfo(아이디) 만 넘겨줘도 됨 나중에~
 export const questionCreate = async (title, content) => {
@@ -39,7 +19,7 @@ export const questionCreate = async (title, content) => {
 
 export const questionUpdate = async (qid, title, content) => {
   try {
-    await axios.patch(`/questions/${qid}`, {
+    await axios.patch(`${url}/questions/${qid}`, {
       title: title,
       content: content,
     });
@@ -51,7 +31,7 @@ export const questionUpdate = async (qid, title, content) => {
 
 export const questionDelete = async (id) => {
   try {
-    await axios.delete(`/questions/${id}`);
+    await axios.delete(`${url}/questions/${id}`);
     window.location.reload();
   } catch (error) {
     console.error("Error", error);
