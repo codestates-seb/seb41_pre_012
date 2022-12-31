@@ -125,7 +125,7 @@ const AnswerEdit = () => {
           <MainSection>
             <EditBox>
               <TextAreaAnswer>Answer</TextAreaAnswer>
-              <InputEditor content={editContent} setContent={setEditContent} />
+              <InputEditor setContent={setEditContent} />
               <ResultArea>
                 <QuestionViewer content={editContent} />
               </ResultArea>
