@@ -298,7 +298,7 @@ const QuestionDetail = () => {
                 <AnswerLists questionData={questionData} qid={id} />
                 <form className="post-form">
                   <AnswerTitle>Your Answer</AnswerTitle>
-                  <InputEditor setAnswer={setAnswer} />
+                  <InputEditor content={answer} setContent={setAnswer} />
                   <PostAnswerBtn onClick={goTo}>Post Your Answer</PostAnswerBtn>
                 </form>
               </div>
