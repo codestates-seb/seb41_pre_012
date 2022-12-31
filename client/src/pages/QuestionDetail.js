@@ -165,7 +165,9 @@ const UserInfo = styled.div`
   width: 200px;
 `;
 
-const AskLinkStyled = styled(Link)`
+const AskLinkStyled = styled.button`
+  border: 0;
+  background-color: #fff;
   text-decoration: none;
   color: #fff;
 `;
@@ -209,21 +211,22 @@ const QuestionDetail = () => {
   const [answer, setAnswer] = useState("");
   const qUrl = "http://localhost:3001/Question";
   const { id } = useParams();
-  const { questionData, loading } = useFetch(`${qUrl}/${id}`);
+  const { questionData, loading } = useFetch(id);
   const navigate = useNavigate();
   const jwtToken = localStorage.getItem("Authorization");
 
   if (questionData && !loading) {
-    const {
-      title,
-      content,
-      createdAt,
-      modifiedAt,
-      view,
-      question_recommend,
-      userInfo,
-    } = questionData;
+    const { title, content, createdAt, modifiedAt, view, question_recommend, userInfo } =
+      questionData;
 
+    const nextLevel = () => {
+      if (jwtToken) {
+        navigate("/ask");
+      } else {
+        alert("로그인 해줘잉!");
+        navigate("/login");
+      }
+    };
     const onCreate = async () => {
       await answerCreate(id, answer);
       setAnswer("");
@@ -244,7 +247,7 @@ const QuestionDetail = () => {
           <StyledSection>
             <QuestionHeader>
               <QuestionTitle>{title}</QuestionTitle>
-              <AskLinkStyled to="/ask">
+              <AskLinkStyled onClick={nextLevel}>
                 <AskQuestion>Ask Question</AskQuestion>
               </AskLinkStyled>
             </QuestionHeader>
@@ -280,10 +283,7 @@ const QuestionDetail = () => {
                   <EditUserContainer>
                     <div className="container">
                       <div className="order-button">
-                        <EditLinkStyled
-                          to={`/edit`}
-                          state={{ id, title, content }}
-                        >
+                        <EditLinkStyled to={`/edit`} state={{ id, title, content }}>
                           Edit
                         </EditLinkStyled>
                         <Delete url={qUrl} id={id} />

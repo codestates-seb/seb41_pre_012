@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
 import RightSidebar from "../components/RightSidebar";
 import ItemLists from "../components/QuestionList/ItemLists";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -109,12 +109,24 @@ const HeadlineContainer = styled.div`
   margin-left: -24px;
 `;
 
-const LinkStyled = styled(Link)`
+const LinkStyled = styled.button`
+  border: 0;
+  background-color: #fff;
   text-decoration: none;
   color: #fff;
 `;
 
 const Domain = ({ questionData, loading }) => {
+  const navigate = useNavigate();
+  const jwtToken = localStorage.getItem("Authorization");
+  const nextLevel = () => {
+    if (jwtToken) {
+      navigate("/ask");
+    } else {
+      alert("로그인 해줘잉!");
+      navigate("/login");
+    }
+  };
   return (
     <>
       <Container>
@@ -124,7 +136,7 @@ const Domain = ({ questionData, loading }) => {
             <HeadlineContainer>
               <TopContainer>
                 <AllQuestions>All Questions</AllQuestions>
-                <LinkStyled to="/ask">
+                <LinkStyled onClick={nextLevel}>
                   <AskQuestion>Ask Question</AskQuestion>
                 </LinkStyled>
               </TopContainer>
