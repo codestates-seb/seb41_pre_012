@@ -5,6 +5,7 @@ import RightSidebar from "../components/RightSidebar";
 import ItemLists from "../components/QuestionList/ItemLists";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import useFetch from "../util/useFetch";
 
 const Container = styled.div`
   width: 100%;
@@ -117,7 +118,7 @@ const LinkStyled = styled.button`
   color: #fff;
 `;
 
-const Domain = ({ questionData, loading }) => {
+const Domain = () => {
   const navigate = useNavigate();
   const jwtToken = localStorage.getItem("Authorization");
   const nextLevel = () => {
@@ -128,6 +129,10 @@ const Domain = ({ questionData, loading }) => {
       navigate("/login");
     }
   };
+
+  const { questionData, loading } = useFetch();
+  console.log(questionData);
+
   return (
     <>
       <Container>

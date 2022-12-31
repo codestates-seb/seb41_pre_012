@@ -9,7 +9,6 @@ import QuestionEdit from "./pages/QuestionEdit";
 import AnswerEdit from "./pages/AnswerEdit";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import useFetch from "./util/useFetch";
 import MyPage from "./pages/MyPage";
 // import { questionRead } from "./util/questionAPI";
 const StyledApp = styled.div`
@@ -17,15 +16,12 @@ const StyledApp = styled.div`
 `;
 
 function App() {
-  const { questionData, loading } = useFetch();
-  console.log(questionData);
-
   return (
     <BrowserRouter>
       <Header />
       <StyledApp>
         <Routes>
-          <Route path="/" element={<Domain questionData={questionData} loading={loading} />} />
+          <Route path="/" element={<Domain />} />
           <Route path="/ask" element={<AskQuestion />} />
           <Route path="/question/:id" element={<QuestionDetail />} />
           <Route path="/edit" element={<QuestionEdit />} />
