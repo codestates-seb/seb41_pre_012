@@ -25,6 +25,7 @@ export const questionUpdate = async (qid, title, content) => {
     });
     window.location.reload();
   } catch (error) {
+    alert("본인이 쓰지않는 글은 수정 불가잉~");
     console.error("Error", error);
   }
 };
@@ -34,6 +35,7 @@ export const questionDelete = async (id) => {
     await axios.delete(`${url}/questions/${id}`);
     window.location.reload();
   } catch (error) {
+    alert("본인이 쓰지않는 글은 삭제 불가잉~");
     console.error("Error", error);
   }
 };

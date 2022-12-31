@@ -133,17 +133,21 @@ const Signup = () => {
   };
 
   const submitHandler = async () => {
-    try {
-      await axios
-        .post("/members", {
-          email: email,
-          username: username,
-          password: password,
-        })
-        .then(navigate("/login"));
-      console.log(email);
-    } catch (error) {
-      alert(error);
+    if (email === "" || username === "" || password === "") {
+      alert("빈칸 있어잉~ 채워줘잉~");
+    } else {
+      try {
+        await axios
+          .post("/members", {
+            email: email,
+            username: username,
+            password: password,
+          })
+          .then(navigate("/login"));
+        console.log(email);
+      } catch (error) {
+        alert(error);
+      }
     }
   };
 

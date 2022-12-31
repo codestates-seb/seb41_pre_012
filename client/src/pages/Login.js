@@ -139,15 +139,13 @@ const Login = () => {
         email: email,
         password: password,
       });
-      // console.log(response);
       const jwtToken = response.headers.authorization;
       localStorage.setItem("Authorization", jwtToken);
-      // const decoded = jwt.decode(jwtToken);
-      // console.log(decoded);
       dispatch(loginSuccess(response.data.user));
       navigate("/");
       window.location.reload();
     } catch (error) {
+      alert("이메일 혹은 비밀번호가 틀렸어잉~");
       dispatch(loginError(error.message));
     }
   };
