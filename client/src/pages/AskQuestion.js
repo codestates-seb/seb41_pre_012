@@ -119,12 +119,11 @@ const CancleBtn = styled.button`
 const AskQuestion = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const url = "http://localhost:3001/Question";
   const navigate = useNavigate();
-
+  const jwtToken = localStorage.getItem("Authorization");
   const onCreate = async () => {
     console.log(content);
-    await questionCreate(url, title, content);
+    await questionCreate(title, content);
     setTitle("");
     setContent("");
   };
@@ -134,6 +133,8 @@ const AskQuestion = () => {
       alert("제목을 입력해야 합니다.");
     } else if (content === "") {
       alert("내용을 입력해야 합니다.");
+    } else if (jwtToken === null) {
+      navigate(`/login`);
     } else {
       navigate(`/`);
       onCreate();
@@ -150,7 +151,10 @@ const AskQuestion = () => {
           </QuestionHeader>
           <TitleBox>
             <Title>Title</Title>
-            <Desc>Be specific and imagine you’re asking a question to another person.</Desc>
+            <Desc>
+              Be specific and imagine you’re asking a question to another
+              person.
+            </Desc>
             <TitleInput
               type="text"
               placeholder="e.g. Is there an R function for finding the index of element in a vector?"
@@ -163,7 +167,8 @@ const AskQuestion = () => {
           <ProblemBox>
             <Title>What are the details of your problem?</Title>
             <Desc>
-              Introduce the problem and expand on what you put in the title. Minimum 20 characters.
+              Introduce the problem and expand on what you put in the title.
+              Minimum 20 characters.
             </Desc>
             <InputEditor setContent={setContent}></InputEditor>
           </ProblemBox>

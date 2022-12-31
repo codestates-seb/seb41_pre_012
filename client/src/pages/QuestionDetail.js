@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import LeftSidebar from "../components/LetfSidebar";
@@ -210,14 +210,32 @@ const QuestionDetail = () => {
   const qUrl = "http://localhost:3001/Question";
   const { id } = useParams();
   const { questionData, loading } = useFetch(`${qUrl}/${id}`);
+  const navigate = useNavigate();
+  const jwtToken = localStorage.getItem("Authorization");
 
   if (questionData && !loading) {
-    const { title, content, createdAt, modifiedAt, view, question_recommend, userInfo } =
-      questionData;
+    const {
+      title,
+      content,
+      createdAt,
+      modifiedAt,
+      view,
+      question_recommend,
+      userInfo,
+    } = questionData;
 
     const onCreate = async () => {
       await answerCreate(id, answer);
       setAnswer("");
+    };
+    const goTo = () => {
+      if (answer === "") {
+        alert("내용을 입력해야 합니다.");
+      } else if (jwtToken === null) {
+        navigate(`/login`);
+      } else {
+        onCreate();
+      }
     };
     return (
       <>
@@ -262,7 +280,10 @@ const QuestionDetail = () => {
                   <EditUserContainer>
                     <div className="container">
                       <div className="order-button">
-                        <EditLinkStyled to={`/edit`} state={{ id, title, content }}>
+                        <EditLinkStyled
+                          to={`/edit`}
+                          state={{ id, title, content }}
+                        >
                           Edit
                         </EditLinkStyled>
                         <Delete url={qUrl} id={id} />
@@ -278,7 +299,7 @@ const QuestionDetail = () => {
                 <form className="post-form">
                   <AnswerTitle>Your Answer</AnswerTitle>
                   <InputEditor setAnswer={setAnswer} />
-                  <PostAnswerBtn onClick={onCreate}>Post Your Answer</PostAnswerBtn>
+                  <PostAnswerBtn onClick={goTo}>Post Your Answer</PostAnswerBtn>
                 </form>
               </div>
             </PostLayout>
