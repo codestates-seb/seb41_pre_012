@@ -8,13 +8,13 @@ const StyledFooter = styled.footer`
   bottom: 0;
   display: flex;
   flex-direction: row;
-  @media screen and (max-width: 800px) {
-    height: 480px;
+  @media screen and (max-width: 1000px) {
+    height: 400px;
   }
 `;
 const FooterLogoContainer = styled.div`
   margin: 10px 20px 10px 120px;
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1000px) {
     margin: 0px;
   }
 `;
@@ -27,26 +27,29 @@ const FooterContentsContainer = styled.div`
   margin-top: 2%;
   display: flex;
   flex-direction: row;
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1000px) {
     flex-direction: column;
   }
 `;
 const FooterListCarrier = styled.div`
   flex-direction: column;
   margin-right: 6%;
+  @media screen and (max-width: 1000px) {
+    margin-right: 4%;
+  }
 `;
 const FooterListTitle = styled.h5`
   color: #b8bdc2;
   margin-bottom: 5%;
   white-space: nowrap;
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1000px) {
     margin: 0;
   }
 `;
 const FooterUl = styled.ul`
   display: flex;
   flex-direction: column;
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1000px) {
     flex-direction: row;
     margin-bottom: 5%;
   }
@@ -56,7 +59,7 @@ const FooterList = styled.li`
   font-size: 15px;
   color: #848b92;
   white-space: nowrap;
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1000px) {
     font-size: 8px;
     padding: 0px;
     margin: 2px;
@@ -67,6 +70,10 @@ const SideFooter = styled.div`
 `;
 const SideFooterContents = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  @media screen and (max-width: 1000px) {
+    flex-wrap: nowrap;
+  }
 `;
 const SideFooterLink = styled.div`
   margin-right: 1%;
@@ -79,9 +86,12 @@ const SideCopyright = styled.div`
   margin-left: 1%;
   color: #b8bdc2;
   font-size: 13px;
-  white-space: nowrap;
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1200px) {
+    margin-top: 180px;
+  }
+  @media screen and (max-width: 1000px) {
     margin-top: 10px;
+    white-space: nowrap;
   }
 `;
 const Footer = () => {
@@ -144,8 +154,8 @@ const Footer = () => {
             <SideFooterLink>Instagram</SideFooterLink>
           </SideFooterContents>
           <SideCopyright>
-            Site design / logo © 2022 Stack Exchange Inc; user contributions
-            licensed under CC BY-SA. <br />
+            Site design / logo © 2022 Stack Exchange Inc; user contributions licensed under CC
+            BY-SA. <br />
             rev 2022.12.19.43125
           </SideCopyright>
         </SideFooter>
