@@ -102,7 +102,7 @@ const User = styled.div`
 
 const Item = ({ questionData }) => {
   const {
-    qId: id,
+    qid: id,
     title,
     createdAt,
     view,
@@ -115,7 +115,7 @@ const Item = ({ questionData }) => {
     <ItemContainer>
       <VotesAnswersViews>
         <Votes>{question_recommend} votes</Votes>
-        {answer_list.length ? (
+        {answer_list ? (
           <Answers>
             <span>{answer_list}</span> answers
           </Answers>

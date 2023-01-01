@@ -101,7 +101,7 @@ const EditLinkStyled = styled(Link)`
   }
 `;
 
-const AnswerItem = ({ answerData, qId }) => {
+const AnswerItem = ({ answerData }) => {
   const { aId, content, userInfo, answer_recommend, isSelected, createdAt } = answerData;
 
   return (
@@ -132,7 +132,7 @@ const AnswerItem = ({ answerData, qId }) => {
           <EditUserContainer>
             <div className="container">
               <div className="order-button">
-                <EditLinkStyled to={`/answeredit`} state={{ qId, aId, content }}>
+                <EditLinkStyled to={`/answeredit`} state={{ aId, content }}>
                   Edit
                 </EditLinkStyled>
                 {/* 나중에 url={url} id={aId}로 써서 answer의 id만 지워질 수 있게 수정 */}

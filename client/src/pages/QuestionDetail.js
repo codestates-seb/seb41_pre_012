@@ -210,15 +210,22 @@ const PostAnswerBtn = styled.button`
 
 const QuestionDetail = () => {
   const [answer, setAnswer] = useState("");
-  const qUrl = "http://localhost:3001/Question";
   const { id } = useParams();
   const { questionData, loading } = useFetch(id);
   const navigate = useNavigate();
   const jwtToken = localStorage.getItem("Authorization");
 
   if (questionData && !loading) {
-    const { title, content, createdAt, modifiedAt, view, question_recommend, userInfo } =
-      questionData;
+    const {
+      title,
+      content,
+      createdAt,
+      modifiedAt,
+      view,
+      question_recommend,
+      userInfo,
+      answer_list,
+    } = questionData;
 
     const nextLevel = () => {
       if (jwtToken) {
@@ -241,6 +248,7 @@ const QuestionDetail = () => {
         onCreate();
       }
     };
+
     return (
       <>
         <InnerContent>
@@ -287,16 +295,16 @@ const QuestionDetail = () => {
                         <EditLinkStyled to={`/edit`} state={{ id, title, content }}>
                           Edit
                         </EditLinkStyled>
-                        <Delete url={qUrl} id={id} />
+                        <Delete id={id} />
                       </div>
                       <UserInfo>{userInfo}</UserInfo>
                     </div>
                   </EditUserContainer>
                 </QuestionBody>
               </div>
-              Answers
+              {answer_list.length} Answers
               <div className="answers">
-                <AnswerLists questionData={questionData} qid={id} />
+                <AnswerLists answerData={answer_list} />
                 <form className="post-form">
                   <AnswerTitle>Your Answer</AnswerTitle>
                   <InputEditor setContent={setAnswer} />

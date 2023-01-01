@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-const url =
-  "http://ec2-43-201-85-80.ap-northeast-2.compute.amazonaws.com:8080/questions?page=1&size=15";
+const url = "http://ec2-43-201-85-80.ap-northeast-2.compute.amazonaws.com:8080/questions";
 
 function useFetch(id) {
   //null설정한 이유: 모든 data가 같진 않기 때문
@@ -15,9 +14,9 @@ function useFetch(id) {
       try {
         if (id) {
           const response = await axios.get(`${url}/${id}`);
-          setQuestionData(response.data.content);
+          setQuestionData(response.data);
         } else {
-          const response = await axios.get(`${url}`);
+          const response = await axios.get(`${url}?page=1&size=15`);
           setQuestionData(response.data.content);
         }
       } catch (err) {

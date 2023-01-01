@@ -98,7 +98,7 @@ const ModalCloseBtn = styled.button`
   }
 `;
 
-const Delete = ({ url, id }) => {
+const Delete = ({ id }) => {
   const navigate = useNavigate();
   const jwtToken = localStorage.getItem("Authorization");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -115,7 +115,7 @@ const Delete = ({ url, id }) => {
   };
 
   const onRemove = () => {
-    questionDelete(url, id);
+    questionDelete(id);
   };
 
   return (
