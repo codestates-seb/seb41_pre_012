@@ -129,7 +129,6 @@ const Item = ({ questionData }) => {
         <Title>
           <LinkStyled to={`/question/${id}`}>{title}</LinkStyled>
         </Title>
-
         <User>
           {userInfo}, {createdAt}
         </User>

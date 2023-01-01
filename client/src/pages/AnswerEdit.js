@@ -97,8 +97,8 @@ const AnswerEdit = () => {
   /* 추후 수정*/
   /*id는 페이지 라우팅에 활용해야 되기때문에 params로 따로 받아 온다*/
   const location = useLocation();
-  const qId = location.state.qId;
-  const aId = location.state.aId;
+  const qid = location.state.qid;
+  const aid = location.state.aid;
   const content = location.state.content;
   const navigate = useNavigate();
 
@@ -107,14 +107,14 @@ const AnswerEdit = () => {
 
   /*answer list 는 어떻게 받아와야 하나 고민 */
   const onEdit = () => {
-    answerUpdate(aId, editContent);
+    answerUpdate(aid, editContent);
     setEditContent();
   };
   const goTo = () => {
     if (editContent === "") {
       swal("답변 수정 불가", "내용을 입력해야 합니다.", "error");
     } else {
-      navigate(`/question/${qId}`);
+      navigate(`/question/${qid}`);
       onEdit();
     }
   };
@@ -133,7 +133,7 @@ const AnswerEdit = () => {
               <ButtonCarrier>
                 <SaveButton onClick={goTo}>SaveEdits</SaveButton>
                 <CancelButton>
-                  <CancelLink to={`/question/${qId}`}>Cancel</CancelLink>
+                  <CancelLink to={`/question/${qid}`}>Cancel</CancelLink>
                 </CancelButton>
               </ButtonCarrier>
             </EditBox>

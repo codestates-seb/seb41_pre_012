@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { questionDelete } from "../util/questionAPI";
 import swal from "sweetalert";
+import { answerDelete } from "../util/answerAPI";
 
 const DeleteStyled = styled.div`
   text-decoration: none;
@@ -98,7 +99,7 @@ const ModalCloseBtn = styled.button`
   }
 `;
 
-const Delete = ({ id }) => {
+const Delete = ({ id, employer }) => {
   const navigate = useNavigate();
   const jwtToken = localStorage.getItem("Authorization");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -115,7 +116,7 @@ const Delete = ({ id }) => {
   };
 
   const onRemove = () => {
-    questionDelete(id);
+    employer === "question" ? questionDelete(id) : answerDelete(id);
   };
 
   return (

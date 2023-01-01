@@ -131,7 +131,6 @@ const Domain = () => {
   };
 
   const { questionData, loading } = useFetch();
-  console.log(questionData);
 
   return (
     <>

@@ -182,6 +182,15 @@ const EditLinkStyled = styled(Link)`
   }
 `;
 
+const AnswerHeader = styled.div`
+  width: 100%;
+  margin-top: 10px;
+  align-items: center;
+  font-weight: 400;
+  line-height: 1.3;
+  font-size: 20px;
+`;
+
 const AnswerTitle = styled.div`
   padding-top: 20px;
   margin-bottom: 19px;
@@ -295,16 +304,16 @@ const QuestionDetail = () => {
                         <EditLinkStyled to={`/edit`} state={{ id, title, content }}>
                           Edit
                         </EditLinkStyled>
-                        <Delete id={id} />
+                        <Delete id={id} employer="question" />
                       </div>
                       <UserInfo>{userInfo}</UserInfo>
                     </div>
                   </EditUserContainer>
                 </QuestionBody>
               </div>
-              {answer_list.length} Answers
+              <AnswerHeader>{answer_list.length} Answers</AnswerHeader>
               <div className="answers">
-                <AnswerLists answerData={answer_list} />
+                <AnswerLists answerData={answer_list} id={id} />
                 <form className="post-form">
                   <AnswerTitle>Your Answer</AnswerTitle>
                   <InputEditor setContent={setAnswer} />

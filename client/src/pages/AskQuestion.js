@@ -122,6 +122,7 @@ const AskQuestion = () => {
   const [content, setContent] = useState("");
   const navigate = useNavigate();
   const jwtToken = localStorage.getItem("Authorization");
+
   const onCreate = async () => {
     console.log(content);
     await questionCreate(title, content);
