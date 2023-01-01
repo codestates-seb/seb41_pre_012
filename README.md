@@ -16,23 +16,23 @@ Stack Overflow 클론 코딩입니다.
 
 > Account (signup & login & mypage)
 
-- [x] Create: 유저는 계정을 생성할 수 있다.
-- [x] Read: 유저는 생성한 계정을 확인할 수 있다.
-- [x] Update: 유저는 생성한 계정 정보를 수정 할 수 있다.
-- [x] Delete: 유저는 생성한 계정을 삭제할 수 있다.
+- [x] Create: 사용자 - 계정을 생성 가능
+- [x] Read: 사용자 - 생성한 계정을 확인 및 My Page에서 사용자가 쓴 글 확인 
+- [x] Update: 사용자 - 생성한 계정 정보를 수정 가능
+- [x] Delete: 사용자 - 생성한 계정을 삭제 가능
 
 > Question
 
-- [x] Create: 유저는 질문을 생성할 수 있다.
-- [x] Read: 질문 상세 페이지를 조회할 수 있다.
-- [x] Update: 작성자는 질문을 수정할수 있다.
-- [x] Delete: 작성자는 질문을 삭제할 수 있다.
+- [x] Create: 사용자 - 질문을 생성 가능
+- [x] Read: 질문 요약 리스트 및 상세 페이지 조회
+- [x] Update: 작성자 - 질문을 수정 가능
+- [x] Delete: 작성자 - 질문을 삭제 가능
 
 > Answer
 
-- [x] Create: 유저는 답변을 작성할 수 있다.
-- [x] Read: 유저가 작성한 답변을 조회할 수 있다.
-- [x] Delete: 작성자는 답변을 삭제할 수 있다.
+- [x] Create: 사용자 - 답변을 작성 가능
+- [x] Read: 작성한 답변 조회 가능
+- [x] Delete: 작성자 - 답변을 삭제 가능
 
 > Vote
 
