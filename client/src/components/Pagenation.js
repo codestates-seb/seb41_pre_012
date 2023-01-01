@@ -5,13 +5,8 @@ const PaginationContainer = styled.div`
   display: flex;
 `;
 
-const 
-
-
 const Pagenation = () => {
-  return <PaginationContainer>
-    
-  </PaginationContainer>;
+  return <PaginationContainer></PaginationContainer>;
 };
 
 export default Pagenation;

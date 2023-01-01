@@ -101,7 +101,15 @@ const User = styled.div`
 `;
 
 const Item = ({ questionData }) => {
-  const { id, title, createdAt, view, question_recommend, userInfo, answer_list } = questionData;
+  const {
+    qId: id,
+    title,
+    createdAt,
+    view,
+    question_recommend,
+    userInfo,
+    answer_list,
+  } = questionData;
 
   return (
     <ItemContainer>
@@ -109,10 +117,10 @@ const Item = ({ questionData }) => {
         <Votes>{question_recommend} votes</Votes>
         {answer_list.length ? (
           <Answers>
-            <span>{answer_list.length}</span> answers
+            <span>{answer_list}</span> answers
           </Answers>
         ) : (
-          <Answer>{answer_list.length} answers</Answer>
+          <Answer>{answer_list} answers</Answer>
         )}
 
         <Views>{view} views</Views>

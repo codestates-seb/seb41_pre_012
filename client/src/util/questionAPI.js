@@ -3,7 +3,7 @@ const jwtToken = localStorage.getItem("Authorization");
 axios.defaults.headers.common["Authorization"] = `${jwtToken}`;
 import swal from "sweetalert";
 
-const url = "https://d9ab-218-149-150-223.jp.ngrok.io";
+const url = "http://ec2-43-201-85-80.ap-northeast-2.compute.amazonaws.com:8080";
 
 // title, content, userInfo(아이디) 만 넘겨줘도 됨 나중에~
 export const questionCreate = async (title, content) => {
