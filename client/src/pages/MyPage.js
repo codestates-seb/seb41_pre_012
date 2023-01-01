@@ -82,8 +82,7 @@ const UserName = styled.p`
 `;
 const UserFunction = styled.p`
   font-size: 20px;
-  margin-top: 5px;
-  margin: 8px;
+  margin-top: 8px;
 `;
 const UserButton = styled.button`
   background: inherit;
@@ -149,6 +148,7 @@ const TextStatBox = styled(TextBox)`
 const UserDataBox = styled.div`
   width: 100%;
   height: 80%;
+  min-height: 200px;
   border-radius: 5px;
   background: #f8f9f9;
   text-align: center;
@@ -157,7 +157,7 @@ const UserDataBox = styled.div`
 `;
 const UserStatBox = styled(UserDataBox)`
   width: 90%;
-  height: 10%;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -167,7 +167,7 @@ const UserStatBox = styled(UserDataBox)`
   }
   @media screen and (max-width: 800px) {
     width: 100%;
-    height: 30%;
+    height: 80px;
     flex-direction: row;
   }
 `;

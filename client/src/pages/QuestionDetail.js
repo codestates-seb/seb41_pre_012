@@ -6,8 +6,6 @@ import RightSidebar from "../components/RightSidebar";
 import useFetch from "../util/useFetch";
 import Delete from "../components/Delete";
 import QuestionViewer from "../components/Viewer";
-// 나중에 나머지 svg도 불러오기
-// import { UpVote, UpVoteDone, DownVote, DownVoteDone, CheckIcon, CheckedIcon } from "../img/index";
 import { UpVote, DownVote } from "../img/index";
 import InputEditor from "../components/InputEditor";
 import { useState } from "react";
