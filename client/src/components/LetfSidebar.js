@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import PublicIcon from "@mui/icons-material/Public";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const StyledLeftSidebar = styled.nav`
   @media screen and (max-width: 640px) {
@@ -49,20 +50,34 @@ const NavbarLink = styled.li`
     font-size: 21px;
   }
 `;
-const NavbarItemLink = styled.li`
+const NavbarItemLink = styled.li``;
+const LinkButton = styled.button`
+  text-decoration: none;
+  color: #525960;
+  border: 0;
+  background-color: #fff;
   width: 164px;
   height: 34px;
   font-size: 13px;
   display: flex;
   align-items: center;
-  padding: 4px 4px 4px 30px;
-  a {
-    text-decoration: none;
-    color: #525960;
-  }
+  padding: 4px 4px 4px 35px;
+  cursor: pointer;
 `;
 
 const LeftSidebar = () => {
+  const navigate = useNavigate();
+  const jwtToken = localStorage.getItem("Authorization");
+
+  const nextLevel = () => {
+    if (jwtToken) {
+      navigate("/mypage");
+    } else {
+      swal("권한이 없습니다.", "로그인을 해주셔야 합니다.", "warning");
+      navigate("/login");
+    }
+  };
+
   return (
     <StyledLeftSidebar>
       <Navbar>
@@ -76,7 +91,7 @@ const LeftSidebar = () => {
           </NavbarLink>
           <NavbarItemLink>
             {/* 로그인 됐을때만 페이지 이동 */}
-            <Link to="/mypage">User</Link>
+            <LinkButton onClick={nextLevel}>User</LinkButton>
           </NavbarItemLink>
         </ul>
       </Navbar>
