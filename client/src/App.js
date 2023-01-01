@@ -1,6 +1,6 @@
 import "./App.css";
 import styled from "styled-components";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, ScrollRestoration } from "react-router-dom";
 import Domain from "./pages/Domain";
 import Header from "./components/Header";
 import QuestionDetail from "./pages/QuestionDetail";
@@ -18,6 +18,7 @@ const StyledApp = styled.div`
 function App() {
   return (
     <BrowserRouter>
+      <ScrollRestoration />
       <Header />
       <StyledApp>
         <Routes>
