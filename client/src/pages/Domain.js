@@ -130,7 +130,7 @@ const Domain = () => {
     }
   };
 
-  const { questionData, loading } = useFetch();
+  const { questionData, loading } = useFetch("questions");
 
   return (
     <>
