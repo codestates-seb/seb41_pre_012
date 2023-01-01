@@ -269,7 +269,7 @@ const MyPage = () => {
       </>
     );
   } else {
-    return "Loading...";
+    return "";
   }
 };
 
