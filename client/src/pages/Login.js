@@ -144,7 +144,7 @@ const Login = () => {
       });
       const jwtToken = response.headers.authorization;
       localStorage.setItem("Authorization", jwtToken);
-      dispatch(loginSuccess(response.data.user));
+      dispatch(loginSuccess(response.data));
       navigate("/");
       window.location.reload();
     } catch (error) {

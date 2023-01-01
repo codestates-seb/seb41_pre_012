@@ -76,7 +76,7 @@ const LeftSidebar = () => {
           </NavbarLink>
           <NavbarItemLink>
             {/* 로그인 됐을때만 페이지 이동 */}
-            <Link to="/mypage">Users</Link>
+            <Link to="/mypage">User</Link>
           </NavbarItemLink>
         </ul>
       </Navbar>

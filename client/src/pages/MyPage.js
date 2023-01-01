@@ -2,13 +2,12 @@ import styled from "styled-components";
 import LeftSidebar from "../components/LetfSidebar";
 import Footer from "../components/Footer";
 import useravatar from "../img/Rhino.jpeg";
-// import { useParams } from "react-router-dom";
-// import useFetch from "../util/useFetch";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import axios from "axios";
+import useFetch from "../util/useFetch";
+import UserList from "../components/memberList/UserList";
 
 const Page = styled.div`
   width: 100%;
@@ -22,7 +21,7 @@ const Page = styled.div`
 const Container = styled.div`
   width: 100%;
   max-width: 1100px;
-  height: 1080px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   padding: 24px;
@@ -196,79 +195,82 @@ const MyPage = () => {
   const navigate = useNavigate();
   const jwtToken = localStorage.getItem("Authorization");
   axios.defaults.headers.common["Authorization"] = `${jwtToken}`;
+
   const deleteToken = () => {
     localStorage.removeItem("Authorization");
     navigate("/");
     window.location.reload();
   };
 
-  const userRead = async () => {
-    try {
-      const response = await axios.get("/members");
-      console.log(response.data);
-      // window.location.reload();
-    } catch (error) {
-      console.error("Error", error);
-    }
-  };
-  userRead();
+  const { questionData: userData, loading } = useFetch("members");
 
-  return (
-    <>
-      <Page>
-        <LeftSidebar />
-        <Container>
-          <UserBox>
-            <UserImgBox>
-              <UserImg src={useravatar} alt="useravatar" />
-            </UserImgBox>
-            <UserNameBox>
-              <UserValue>
-                <UserName>윤뿔소</UserName>
-                <UserFunction>
-                  <UserButton onClick={deleteToken}>
-                    log out <LogoutIcon className="icon" />
-                  </UserButton>
-                  <UserButton>
-                    | edit <PersonRemoveIcon className="icon" />
-                  </UserButton>
-                </UserFunction>
-              </UserValue>
-            </UserNameBox>
-          </UserBox>
-          <StatsDetailBox>
-            <StatsBox>
-              <TextStatBox>Stats</TextStatBox>
-              <UserStatBox>
-                <UserStatDetailBox>
-                  <UserStatDetailNumberBox>0</UserStatDetailNumberBox>
-                  <UserStatDetailTextBox>answers</UserStatDetailTextBox>
-                </UserStatDetailBox>
-                <UserStatDetailBox>
-                  <UserStatDetailNumberBox>0</UserStatDetailNumberBox>
-                  <UserStatDetailTextBox>questions</UserStatDetailTextBox>
-                </UserStatDetailBox>
-              </UserStatBox>
-            </StatsBox>
-            <DetailBox>
-              <QusetionAnswerBox>
-                <TextBox>Answers</TextBox>
-                <UserDataBox></UserDataBox>
-              </QusetionAnswerBox>
-              <QusetionAnswerBox>
-                <TextBox>Questions</TextBox>
-                <UserDataBox></UserDataBox>
-              </QusetionAnswerBox>
-            </DetailBox>
-          </StatsDetailBox>
-        </Container>
-      </Page>
-      <Footer />
-    </>
-  );
-  // } else {
-  //   ("Loading...");
-  // }
+  if (!loading && userData) {
+    const { questionCount, answerCount, questionList, answerList, userInfo } = userData;
+
+    return (
+      <>
+        <Page>
+          <LeftSidebar />
+          <Container>
+            <UserBox>
+              <UserImgBox>
+                <UserImg src={useravatar} alt="useravatar" />
+              </UserImgBox>
+              <UserNameBox>
+                <UserValue>
+                  <UserName>{userInfo}</UserName>
+                  <UserFunction>
+                    <UserButton onClick={deleteToken}>
+                      log out <LogoutIcon className="icon" />
+                    </UserButton>
+                    <UserButton>
+                      | edit <PersonRemoveIcon className="icon" />
+                    </UserButton>
+                  </UserFunction>
+                </UserValue>
+              </UserNameBox>
+            </UserBox>
+            <StatsDetailBox>
+              <StatsBox>
+                <TextStatBox>Stats</TextStatBox>
+                <UserStatBox>
+                  <UserStatDetailBox>
+                    <UserStatDetailNumberBox>{answerCount}</UserStatDetailNumberBox>
+                    <UserStatDetailTextBox>answers</UserStatDetailTextBox>
+                  </UserStatDetailBox>
+                  <UserStatDetailBox>
+                    <UserStatDetailNumberBox>{questionCount}</UserStatDetailNumberBox>
+                    <UserStatDetailTextBox>questions</UserStatDetailTextBox>
+                  </UserStatDetailBox>
+                </UserStatBox>
+              </StatsBox>
+              <DetailBox>
+                <QusetionAnswerBox>
+                  <TextBox>Answers</TextBox>
+                  <UserDataBox>
+                    {answerList.map((item) => (
+                      <UserList key={item.qid} title={item.title} qid={item.qid} />
+                    ))}
+                  </UserDataBox>
+                </QusetionAnswerBox>
+                <QusetionAnswerBox>
+                  <TextBox>Questions</TextBox>
+                  <UserDataBox>
+                    {questionList.map((item) => (
+                      <UserList key={item.qid} title={item.title} qid={item.qid} />
+                    ))}
+                  </UserDataBox>
+                </QusetionAnswerBox>
+              </DetailBox>
+            </StatsDetailBox>
+          </Container>
+        </Page>
+        <Footer />
+      </>
+    );
+  } else {
+    return "Loading...";
+  }
 };
 
 export default MyPage;
