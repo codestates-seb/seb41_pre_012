@@ -104,6 +104,8 @@ const EditLinkStyled = styled(Link)`
 const AnswerItem = ({ answerData, qid }) => {
   const { aid, content, userInfo, answer_recommend, isSelected, createdAt } = answerData;
 
+  const cYMD = createdAt.slice(0, 10);
+
   return (
     <AnswerContanier>
       <div className="post-layout">
@@ -135,11 +137,10 @@ const AnswerItem = ({ answerData, qid }) => {
                 <EditLinkStyled to={`/answeredit`} state={{ qid, aid, content }}>
                   Edit
                 </EditLinkStyled>
-                {/* 나중에 url={url} id={aId}로 써서 answer의 id만 지워질 수 있게 수정 */}
                 <Delete id={aid} employer="question" />
               </div>
               <UserInfo>
-                Answered {createdAt} <br />
+                Answered {cYMD} <br />
                 {userInfo}
               </UserInfo>
             </div>

@@ -111,6 +111,8 @@ const Item = ({ questionData }) => {
     answer_list,
   } = questionData;
 
+  const YMD = createdAt.slice(0, 10);
+
   return (
     <ItemContainer>
       <VotesAnswersViews>
@@ -130,7 +132,7 @@ const Item = ({ questionData }) => {
           <LinkStyled to={`/question/${id}`}>{title}</LinkStyled>
         </Title>
         <User>
-          {userInfo}, {createdAt}
+          {userInfo}, {YMD}
         </User>
       </TitleContentUser>
     </ItemContainer>

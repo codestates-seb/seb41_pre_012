@@ -220,7 +220,7 @@ const PostAnswerBtn = styled.button`
 const QuestionDetail = () => {
   const [answer, setAnswer] = useState("");
   const { id } = useParams();
-  const { questionData, loading } = useFetch(id);
+  const { questionData, loading } = useFetch("questions", id);
   const navigate = useNavigate();
   const jwtToken = localStorage.getItem("Authorization");
 
@@ -258,6 +258,11 @@ const QuestionDetail = () => {
       }
     };
 
+    const cYMD = createdAt.slice(0, 10);
+    const cTIME = createdAt.slice(11);
+    const mYMD = modifiedAt.slice(0, 10);
+    const mTIME = modifiedAt.slice(11);
+
     return (
       <>
         <InnerContent>
@@ -271,10 +276,16 @@ const QuestionDetail = () => {
             </QuestionHeader>
             <QuestionInfo>
               <div className="infoContainer">
-                <span>Asked</span> <span>{createdAt}</span>
+                <span>Asked</span>{" "}
+                <span>
+                  {cYMD} {cTIME}
+                </span>
               </div>
               <div className="infoContainer">
-                <span>Modified</span> <span>{modifiedAt}</span>
+                <span>Modified</span>{" "}
+                <span>
+                  {mYMD} {mTIME}
+                </span>
               </div>
               <div className="infoContainer">
                 <span>Viewed</span>
