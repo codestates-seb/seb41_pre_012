@@ -1,6 +1,6 @@
 import "./App.css";
 import styled from "styled-components";
-import { BrowserRouter, Routes, Route, ScrollRestoration } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Domain from "./pages/Domain";
 import Header from "./components/Header";
 import QuestionDetail from "./pages/QuestionDetail";
@@ -10,7 +10,8 @@ import AnswerEdit from "./pages/AnswerEdit";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import MyPage from "./pages/MyPage";
-// import { questionRead } from "./util/questionAPI";
+import ScrollTopFix from "./components/ScrollTopFix";
+
 const StyledApp = styled.div`
   margin-top: 50px;
 `;
@@ -18,7 +19,7 @@ const StyledApp = styled.div`
 function App() {
   return (
     <BrowserRouter>
-      <ScrollRestoration />
+      <ScrollTopFix />
       <Header />
       <StyledApp>
         <Routes>
