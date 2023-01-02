@@ -57,7 +57,6 @@ public class SecurityConfiguration {
                         .antMatchers(HttpMethod.DELETE, "/answers/**").hasRole("USER")
                         .antMatchers(HttpMethod.GET, "/members/**").hasRole("USER")
                         .antMatchers(HttpMethod.PATCH, "/members/**").hasRole("USER")
-                        //.antMatchers(HttpMethod.GET, "/h2").hasRole("ADMIN") // 배포 시 주석 해제
                         .anyRequest().permitAll()
                 );
         return http.build();
