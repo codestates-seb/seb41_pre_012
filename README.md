@@ -3,11 +3,13 @@
 안녕하세요! 12조, 왜12조?!입니다!
 
 ## 🙇🏻‍♂️ **팀원소개**
-
+<div align="center">
 | [윤태연](https://github.com/rhino-ty) | [이건희](https://github.com/LEEKH109) | [장예진](https://github.com/yejin32) | [이종희](https://github.com/hie6953) | [이현준](https://github.com/lhj920514) | [김의진](https://github.com/euijin0122) |
 | :-----------------------------------: | :-----------------------------------: | :----------------------------------: | :----------------------------------: | :------------------------------------: | :-------------------------------------: |
 |             👑팀장<br>FE              |                  FE                   |                  FE                  |                  BE                  |                   BE                   |                   BE                    |
-
+</div>
+  
+  
 # 🧑🏼‍🔧 **서비스 소개**
 
 Stack Overflow 클론 코딩입니다.<br />
@@ -67,7 +69,7 @@ Stack Overflow 클론 코딩입니다.<br />
 ### **Common**
 <div align="center">
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white" width="75" height="35"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white" width="100" height="35">
-<div>
+</div>
 
 
 ## **시연**  
