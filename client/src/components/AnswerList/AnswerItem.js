@@ -137,7 +137,7 @@ const AnswerItem = ({ answerData, qid }) => {
                 <EditLinkStyled to={`/answeredit`} state={{ qid, aid, content }}>
                   Edit
                 </EditLinkStyled>
-                <Delete id={aid} employer="question" />
+                <Delete id={aid} employer="answer" />
               </div>
               <UserInfo>
                 Answered {cYMD} <br />
