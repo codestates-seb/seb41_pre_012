@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 
 @Getter
 @NoArgsConstructor
@@ -27,6 +29,7 @@ public class QuestionDto {
     private int answer_list;
 
     private Long view;
+    private LocalDateTime createdAt;
 
     public static QuestionDto result(Question question) {
 
@@ -39,6 +42,7 @@ public class QuestionDto {
                 .question_recommend(question.getQuestionRecommend() == null ? 0 : question.getQuestionRecommend().size())
                 .answer_list(question.getAnswerList() == null ? 0 : question.getAnswerList().size())
                 .view(question.getView())
+                .createdAt(question.getCreatedAt())
                 .build();
     }
 }

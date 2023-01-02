@@ -34,6 +34,7 @@ public class Question {
 
     private String title;
 
+    @Column(length = 10000)
     private String content;
 
     private LocalDateTime createdAt;
