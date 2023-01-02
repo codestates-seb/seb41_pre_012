@@ -54,7 +54,9 @@ Stack Overflow 클론 코딩입니다.
 
 ### **Front-end**
 
+<div align="center">
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" width="150" height="35"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black" width="100" height="35"> <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white" width="100" height="35"> <img src="https://img.shields.io/badge/Styled Component-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" width="200" height="35">
+</div>
 
 ### **Back-end**
 
