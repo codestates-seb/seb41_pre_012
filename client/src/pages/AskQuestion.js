@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import backimg from "../img/bckImage.svg";
-import { questionCreate } from "../util/questionAPI";
+import { questionCreate } from "../util/API";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import InputEditor from "../components/InputEditor";

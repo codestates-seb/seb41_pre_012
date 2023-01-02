@@ -1,17 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { questionDelete, answerDelete } from "../util/API";
-import swal from "sweetalert";
+import { memberDelete } from "../util/API";
 
 const DeleteStyled = styled.div`
-  text-decoration: none;
-  color: #6a737c;
   margin: 4px;
   cursor: pointer;
-  :hover {
-    color: #838c95;
-  }
 `;
 
 const ModalContainer = styled.div`
@@ -39,9 +33,9 @@ const ModalView = styled.div.attrs(() => ({
   border-radius: 7px;
   padding: 24px;
   width: 450px;
-  height: 173px;
+  height: 220px;
   box-shadow: 1px 0px 86px -17px rgba(0, 0, 0, 0.75);
-
+  text-align: left;
   .button-container {
     margin-top: 24px;
     display: flex;
@@ -98,16 +92,11 @@ const ModalCloseBtn = styled.button`
   }
 `;
 
-const Delete = ({ id, employer }) => {
+const MemberDelete = ({ id }) => {
   const navigate = useNavigate();
-  const jwtToken = localStorage.getItem("Authorization");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const modalOpenHandler = () => {
-    if (!jwtToken) {
-      swal("권한이 없습니다.", "삭제할 권한이 필요합니다.", "warning");
-      navigate("/login");
-    }
     setIsModalOpen(true);
   };
   const modalCloseHandler = () => {
@@ -115,25 +104,27 @@ const Delete = ({ id, employer }) => {
   };
 
   const onRemove = () => {
-    if (employer === "question") {
-      questionDelete(id);
-    } else {
-      answerDelete(id);
-    }
+    memberDelete(id);
+    localStorage.removeItem("Authorization");
+    navigate("/");
+    window.location.reload();
   };
 
   return (
     <>
-      <DeleteStyled onClick={modalOpenHandler}>Delete</DeleteStyled>
+      <DeleteStyled onClick={modalOpenHandler}>Delete Profile</DeleteStyled>
       <ModalContainer>
         {isModalOpen && (
           <ModalBackdrop>
             <ModalView>
-              <Header>Discard question</Header>
-              <Text>Are you sure you want to discard this question?</Text>
+              <Header>Delete Profile</Header>
+              <Text>
+                Deletion is irreversible, and you will have no way to regain any of your original
+                content, should this deletion be carried out and you change your mind later on.
+              </Text>
               <div className="button-container">
                 <Link to="/">
-                  <DeleteBtn onClick={onRemove}>Discard question</DeleteBtn>
+                  <DeleteBtn onClick={onRemove}>Delete Profile</DeleteBtn>
                 </Link>
                 <ModalCloseBtn onClick={modalCloseHandler}>Cancel</ModalCloseBtn>
               </div>
@@ -145,4 +136,4 @@ const Delete = ({ id, employer }) => {
   );
 };
 
-export default Delete;
+export default MemberDelete;

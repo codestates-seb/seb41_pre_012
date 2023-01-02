@@ -9,7 +9,7 @@ import QuestionViewer from "../components/Viewer";
 import { UpVote, DownVote } from "../img/index";
 import InputEditor from "../components/InputEditor";
 import { useState } from "react";
-import { answerCreate } from "../util/answerAPI";
+import { answerCreate } from "../util/API";
 import AnswerLists from "../components/AnswerList/AnswerLists";
 import swal from "sweetalert";
 

@@ -4,10 +4,12 @@ import Footer from "../components/Footer";
 import useravatar from "../img/Rhino.jpeg";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
+import FaceRetouchingOffIcon from "@mui/icons-material/FaceRetouchingOff";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useFetch from "../util/useFetch";
 import UserList from "../components/memberList/UserList";
+import MemberDelete from "../components/MemberDelete";
 
 const Page = styled.div`
   width: 100%;
@@ -83,19 +85,37 @@ const UserName = styled.p`
 const UserFunction = styled.p`
   font-size: 20px;
   margin-top: 8px;
+  display: flex;
+  margin-left: -10px;
+  align-items: center;
+  .middle {
+    border-left: 1px solid #6a737c;
+    border-right: 1px solid #6a737c;
+  }
+  .delete-button {
+    :hover {
+      color: #d0393e;
+    }
+  }
 `;
 const UserButton = styled.button`
   background: inherit;
   border: none;
   box-shadow: none;
   border-radius: 0;
-  padding: 3px;
   overflow: visible;
   color: #6a737c;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin: 0 5px;
+  :hover {
+    color: #838c95;
+  }
   .icon {
-    font-size: 13px;
-    padding-top: 3px;
+    font-size: 18px;
+    margin-left: 6px;
   }
 `;
 
@@ -110,7 +130,7 @@ const StatsDetailBox = styled.div`
 `;
 const StatsBox = styled.div`
   width: 25%;
-  height: 100%;
+  height: 200px;
   @media screen and (max-width: 800px) {
     width: 100%;
     height: 20%;
@@ -132,6 +152,7 @@ const TextBox = styled.div`
   width: 100%;
   height: 10%;
   padding-left: 5px;
+  margin-bottom: 5px;
   font-size: 25px;
   display: flex;
   align-items: center;
@@ -139,8 +160,11 @@ const TextBox = styled.div`
     flex-direction: row;
   }
 `;
-const TextStatBox = styled(TextBox)`
-  height: 5%;
+const TextStatBox = styled.div`
+  height: 10%;
+  padding-left: 5px;
+  margin-bottom: 10px;
+  font-size: 25px;
   @media screen and (max-width: 800px) {
     margin-bottom: 10px;
   }
@@ -150,18 +174,20 @@ const UserDataBox = styled.div`
   height: 80%;
   min-height: 200px;
   border-radius: 5px;
-  background: #f8f9f9;
+  background: #fff;
   text-align: center;
   font-size: 15px;
   border: 1px solid #d7dadd;
+  margin-bottom: 10px;
 `;
-const UserStatBox = styled(UserDataBox)`
+const UserStatBox = styled.div`
   width: 90%;
   height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
+  border-radius: 5px;
+  border: 1px solid #d7dadd;
   @media screen and (max-width: 1150px) {
     flex-direction: column;
   }
@@ -178,6 +204,7 @@ const UserStatDetailBox = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 10px;
 `;
 const UserStatDetailNumberBox = styled.div`
   width: 90%;
@@ -205,7 +232,7 @@ const MyPage = () => {
   const { questionData: userData, loading } = useFetch("members");
 
   if (!loading && userData) {
-    const { questionCount, answerCount, questionList, answerList, userInfo } = userData;
+    const { mid, questionCount, answerCount, questionList, answerList, userInfo } = userData;
 
     return (
       <>
@@ -221,10 +248,16 @@ const MyPage = () => {
                   <UserName>{userInfo}</UserName>
                   <UserFunction>
                     <UserButton onClick={deleteToken}>
-                      log out <LogoutIcon className="icon" />
+                      Log out <LogoutIcon className="icon" />
                     </UserButton>
-                    <UserButton>
-                      | edit <PersonRemoveIcon className="icon" />
+                    <div className="middle">
+                      <UserButton>
+                        Edit <PersonRemoveIcon className="icon" />
+                      </UserButton>
+                    </div>
+                    <UserButton className="delete-button">
+                      <MemberDelete id={mid} />
+                      <FaceRetouchingOffIcon className="icon" />
                     </UserButton>
                   </UserFunction>
                 </UserValue>
