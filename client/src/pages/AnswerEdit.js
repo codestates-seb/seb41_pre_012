@@ -94,8 +94,6 @@ const CancelLink = styled(Link)`
   text-decoration: none;
 `;
 const AnswerEdit = () => {
-  /* 추후 수정*/
-  /*id는 페이지 라우팅에 활용해야 되기때문에 params로 따로 받아 온다*/
   const location = useLocation();
   const qid = location.state.qid;
   const aid = location.state.aid;
@@ -103,9 +101,7 @@ const AnswerEdit = () => {
   const navigate = useNavigate();
 
   const [editContent, setEditContent] = useState(`${content}`);
-  /*fake 서버 양식에 맞추어 작성*/
 
-  /*answer list 는 어떻게 받아와야 하나 고민 */
   const onEdit = () => {
     answerUpdate(aid, editContent);
     setEditContent();

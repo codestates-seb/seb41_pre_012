@@ -124,7 +124,6 @@ const AskQuestion = () => {
   const jwtToken = localStorage.getItem("Authorization");
 
   const onCreate = async () => {
-    console.log(content);
     await questionCreate(title, content);
     setTitle("");
     setContent("");

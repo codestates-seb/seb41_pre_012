@@ -147,7 +147,6 @@ const Signup = () => {
             password: password,
           })
           .then(navigate("/login"));
-        console.log(email);
       } catch (error) {
         alert(error);
       }

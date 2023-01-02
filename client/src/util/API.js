@@ -5,7 +5,6 @@ import swal from "sweetalert";
 
 const url = "http://ec2-3-38-245-131.ap-northeast-2.compute.amazonaws.com:8080";
 
-// title, content, userInfo(아이디) 만 넘겨줘도 됨 나중에~
 export const questionCreate = async (title, content) => {
   try {
     await axios.post(`${url}/questions`, {
