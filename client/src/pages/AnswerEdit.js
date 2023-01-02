@@ -1,11 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
-import LeftSidebar from "../components/LetfSidebar";
+import { LeftSidebar, Footer, InputEditor, QuestionViewer } from "../components/index";
 import { answerUpdate } from "../util/API";
-import InputEditor from "../components/InputEditor";
-import QuestionViewer from "../components/Viewer";
 import swal from "sweetalert";
 
 const Container = styled.div`

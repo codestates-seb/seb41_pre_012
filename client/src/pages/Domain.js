@@ -1,11 +1,8 @@
 import styled from "styled-components";
-import Footer from "../components/Footer";
-import LeftSidebar from "../components/LetfSidebar";
-import RightSidebar from "../components/RightSidebar";
-import ItemLists from "../components/QuestionList/ItemLists";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import useFetch from "../util/useFetch";
+import { ItemLists, LeftSidebar, Footer, RightSidebar } from "../components/index";
 
 const Container = styled.div`
   width: 100%;

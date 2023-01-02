@@ -1,17 +1,19 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import Footer from "../components/Footer";
-import LeftSidebar from "../components/LetfSidebar";
-import RightSidebar from "../components/RightSidebar";
 import useFetch from "../util/useFetch";
-import Delete from "../components/Delete";
-import QuestionViewer from "../components/Viewer";
 import { UpVote, DownVote } from "../img/index";
-import InputEditor from "../components/InputEditor";
 import { useState } from "react";
 import { answerCreate } from "../util/API";
-import AnswerLists from "../components/AnswerList/AnswerLists";
 import swal from "sweetalert";
+import {
+  Footer,
+  LeftSidebar,
+  RightSidebar,
+  Delete,
+  QuestionViewer,
+  InputEditor,
+  AnswerLists,
+} from "../components/index";
 
 const InnerContent = styled.div`
   width: 100%;

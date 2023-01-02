@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import LeftSidebar from "../components/LetfSidebar";
-import Footer from "../components/Footer";
 import useravatar from "../img/Rhino.jpeg";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
@@ -8,9 +6,7 @@ import FaceRetouchingOffIcon from "@mui/icons-material/FaceRetouchingOff";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useFetch from "../util/useFetch";
-import UserList from "../components/memberList/UserList";
-import MemberDelete from "../components/MemberDelete";
-import MemberEdit from "../components/MemberEdit";
+import { Footer, UserList, MemberDelete, MemberEdit, LeftSidebar } from "../components/index";
 
 const Page = styled.div`
   width: 100%;

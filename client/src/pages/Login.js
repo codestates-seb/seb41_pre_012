@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import miniLogo from "../img/miniLogo.svg";
-import googleImg from "../img/GoogleImg.svg";
-import githubImg from "../img/githubImg.svg";
+import { miniLogo, GoogleImg, githubImg } from "../img/index";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -157,7 +155,7 @@ const Login = () => {
         </LogoBox>
         <OAuthButtonForm>
           <OAuthButton>
-            <img src={googleImg} alt="GoogleImg" />
+            <img src={GoogleImg} alt="GoogleImg" />
             Log in with Google
           </OAuthButton>
           <OAuthButton2>
