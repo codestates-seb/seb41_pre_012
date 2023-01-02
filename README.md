@@ -10,7 +10,7 @@
 
 # 🧑🏼‍🔧 **서비스 소개**
 
-Stack Overflow 클론 코딩입니다.
+Stack Overflow 클론 코딩입니다.<br />
 배포 주소: http://pre-stackoverflow.s3-website.ap-northeast-2.amazonaws.com/
 
 ## 👩🏻‍🔧 **기능소개**
@@ -33,6 +33,7 @@ Stack Overflow 클론 코딩입니다.
 
 - [x] Create: 사용자 - 답변을 작성 가능
 - [x] Read: 작성한 답변 조회 가능
+- [x] Update: 사용자 닉네임 변경 가능
 - [x] Delete: 작성자 - 답변을 삭제 가능
 
 > Vote
@@ -71,6 +72,13 @@ Stack Overflow 클론 코딩입니다.
 
 ## **시연**  
 
+### Account (signup & login & mypage)
+https://user-images.githubusercontent.com/94962427/210201386-de73700a-e8e1-45cb-a015-b2bab089c7ab.mov
 
+### Question
+  
+  
+  
+### Answer
 
 
