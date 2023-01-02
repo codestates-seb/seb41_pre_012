@@ -11,6 +11,7 @@
 # 🧑🏼‍🔧 **서비스 소개**
 
 Stack Overflow 클론 코딩입니다.
+배포 주소: http://pre-stackoverflow.s3-website.ap-northeast-2.amazonaws.com/
 
 ## 👩🏻‍🔧 **기능소개**
 
