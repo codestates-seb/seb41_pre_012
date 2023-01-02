@@ -46,7 +46,6 @@ export const answerCreate = async (qid, content) => {
     await axios.post(`${url}/answers/${qid}`, {
       content: content,
     });
-    // window.location.reload();
   } catch (error) {
     swal("권한이 없습니다.", "로그인을 해주세요!", "warning");
     console.error("Error", error);
@@ -77,6 +76,17 @@ export const answerDelete = async (aid) => {
 export const memberDelete = async (mid) => {
   try {
     await axios.delete(`${url}/members/${mid}`);
+  } catch (error) {
+    console.error("Error", error);
+  }
+};
+
+export const memberUpdate = async (mid, username) => {
+  try {
+    await axios.patch(`${url}/members/${mid}`, {
+      username: username,
+    });
+    window.location.reload();
   } catch (error) {
     console.error("Error", error);
   }

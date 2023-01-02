@@ -10,6 +10,7 @@ import axios from "axios";
 import useFetch from "../util/useFetch";
 import UserList from "../components/memberList/UserList";
 import MemberDelete from "../components/MemberDelete";
+import MemberEdit from "../components/MemberEdit";
 
 const Page = styled.div`
   width: 100%;
@@ -82,7 +83,7 @@ const UserName = styled.p`
   font-size: 32px;
   margin-bottom: 5px;
 `;
-const UserFunction = styled.p`
+const UserFunction = styled.div`
   font-size: 20px;
   margin-top: 8px;
   display: flex;
@@ -252,7 +253,8 @@ const MyPage = () => {
                     </UserButton>
                     <div className="middle">
                       <UserButton>
-                        Edit <PersonRemoveIcon className="icon" />
+                        <MemberEdit id={mid} username={userInfo} />
+                        <PersonRemoveIcon className="icon" />
                       </UserButton>
                     </div>
                     <UserButton className="delete-button">
