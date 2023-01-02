@@ -1,7 +1,7 @@
 import axios from "axios";
 const jwtToken = localStorage.getItem("Authorization");
 axios.defaults.headers.common["Authorization"] = `${jwtToken}`;
-const url = "http://ec2-43-201-85-80.ap-northeast-2.compute.amazonaws.com:8080";
+const url = "http://ec2-3-38-245-131.ap-northeast-2.compute.amazonaws.com:8080";
 import swal from "sweetalert";
 
 // post는 생성 위해 qid(우리는 지금 id)

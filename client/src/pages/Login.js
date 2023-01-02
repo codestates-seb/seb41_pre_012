@@ -9,7 +9,7 @@ import { loginRequest, loginSuccess, loginError } from "../util/store/slice/logi
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
-const url = "http://ec2-43-201-85-80.ap-northeast-2.compute.amazonaws.com:8080";
+const url = "http://ec2-3-38-245-131.ap-northeast-2.compute.amazonaws.com:8080";
 
 const StyledLogin = styled.div`
   width: 100%;

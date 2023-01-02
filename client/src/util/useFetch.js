@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-const url = "http://ec2-43-201-85-80.ap-northeast-2.compute.amazonaws.com:8080";
+const url = "http://ec2-3-38-245-131.ap-northeast-2.compute.amazonaws.com:8080";
 
 function useFetch(employer, id) {
   //null설정한 이유: 모든 data가 같진 않기 때문
