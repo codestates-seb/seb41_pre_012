@@ -3,9 +3,7 @@ import miniLogo from "../img/miniLogo.svg";
 import googleImg from "../img/GoogleImg.svg";
 import githubImg from "../img/githubImg.svg";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import axios from "axios";
-import { loginRequest, loginSuccess, loginError } from "../util/store/slice/loginSlice";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
@@ -122,7 +120,7 @@ const DesBox = styled.div`
 
 const Login = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -136,7 +134,7 @@ const Login = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    dispatch(loginRequest());
+
     try {
       const response = await axios.post(`${url}/login`, {
         email: email,
@@ -144,12 +142,10 @@ const Login = () => {
       });
       const jwtToken = response.headers.authorization;
       localStorage.setItem("Authorization", jwtToken);
-      dispatch(loginSuccess(response.data));
       navigate("/");
       window.location.reload();
     } catch (error) {
       swal("로그인 실패", "이메일 혹은 비밀번호가 틀렸습니다.", "error");
-      dispatch(loginError(error.message));
     }
   };
 
