@@ -59,11 +59,13 @@ Stack Overflow 클론 코딩입니다.
 </div>
 
 ### **Back-end**
-
+<div align="center">
 <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white" width="100" height="35"> <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white" width="100" height="35"> <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white" width="160" height="35"> <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white" width="100" height="35"> <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white" width="120" height="35"> <img src="https://img.shields.io/badge/Mysql-4479A1?style=for-the-badge&logo=Mysql&logoColor=white" width="100" height="35"> <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=json web tokens&logoColor=white" width="100" height="35">
+</div>
 
 ### **Common**
-
+<div align="center">
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white" width="75" height="35"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white" width="100" height="35">
+<div>
 
 ## **시연**
